@@ -19,9 +19,8 @@ router = APIRouter()
 
 @router.post("/upload", response_model=VideoUploadResponse)
 async def upload_video(
-    background_tasks: BackgroundTasks,
+    prcess_immediately: bool = Form(True),
     file: UploadFile = File(...),
-    process_immediately: bool = Form(True),
     enable_vision_analysis: bool = Form(True),
     video_service: VideoService = Depends(get_video_service)
 ):
@@ -33,30 +32,23 @@ async def upload_video(
     - enable_vision_analysis: Whether to enable GPT-4 Vision analysis
     """
     try:
-        logger.log(logging.INFO, f"Request to endpoint video: {file.filename}")
+        logger.log(logging.DEBUG, f"Request to endpoint video: {file.filename}")
         # Validate file
         if not file.content_type or (not file.content_type .startswith("video/")):
             raise HTTPException(
                 status_code=400,
                 detail="File must be a video"
             )
-        logger.log(logging.INFO, f"Uploading video: {file.filename}")
+        logger.log(logging.DEBUG, f"Uploading video: {file.filename}")
 
         # Upload and get the meta data of the video
         metadata = await video_service.upload_video(file=file)
 
-        # Add the video to the processing queue
-        video_service.add_video_to_queue(metadata.id)
-        logger.log(logging.INFO, f"Metadata: {metadata}")
+        logger.log(logging.DEBUG, f"Video uploaded successfully: {metadata.id} - {metadata.filename}")
 
-        # Process video immediately in the background if requested
-        if process_immediately:
-            background_tasks.add_task(
-                video_service.process_video,
-                video_id=metadata.id,
-                video_path=metadata.storage_path,
-                enable_vision_analysis=enable_vision_analysis
-            )
+        if prcess_immediately:
+            # Schedule processing
+            video_service.add_video_to_queue(metadata.id, enable_vision_analysis=enable_vision_analysis)
 
         # Return response
         return VideoUploadResponse(
@@ -75,8 +67,8 @@ async def upload_video(
 
 @router.post("/upload/batch", response_model=BatchUploadResponse)
 async def upload_videos_batch(
-    background_tasks: BackgroundTasks,
     files: List[UploadFile] = File(...),
+    enable_vision_analysis: bool = Form(True),
     video_service: VideoService = Depends(get_video_service)
 ):
     """
@@ -96,31 +88,16 @@ async def upload_videos_batch(
                 status_code=400,
                 detail="File must be a video"
             )
-        logger.info(f"Uploading videos... Batch size: {len(files)}")
+        logger.log(logging.DEBUG, f"Uploading videos... Batch size: {len(files)}")
 
         meta_datas = await video_service.upload_batch_videos(files=files)
-
-        # # Process video in background if requested
-        # # Schedule processing
-        # background_tasks.add_task(
-        #     video_service.process_video_batch,
-        #     video_id=metadata.id,
-        #     video_path=video_processing_status.metadata.storage_path,
-        #     enable_vision_analysis=True
-        # )
 
         for file, meta_data in zip(files, meta_datas):
             video_id = meta_data.id
 
-            video_service.add_video_to_queue(video_id)
-
             # Schedule processing
-            background_tasks.add_task(
-                video_service.process_video,
-                video_id=video_id,
-                video_path=meta_data.storage_path,
-                enable_vision_analysis=True
-            )
+            video_service.add_video_to_queue(video_id, enable_vision_analysis=enable_vision_analysis)
+
             results.append({
                 "video_id": video_id,
                 "filename": file.filename,
@@ -153,7 +130,7 @@ def get_video_status(
     """
     Get the processing status of a video
     """
-    logger.log(logging.INFO, f"Request to endpoint video/status: {video_id}")
+    logger.log(logging.DEBUG, f"Request to endpoint video/status: {video_id}")
     print(f"Getting status for video: {video_id}")
     try:
         status = video_service.get_video_status(video_id)
@@ -178,7 +155,7 @@ async def get_video_metadata(
     """
     Get metadata for a specific video
     """
-    logger.log(logging.INFO, f"Request to endpoint video/metadata: {video_id}")
+    logger.log(logging.DEBUG, f"Request to endpoint video/metadata: {video_id}")
     try:
         metadata = await video_service.get_video_metadata(video_id)
 
@@ -204,7 +181,7 @@ async def list_videos(
     """
     List all videos with pagination and filtering
     """
-    logger.log(logging.INFO, f"Request to endpoint video/list")
+    logger.log(logging.DEBUG, f"Request to endpoint video/list")
     try:
         videos, total = await video_service.list_videos(
             page=page,
@@ -229,14 +206,13 @@ async def list_videos(
 @router.post("/{video_id}/process")
 async def process_video(
     video_id: str,
-    background_tasks: BackgroundTasks,
     enable_vision_analysis: bool = True,
     video_service: VideoService = Depends(get_video_service)
 ):
     """
     Manually trigger processing for a video
     """
-    logger.log(logging.INFO, f"Request to endpoint video/process: {video_id}")
+    logger.log(logging.DEBUG, f"Request to endpoint video/process: {video_id}")
 
     # Get video metadata
     metadata = await video_service.get_video_metadata(video_id)
@@ -244,13 +220,8 @@ async def process_video(
     if not metadata:
         raise HTTPException(status_code=404, detail="Video not found")
 
-    # Process in background
-    background_tasks.add_task(
-        video_service.process_video,
-        video_id=video_id,
-        video_path=metadata.storage_path,
-        enable_vision_analysis=enable_vision_analysis
-    )
+    # Shedule processing
+    video_service.add_video_to_queue(video_id, enable_vision_analysis=enable_vision_analysis)
 
     return JSONResponse(content={
         "success": True,
@@ -272,7 +243,7 @@ async def delete_video(
     """
     Delete a video and all its processed data
     """
-    logger.log(logging.INFO, f"Request to endpoint video/delete: {video_id}")
+    logger.log(logging.DEBUG, f"Request to endpoint video/delete: {video_id}")
     try:
         success = await video_service.delete_video(video_id)
 
@@ -301,7 +272,7 @@ async def get_video_transcript(
     Get the transcript for a video
     """
     logger.log(
-        logging.INFO, f"Request to endpoint video/transcript: {video_id}")
+        logging.DEBUG, f"Request to endpoint video/transcript: {video_id}")
     try:
         transcript = await video_service.get_video_transcript(video_id, format)
 
@@ -336,7 +307,7 @@ async def get_video_summary(
     """
     Get the summary for a video
     """
-    logger.log(logging.INFO, f"Request to endpoint video/summary: {video_id}")
+    logger.log(logging.DEBUG, f"Request to endpoint video/summary: {video_id}")
     try:
         summary = await video_service.get_video_summary(video_id)
 

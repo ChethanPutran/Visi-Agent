@@ -1,3 +1,0 @@
-fastmcp
-opencv-python-headless
-milvus-lite

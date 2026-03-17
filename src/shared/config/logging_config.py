@@ -9,7 +9,7 @@ import json
 
 from .settings import settings
 
-def get_logging_config() -> Dict[str, Any]:
+def get_logging_config(log_level: str) -> Dict[str, Any]:
     """
     Get logging configuration based on settings
     """
@@ -39,7 +39,7 @@ def get_logging_config() -> Dict[str, Any]:
         "handlers": {
             "console": {
                 "class": "logging.StreamHandler",
-                "level": settings.LOG_LEVEL.upper(),
+                "level": log_level.upper(),
                 "formatter": "default",
                 "stream": "ext://sys.stdout"
             }
@@ -47,7 +47,7 @@ def get_logging_config() -> Dict[str, Any]:
         "loggers": {
             "": {  # Root logger
                 "handlers": ["console"],
-                "level": settings.LOG_LEVEL.upper(),
+                "level": log_level.upper(),
                 "propagate": False
             },
             "uvicorn": {
@@ -80,7 +80,7 @@ def get_logging_config() -> Dict[str, Any]:
         
         base_config["handlers"]["file"] = {
             "class": "logging.handlers.RotatingFileHandler",
-            "level": settings.LOG_LEVEL.upper(),
+            "level": log_level.upper(),
             "formatter": "default" if settings.is_development else "json",
             "filename": str(log_path),
             "maxBytes": settings.LOG_MAX_SIZE,
@@ -93,11 +93,11 @@ def get_logging_config() -> Dict[str, Any]:
     
     return base_config
 
-def setup_logging():
+def setup_logging(log_level: str = None):
     """
     Setup logging configuration
     """
-    config = get_logging_config()
+    config = get_logging_config(log_level or settings.LOG_LEVEL)
     logging.config.dictConfig(config)
     
     # Set third-party loggers

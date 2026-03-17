@@ -218,6 +218,7 @@ class MCPManager:
         return False
     
     def analyze_frames_batch(self, video_id,frame_buffer):
+        return "This is a placeholder response for frame analysis for video_id: {video_id}"
         agent = self._get_agent(video_id)
         response = agent.analyze_frames_batch(frame_buffer)
         return response

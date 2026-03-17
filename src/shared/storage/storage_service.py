@@ -1,6 +1,7 @@
 import json
 from typing import Optional, BinaryIO, Dict, Any
 from fastapi import UploadFile
+import redis
 from src.shared.config.settings import settings
 from src.shared.contracts.video_metadata import VideoMetadata
 from src.shared.storage.base_storage import StorageProvider
@@ -12,6 +13,7 @@ logger = get_logger(__name__)
 
 class StorageProviders:
     LOCAL="local"
+    REMOTE="remote"
 
 class StorageService:
     """Unified storage service with provider abstraction"""
@@ -285,3 +287,5 @@ class StorageService:
                 'cache': len(cache)
             }
         }
+
+

@@ -22,6 +22,7 @@ class StorageType(str, Enum):
     MINIO = "minio"
     AZURE = "azure"
     GCS = "gcs"
+    REDIS = "redis"
 
 class VectorDBType(str, Enum):
     FAISS = "faiss"
@@ -115,9 +116,11 @@ class Settings(BaseSettings):
     LLM_PRESENCE_PENALTY: float = 0.0
     
     # Storage Configuration
-    STORAGE_TYPE: StorageType = StorageType.LOCAL
     STORAGE_PATH: str = "./data"
     STORAGE_VIDEO_METADATA_EXT: str = ".json"
+    STORAGE_PROVIDER: str = StorageType.LOCAL # local, s3, minio, azure, gcs, redis
+    QUEUE_PROVIDER: str = "redis"  # redis, in-memory, rabbitmq, etc.
+    CACHE_PROVIDER: str = "redis"  # redis, in-memory, rabbitmq
     
     # S3/MinIO Configuration
     S3_ENDPOINT: Optional[str] = None
@@ -192,7 +195,7 @@ class Settings(BaseSettings):
     TEMP_DIR: str = "./temp"
     
     # Logging Configuration
-    LOG_LEVEL: LogLevel = LogLevel.INFO
+    LOG_LEVEL: LogLevel = LogLevel.DEBUG
     LOG_FORMAT: str = "json"  # json or console
     LOG_CONSOLE_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     LOG_FILE: Optional[str] = "./logs/video-analytics.log"

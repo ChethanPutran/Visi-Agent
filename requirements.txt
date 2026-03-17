@@ -23,3 +23,7 @@ starlette==0.52.1
 uvicorn==0.40.0
 whisper_openai==1.0.0
 youtube_transcript_api==1.2.3
+redis
+celery
+whisper
+ffmpeg-python

@@ -43,7 +43,7 @@ class VideoProcessor:
         self._check_mcp()
         return self.mcp_manager.analyze_frames_batch(video_id, frame_batch)
 
-    def process_video(self, video_id, video_path: str, batch_size: int = 5, use_llm: bool = True) -> List[Dict[str,str]]:
+    async def process_video(self, video_id, video_path: str, batch_size: int = 5, use_llm: bool = True) -> List[Dict[str,str]]:
         """
         Process a video file: extract audio, transcribe, analyze frames, and generate summary.
 

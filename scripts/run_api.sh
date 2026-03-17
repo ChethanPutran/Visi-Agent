@@ -23,8 +23,8 @@ fi
 # Required environment variables
 # --------------------------------------------
 
-if [ -z "${OPENAI_API_KEY:-}" ]; then
-    echo "ERROR: OPENAI_API_KEY is not set"
+if [ -z "${GEMINI_API_KEY:-}" ]; then
+    echo "ERROR: GEMINI_API_KEY is not set"
     exit 1
 fi
 

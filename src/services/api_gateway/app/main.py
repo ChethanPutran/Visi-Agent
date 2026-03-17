@@ -1,12 +1,15 @@
+import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
+import redis
 
 from src.shared.config.settings import settings
 from src.shared.logging.logger import get_logger
-from src.shared.storage.cache_service import CacheService
+from src.shared.storage.cache_service import VideoCaheService
+from src.shared.storage.queue_service import QueueService
 from src.shared.storage.storage_service import StorageService
 from src.services.query_services.app.handlers.query_service import QueryService
 from src.services.video_ingestion.app.handlers.video_service import VideoService
@@ -24,13 +27,15 @@ logger = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Initialize storage provider based on settings"""
-    storage_type = settings.STORAGE_TYPE.lower()
-    llm_model = settings.LLM_MODEL.lower()
-    store = StorageService(storage_type)
-    cache_service = CacheService()
-    mcp = MCPManager(store, llm_model)
-    video_service = VideoService(store, cache_service, mcp)
+    storage_service = StorageService(settings.STORAGE_PROVIDER)
+    queue_service = QueueService(settings.QUEUE_PROVIDER, "video_queue")
+    cache_service = VideoCaheService(settings.CACHE_PROVIDER)
+    mcp = MCPManager(storage_service, settings.LLM_MODEL)
+    video_service = VideoService(storage_service, queue_service,cache_service, mcp)
     query_service = QueryService(mcp)
+
+    # Start workers  
+    asyncio.create_task(video_service.start(num_workers=1)) # GPU safe = 1 worker
 
     app.state.query_service = query_service
     app.state.cache_service = cache_service
