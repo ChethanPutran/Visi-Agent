@@ -1,0 +1,16 @@
+{
+    "name": "video_qa_prompt_template",
+    "input_variables": [
+        "context",
+        "question"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "\n        You are an AI assistant helping with video content. Use the following\n        context to answer the question.\n\n        Context: {context}\n\n        Question: {question}\n        Answer in detail.\n        ",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}

@@ -1,0 +1,292 @@
+2026-02-13 16:14:18 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:14:19 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:14:19 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:14:19 - main - DEBUG - Starting API on 0.0.0.0:8000
+2026-02-13 16:14:19 - watchfiles.main - DEBUG - 6 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.126947861341424'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/shared/storage/__pycache__/cache_service.cpython-312.pyc.126947861340848'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.126947861341424'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/shared/storage/__pycache__/cache_service.cpython-312.pyc.126947861340848'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/shared/storage/__pycache__/cache_service.cpython-312.pyc')}
+2026-02-13 16:14:19 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:20 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:20 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:20 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:21 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:21 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:22 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:22 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:22 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:23 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:23 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:23 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:24 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:24 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:24 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:25 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:14:25 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:16:30 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:16:30 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:16:30 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:16:30 - main - DEBUG - Starting API on 0.0.0.0:8000
+2026-02-13 16:16:38 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:16:38 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:16:38 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:16:38 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:19:32 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:19:32 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:19:32 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:19:32 - main - DEBUG - Starting API on 0.0.0.0:8000
+2026-02-13 16:19:40 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:19:40 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:19:40 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:19:40 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:19:41 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-02-13 16:19:41 - src.shared.storage.cache_service - INFO - CacheService initialized
+2026-02-13 16:19:41 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-02-13 16:22:27 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-02-13 16:22:27 - src.services.api_gateway.app.main - INFO - API gateway stopped
+2026-02-13 16:22:59 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:22:59 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:22:59 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:22:59 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:23:08 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:23:08 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:23:08 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:23:08 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:23:09 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-02-13 16:23:09 - src.shared.storage.cache_service - INFO - CacheService initialized
+2026-02-13 16:23:09 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-02-13 16:29:59 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-02-13 16:29:59 - src.services.api_gateway.app.main - INFO - API gateway stopped
+2026-02-13 16:30:03 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:30:03 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:30:03 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:30:03 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:30:11 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:30:11 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:30:11 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:30:11 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:30:44 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:30:44 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:30:44 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:30:44 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:30:53 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:30:53 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:30:53 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:30:53 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:30:54 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-02-13 16:30:54 - src.shared.storage.cache_service - INFO - CacheService initialized
+2026-02-13 16:30:54 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:114688]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:86443]
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-13 16:32:41 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-13 16:32:41 - src.services.api_gateway.app.routes.video_routes - INFO - Request to endpoint video: test_video.mp4
+2026-02-13 16:32:41 - src.services.api_gateway.app.routes.video_routes - INFO - Uploading video: test_video.mp4
+2026-02-13 16:32:41 - src.shared.storage.local_storage - INFO - File saved: data/videos/1647c9bd-a232-4505-8210-88743b8353dc.mp4
+2026-02-13 16:32:41 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-02-13 16:32:41 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-02-13 16:35:55 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-02-13 16:35:55 - src.services.api_gateway.app.main - INFO - API gateway stopped
+2026-02-13 16:35:58 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:35:58 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:35:58 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:35:58 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:36:06 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:36:06 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:36:06 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:36:06 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:36:07 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-02-13 16:36:07 - src.shared.storage.cache_service - INFO - CacheService initialized
+2026-02-13 16:36:07 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:114688]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:215040]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:175051]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:18912]
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-13 16:36:30 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-13 16:36:30 - src.services.api_gateway.app.routes.video_routes - INFO - Request to endpoint video: test_video.mp4
+2026-02-13 16:36:30 - src.services.api_gateway.app.routes.video_routes - INFO - Uploading video: test_video.mp4
+2026-02-13 16:36:30 - src.shared.storage.local_storage - INFO - File saved: data/videos/6bc18453-f881-4ffa-a4a9-5597f36f70ec.mp4
+2026-02-13 16:36:30 - src.shared.storage.local_storage - INFO - File saved: data/metadata/6bc18453-f881-4ffa-a4a9-5597f36f70ec.json
+2026-02-13 16:36:30 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: 1 validation error for VideoUploadResponse
+upload_time
+  Input should be a valid datetime or date, invalid character in year [type=datetime_from_date_parsing, input_value='13/02/2026, 16:36:30', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/datetime_from_date_parsing
+2026-02-13 16:40:10 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-02-13 16:40:10 - src.services.api_gateway.app.main - INFO - API gateway stopped
+2026-02-13 16:43:00 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:43:00 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:43:00 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:43:00 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:43:08 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:43:08 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:43:08 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:43:08 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:43:09 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-02-13 16:43:09 - src.shared.storage.cache_service - INFO - CacheService initialized
+2026-02-13 16:43:09 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:114688]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:86443]
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-13 16:43:22 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-13 16:43:22 - src.services.api_gateway.app.routes.video_routes - INFO - Request to endpoint video: test_video.mp4
+2026-02-13 16:43:22 - src.services.api_gateway.app.routes.video_routes - INFO - Uploading video: test_video.mp4
+2026-02-13 16:43:22 - src.shared.storage.local_storage - INFO - File saved: data/videos/20efbc91-cbb5-4696-9e70-95782ea02188.mp4
+2026-02-13 16:43:22 - src.shared.storage.local_storage - INFO - File saved: data/metadata/20efbc91-cbb5-4696-9e70-95782ea02188.json
+2026-02-13 16:43:22 - src.shared.storage.cache_service - DEBUG - Cache: {}
+2026-02-13 16:43:22 - src.shared.storage.cache_service - INFO - Adding Key: value video:20efbc91-cbb5-4696-9e70-95782ea02188:metadata:{"id": "20efbc91-cbb5-4696-9e70-95782ea02188", "filename": "test_video.mp4", "original_filename": "test_video.mp4", "file_size": 0, "content_type": "video/mp4", "duration": 120.0, "width": 1920, "height": 1080, "fps": 30.0, "format": "mp4", "upload_time": "13/02/2026, 16:43:22", "process_start_time": "2024-01-01T12:00:00", "process_end_time": "2024-01-01T12:30:00", "transcript_available": false, "summary_available": false, "vision_analysis_available": false, "transcript_word_count": 1500, "frame_count": 3600, "processing_time": 300.0, "storage_path": "data/videos/20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "storage_type": "local", "tags": []} to Cache.
+2026-02-13 16:43:22 - src.services.video_ingestion.app.handlers.video_service - INFO - Added to Queue: {'20efbc91-cbb5-4696-9e70-95782ea02188': VideoProcessingStatus(video_id='20efbc91-cbb5-4696-9e70-95782ea02188', status='queued', current_stage=<ProcessingStage.NOT_STARTED: 'not_started'>, progress=0.0, estimated_completion=None, stages=[], message='Video queued for processing', error=None, created_at=datetime.datetime(2026, 2, 13, 11, 13, 22, 489751), updated_at=datetime.datetime(2026, 2, 13, 11, 13, 22, 489759))}
+2026-02-13 16:43:22 - src.services.api_gateway.app.routes.video_routes - INFO - Metadata: id='20efbc91-cbb5-4696-9e70-95782ea02188' filename='test_video.mp4' original_filename='test_video.mp4' file_size=0 content_type='video/mp4' duration=120.0 width=1920 height=1080 fps=30.0 format=<VideoFormat.MP4: 'mp4'> upload_time='13/02/2026, 16:43:22' process_start_time='2024-01-01T12:00:00' process_end_time='2024-01-01T12:30:00' transcript_available=False summary_available=False vision_analysis_available=False transcript_word_count=1500 frame_count=3600 processing_time=300.0 storage_path='data/videos/20efbc91-cbb5-4696-9e70-95782ea02188.mp4' storage_type='local' tags=[]
+2026-02-13 16:43:22 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing Status:: video_id='20efbc91-cbb5-4696-9e70-95782ea02188' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 2, 13, 11, 13, 22, 489751) updated_at=datetime.datetime(2026, 2, 13, 11, 13, 22, 489759)
+2026-02-13 16:43:22 - src.shared.storage.cache_service - DEBUG - Cache: {'video:20efbc91-cbb5-4696-9e70-95782ea02188:metadata': ('{"id": "20efbc91-cbb5-4696-9e70-95782ea02188", "filename": "test_video.mp4", "original_filename": "test_video.mp4", "file_size": 0, "content_type": "video/mp4", "duration": 120.0, "width": 1920, "height": 1080, "fps": 30.0, "format": "mp4", "upload_time": "13/02/2026, 16:43:22", "process_start_time": "2024-01-01T12:00:00", "process_end_time": "2024-01-01T12:30:00", "transcript_available": false, "summary_available": false, "vision_analysis_available": false, "transcript_word_count": 1500, "frame_count": 3600, "processing_time": 300.0, "storage_path": "data/videos/20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "storage_type": "local", "tags": []}', 18153.301)}
+2026-02-13 16:43:22 - src.shared.storage.cache_service - INFO - Adding Key: value video:20efbc91-cbb5-4696-9e70-95782ea02188:status:"processing" to Cache.
+2026-02-13 16:43:22 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video 20efbc91-cbb5-4696-9e70-95782ea02188: data/videos/20efbc91-cbb5-4696-9e70-95782ea02188.mp4
+2026-02-13 16:43:22 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for 20efbc91-cbb5-4696-9e70-95782ea02188
+2026-02-13 16:43:22 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error processing video 20efbc91-cbb5-4696-9e70-95782ea02188: 'Logger' object is not callable
+2026-02-13 16:43:22 - src.shared.storage.cache_service - DEBUG - Cache: {'video:20efbc91-cbb5-4696-9e70-95782ea02188:metadata': ('{"id": "20efbc91-cbb5-4696-9e70-95782ea02188", "filename": "test_video.mp4", "original_filename": "test_video.mp4", "file_size": 0, "content_type": "video/mp4", "duration": 120.0, "width": 1920, "height": 1080, "fps": 30.0, "format": "mp4", "upload_time": "13/02/2026, 16:43:22", "process_start_time": "2024-01-01T12:00:00", "process_end_time": "2024-01-01T12:30:00", "transcript_available": false, "summary_available": false, "vision_analysis_available": false, "transcript_word_count": 1500, "frame_count": 3600, "processing_time": 300.0, "storage_path": "data/videos/20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "storage_type": "local", "tags": []}', 18153.301), 'video:20efbc91-cbb5-4696-9e70-95782ea02188:status': ('"processing"', 18153.307)}
+2026-02-13 16:43:22 - src.shared.storage.cache_service - INFO - Adding Key: value video:20efbc91-cbb5-4696-9e70-95782ea02188:status:"failed" to Cache.
+2026-02-13 16:45:22 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-02-13 16:45:22 - src.services.api_gateway.app.main - INFO - API gateway stopped
+2026-02-13 16:49:29 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:49:29 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:49:29 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:49:29 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:49:38 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:49:38 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:49:38 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-02-13 16:49:38 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-02-13 16:49:40 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-02-13 16:49:40 - src.shared.storage.cache_service - INFO - CacheService initialized
+2026-02-13 16:49:40 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:138]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_header_field with data[140:152]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_header_value with data[154:163]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_data with data[167:114688]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:234949]
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-13 16:49:48 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-13 16:49:48 - src.services.api_gateway.app.routes.video_routes - INFO - Request to endpoint video: 20efbc91-cbb5-4696-9e70-95782ea02188.mp4
+2026-02-13 16:49:48 - src.services.api_gateway.app.routes.video_routes - INFO - Uploading video: 20efbc91-cbb5-4696-9e70-95782ea02188.mp4
+2026-02-13 16:49:48 - src.shared.storage.local_storage - INFO - File saved: data/videos/4cb5579c-0c3c-451b-9436-2526731a12fc.mp4
+2026-02-13 16:49:48 - src.shared.storage.local_storage - INFO - File saved: data/metadata/4cb5579c-0c3c-451b-9436-2526731a12fc.json
+2026-02-13 16:49:48 - src.shared.storage.cache_service - DEBUG - Cache: {}
+2026-02-13 16:49:48 - src.shared.storage.cache_service - INFO - Adding Key: value video:4cb5579c-0c3c-451b-9436-2526731a12fc:metadata:{"id": "4cb5579c-0c3c-451b-9436-2526731a12fc", "filename": "20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "original_filename": "20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "file_size": 0, "content_type": "video/mp4", "duration": 120.0, "width": 1920, "height": 1080, "fps": 30.0, "format": "mp4", "upload_time": "13/02/2026, 16:49:48", "process_start_time": "2024-01-01T12:00:00", "process_end_time": "2024-01-01T12:30:00", "transcript_available": false, "summary_available": false, "vision_analysis_available": false, "transcript_word_count": 1500, "frame_count": 3600, "processing_time": 300.0, "storage_path": "data/videos/4cb5579c-0c3c-451b-9436-2526731a12fc.mp4", "storage_type": "local", "tags": []} to Cache.
+2026-02-13 16:49:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Added to Queue: {'4cb5579c-0c3c-451b-9436-2526731a12fc': VideoProcessingStatus(video_id='4cb5579c-0c3c-451b-9436-2526731a12fc', status='queued', current_stage=<ProcessingStage.NOT_STARTED: 'not_started'>, progress=0.0, estimated_completion=None, stages=[], message='Video queued for processing', error=None, created_at=datetime.datetime(2026, 2, 13, 11, 19, 48, 394775), updated_at=datetime.datetime(2026, 2, 13, 11, 19, 48, 394783))}
+2026-02-13 16:49:48 - src.services.api_gateway.app.routes.video_routes - INFO - Metadata: id='4cb5579c-0c3c-451b-9436-2526731a12fc' filename='20efbc91-cbb5-4696-9e70-95782ea02188.mp4' original_filename='20efbc91-cbb5-4696-9e70-95782ea02188.mp4' file_size=0 content_type='video/mp4' duration=120.0 width=1920 height=1080 fps=30.0 format=<VideoFormat.MP4: 'mp4'> upload_time='13/02/2026, 16:49:48' process_start_time='2024-01-01T12:00:00' process_end_time='2024-01-01T12:30:00' transcript_available=False summary_available=False vision_analysis_available=False transcript_word_count=1500 frame_count=3600 processing_time=300.0 storage_path='data/videos/4cb5579c-0c3c-451b-9436-2526731a12fc.mp4' storage_type='local' tags=[]
+2026-02-13 16:49:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing Status:: video_id='4cb5579c-0c3c-451b-9436-2526731a12fc' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 2, 13, 11, 19, 48, 394775) updated_at=datetime.datetime(2026, 2, 13, 11, 19, 48, 394783)
+2026-02-13 16:49:48 - src.shared.storage.cache_service - DEBUG - Cache: {'video:4cb5579c-0c3c-451b-9436-2526731a12fc:metadata': ('{"id": "4cb5579c-0c3c-451b-9436-2526731a12fc", "filename": "20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "original_filename": "20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "file_size": 0, "content_type": "video/mp4", "duration": 120.0, "width": 1920, "height": 1080, "fps": 30.0, "format": "mp4", "upload_time": "13/02/2026, 16:49:48", "process_start_time": "2024-01-01T12:00:00", "process_end_time": "2024-01-01T12:30:00", "transcript_available": false, "summary_available": false, "vision_analysis_available": false, "transcript_word_count": 1500, "frame_count": 3600, "processing_time": 300.0, "storage_path": "data/videos/4cb5579c-0c3c-451b-9436-2526731a12fc.mp4", "storage_type": "local", "tags": []}', 18539.206)}
+2026-02-13 16:49:48 - src.shared.storage.cache_service - INFO - Adding Key: value video:4cb5579c-0c3c-451b-9436-2526731a12fc:status:"processing" to Cache.
+2026-02-13 16:49:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video 4cb5579c-0c3c-451b-9436-2526731a12fc: data/videos/4cb5579c-0c3c-451b-9436-2526731a12fc.mp4
+2026-02-13 16:49:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for 4cb5579c-0c3c-451b-9436-2526731a12fc
+2026-02-13 16:49:48 - src.services.video_ingestion.app.handlers.video_service - INFO - MoviePy - Writing audio in /tmp/tmpm8rn_m6f.mp3
+2026-02-13 16:49:48 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error processing video 4cb5579c-0c3c-451b-9436-2526731a12fc: 'function' object has no attribute 'iter_bar'
+2026-02-13 16:49:48 - src.shared.storage.cache_service - DEBUG - Cache: {'video:4cb5579c-0c3c-451b-9436-2526731a12fc:metadata': ('{"id": "4cb5579c-0c3c-451b-9436-2526731a12fc", "filename": "20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "original_filename": "20efbc91-cbb5-4696-9e70-95782ea02188.mp4", "file_size": 0, "content_type": "video/mp4", "duration": 120.0, "width": 1920, "height": 1080, "fps": 30.0, "format": "mp4", "upload_time": "13/02/2026, 16:49:48", "process_start_time": "2024-01-01T12:00:00", "process_end_time": "2024-01-01T12:30:00", "transcript_available": false, "summary_available": false, "vision_analysis_available": false, "transcript_word_count": 1500, "frame_count": 3600, "processing_time": 300.0, "storage_path": "data/videos/4cb5579c-0c3c-451b-9436-2526731a12fc.mp4", "storage_type": "local", "tags": []}', 18539.206), 'video:4cb5579c-0c3c-451b-9436-2526731a12fc:status': ('"processing"', 18539.208)}
+2026-02-13 16:49:48 - src.shared.storage.cache_service - INFO - Adding Key: value video:4cb5579c-0c3c-451b-9436-2526731a12fc:status:"failed" to Cache.
+2026-02-13 16:50:10 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-02-13 16:50:10 - src.services.api_gateway.app.main - INFO - API gateway stopped
+2026-02-13 16:51:02 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:51:02 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:51:02 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:51:02 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:51:03 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.134046613995776'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.134046613995776')}
+2026-02-13 16:51:03 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:03 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:04 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:04 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:04 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:05 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:05 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:05 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:06 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:06 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:18 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:51:18 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:51:18 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:51:18 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:51:21 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/main.py')}
+2026-02-13 16:51:28 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:29 - watchfiles.main - DEBUG - 2 changes detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/main.py'), (<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:38 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:38 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:39 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:39 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:39 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:40 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:40 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:40 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:41 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:41 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:41 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:42 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:42 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:42 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:43 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:43 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:43 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:44 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:44 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:51:45 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/logs/video-analytics.log')}
+2026-02-13 16:52:26 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:52:26 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:52:26 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:52:26 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:52:31 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/main.py')}
+2026-02-13 16:52:37 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc.137088666091120'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc.137088666091120'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc')}
+2026-02-13 16:53:42 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 16:53:42 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 16:53:42 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 16:53:42 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 16:54:01 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/main.py')}
+2026-02-13 16:54:01 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc.137396322057840'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc.137396322057840')}
+2026-02-13 17:04:22 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-02-13 17:04:22 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-02-13 17:04:22 - src.shared.config.logging_config - INFO - Running in development mode
+2026-02-13 17:04:22 - main - DEBUG - Starting API on 127.0.0.1:8000
+2026-02-13 17:04:23 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.123274318381312'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.123274318381312')}
+2026-02-13 17:04:23 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.123273900730032'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.123273900730032'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc')}
+2026-02-13 17:07:43 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/video_agent.py')}
+2026-02-13 17:07:45 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/__pycache__/video_agent.cpython-312.pyc.130434737715472'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/__pycache__/video_agent.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/__pycache__/video_agent.cpython-312.pyc.130434737715472')}
+2026-02-13 17:08:41 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/frame_analyzer.py')}
+2026-02-13 17:08:42 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.134830657365232'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.134830657365232'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc')}
+2026-02-13 17:08:46 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/video_service.py')}
+2026-02-13 17:08:52 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/video_agent.py')}
+2026-02-13 17:09:03 - watchfiles.main - DEBUG - 6 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.131736725225728'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.131736725225728'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/__pycache__/video_agent.cpython-312.pyc.131736163383568'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/__pycache__/video_agent.cpython-312.pyc.131736163383568'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/video_analytics/src/services/llm_service/app/agent/core/__pycache__/video_agent.cpython-312.pyc')}

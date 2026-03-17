@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "video-analytics": {
+      "command": "python",
+      "args": [
+        "video_analytics_mcp.py"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "PINECONE_API_KEY": "${PINECONE_API_KEY}",
+        "PINECONE_ENV": "${PINECONE_ENV}"
+      }
+    }
+  }
+}
