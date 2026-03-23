@@ -45,6 +45,156 @@ header .subtitle {
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
+/* Video Library Specifics */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.video-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.video-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 13px;
+    color: #374151;
+}
+
+.video-item:last-child {
+    border-bottom: none;
+}
+
+.video-item:hover {
+    background-color: #f9fafb;
+}
+
+.video-item.active {
+    background-color: #eef2ff;
+    border-left: 4px solid #4f46e5;
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+.video-icon {
+    margin-right: 10px;
+}
+
+.video-id-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-small {
+    padding: 4px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #9ca3af;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Video Library Styles */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.video-list {
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.video-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s;
+}
+
+.video-item:hover {
+    background: #f1f5f9;
+}
+
+.video-item.active {
+    background: #e0e7ff;
+    border-left: 4px solid #4f46e5;
+}
+
+.video-item-info {
+    flex-grow: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.video-id-text {
+    font-size: 12px;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-delete {
+    background: transparent;
+    color: #ef4444;
+    padding: 2px 8px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.btn-delete:hover {
+    background: #fee2e2;
+    border-radius: 4px;
+}
+
+.id-badge {
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-small {
+    font-size: 11px;
+    padding: 4px 8px;
+    background: #f1f5f9;
+}
+
 /* Buttons */
 button {
     border: none;
@@ -78,6 +228,103 @@ button:disabled {
     margin-bottom: 20px; /* Add spacing between items */
 }
 
+.video-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.no-thumb {
+    width: 100%;
+    height: 150px;
+    background: #edf2f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0;
+    border-radius: 8px;
+}
+
+/* Small thumbnails for the sidebar list */
+.list-thumb {
+    width: 50px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.list-thumb-placeholder {
+    width: 50px;
+    height: 35px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 12px;
+    font-size: 14px;
+}
+
+.video-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.video-date {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.video-item {
+    align-items: center; /* Ensure vertical centering */
+    padding: 10px;
+}
+
+.list-thumb {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 12px;
+    background: #000;
+    border: 1px solid #e2e8f0;
+}
+
+.video-status-tag {
+    font-size: 9px;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    border-radius: 10px;
+    width: fit-content;
+}
+/* Fix for Transcript and Summary text overflow */
+#transcriptOutput, #summaryOutput {
+    white-space: pre-wrap;       /* CSS3 */
+    white-space: -moz-pre-wrap;  /* Firefox */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    max-height: 500px;           /* Prevents the card from becoming infinitely long */
+    overflow-y: auto;            /* Adds a scrollbar if the text is too long */
+}
+
+.video-status-tag.completed { background: #dcfce7; color: #166534; }
+.video-status-tag.processing { background: #fef9c3; color: #854d0e; }
+.video-status-tag.failed { background: #fee2e2; color: #991b1b; }
 
 /* Status Cards */
 .status-list .status-card {
@@ -92,6 +339,7 @@ button:disabled {
 .status-card p {
     margin: 5px 0;
 }
+
 
 /* Progress bar */
 .progress-bar-container {

@@ -1,5 +1,7 @@
+from importlib.resources import path
 import json
-from typing import Optional, BinaryIO, Dict, Any
+from os import path
+from typing import List, Optional, BinaryIO, Dict, Any
 from fastapi import UploadFile
 import redis
 from src.shared.config.settings import settings
@@ -19,7 +21,7 @@ class StorageService:
     """Unified storage service with provider abstraction"""
     
     _instance = None
-    _provider = None
+    _provider:StorageProvider
 
     def __init__(self, storage_provider: str):
         if self._initialized:
@@ -39,7 +41,7 @@ class StorageService:
         return cls._instance
 
     @property
-    def provider(self) -> StorageProvider | None:
+    def provider(self) -> StorageProvider:
         """Get the current storage provider"""
         return self._provider 
     
@@ -155,6 +157,21 @@ class StorageService:
         summary_path = f"summaries/{video_id}.txt"
         content = BytesIO(summary.encode('utf-8'))
         return await self.save_file(content, summary_path)
+    
+    async def list_videos(self,page, limit, status)->List[VideoMetadata]:
+        """List all videos in storage"""
+        metadatas = await self.list_files("metadata/")
+
+        print(f"Found {len(metadatas)} metadata files in storage")
+
+        videos = []
+        for metadata in metadatas:
+            video_id = path.basename(metadata['name']).split('.')[0]
+            metadata_obj = await self.get_video_metadata(video_id)
+
+            if metadata_obj and isinstance(metadata_obj, VideoMetadata):
+                videos.append(metadata_obj)
+        return videos
     
     async def get_summary(self, video_id: str) -> Optional[str]:
         """Get summary for a video"""
@@ -289,3 +306,4 @@ class StorageService:
         }
 
 
+    

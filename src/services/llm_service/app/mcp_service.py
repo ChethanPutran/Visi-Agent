@@ -164,6 +164,7 @@ class MCPManager:
             }
     
     def generate_summary(self, video_id, transcript_segments,frames_data):
+        return "This is a placeholder response for video summary for video_id: {video_id}"
         agent = self._get_agent(video_id)
         return agent.generate_video_summary(transcript_segments,frames_data)
     

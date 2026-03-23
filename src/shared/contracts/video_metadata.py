@@ -28,6 +28,7 @@ class VideoMetadata(BaseModel):
     fps: Optional[float] = Field(None, description="Frames per second")
     format: VideoFormat = Field(..., description="Video format")
     upload_time: str = Field(..., description="Upload timestamp")
+    thumbnail_path: Optional[str] = Field(None, description="Path to video thumbnail image")
     process_start_time: Optional[str] = Field(
         None, description="Processing start time")
     process_end_time: Optional[str] = Field(

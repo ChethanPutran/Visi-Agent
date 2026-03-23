@@ -1,7 +1,7 @@
 {
-  "id": "2483dd66-6860-4f81-9009-88ae320bd9c9",
-  "filename": "4cb5579c-0c3c-451b-9436-2526731a12fc.mp4",
-  "original_filename": "4cb5579c-0c3c-451b-9436-2526731a12fc.mp4",
+  "id": "59dd53dc-6916-4706-8ca1-6328b852bbdb",
+  "filename": "test_video.mp4",
+  "original_filename": "test_video.mp4",
   "file_size": 0,
   "content_type": "video/mp4",
   "duration": 120.0,
@@ -9,7 +9,8 @@
   "height": 1080,
   "fps": 30.0,
   "format": "mp4",
-  "upload_time": "13/02/2026, 16:54:22",
+  "upload_time": "23/03/2026, 15:11:47",
+  "thumbnail_path": "thumbnails/59dd53dc-6916-4706-8ca1-6328b852bbdb.jpg",
   "process_start_time": "2024-01-01T12:00:00",
   "process_end_time": "2024-01-01T12:30:00",
   "transcript_available": false,
@@ -18,7 +19,7 @@
   "transcript_word_count": 1500,
   "frame_count": 3600,
   "processing_time": 300.0,
-  "storage_path": "data/videos/2483dd66-6860-4f81-9009-88ae320bd9c9.mp4",
+  "storage_path": "data/videos/59dd53dc-6916-4706-8ca1-6328b852bbdb.mp4",
   "storage_type": "local",
   "tags": []
 }

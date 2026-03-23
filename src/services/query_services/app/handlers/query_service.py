@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import Dict, Any
+from src.shared.logging.logger import get_logger
 
+logger = get_logger(__name__)
 
 class QueryService:
     """Service for handling query operations"""
@@ -8,6 +10,10 @@ class QueryService:
     def __init__(self, mcp_service):
         # Initialize any required resources, e.g., database connections
         self.mcp_service = mcp_service
+
+    async def initialize(self):
+        """Initialize any resources if needed"""
+        logger.info("Initializing QueryService")
 
     async def execute_query(self, query: str) -> dict:
         """Execute a query and return results"""

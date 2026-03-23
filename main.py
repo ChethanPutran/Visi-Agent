@@ -3,6 +3,9 @@ import argparse
 import os
 import logging
 
+# Prevent Python from writing __pycache__ folders 
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+
 def parse_api_args(args_to_parse):
     """
     Parse command-line arguments for API command.
@@ -34,7 +37,7 @@ def main():
         # Initialize logging early
         from src.shared.config.logging_config import setup_logging
         
-        setup_logging(api_args.log_level)
+        config = setup_logging(api_args.log_level)
         
         logger.debug(f"Starting API on {api_args.host}:{api_args.port}")
 
@@ -42,17 +45,24 @@ def main():
         import uvicorn
  
         uvicorn.run(
-        "src.services.api_gateway.app.main:app",
-        host=api_args.host,
-        port=api_args.port,
-        reload=api_args.reload,
-        reload_dirs=["src"],
-        reload_excludes=[
-            "logs/*", "data/*", "temp/*",
-            "**/__pycache__/*", "*.pyc", ".pytest_cache/*", ".env*"
-        ],
-        log_level=api_args.log_level,
-    )
+            "src.services.api_gateway.app.main:app",
+            host=api_args.host,
+            port=api_args.port,
+            reload=api_args.reload,
+            reload_dirs=["src"],
+            reload_excludes=[
+                "*.pyc",
+                "*.pyo",
+                "*/__pycache__/*",
+                "__pycache__",
+                "data/*",
+                "logs/*",
+                "temp/*",
+                ".pytest_cache/*"
+            ],
+            log_level=api_args.log_level,
+            log_config=config
+        )
 
 
     else:

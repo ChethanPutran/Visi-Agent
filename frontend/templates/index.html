@@ -14,35 +14,43 @@
 
     <!-- Main Layout -->
     <div class="main-grid">
-
-        <!-- Left Column -->
         <div class="left-column">
-
-            <!-- Upload Section -->
             <div id="uploadSection" class="card">
                 <h2>Upload Video</h2>
-                <input type="file" id="videoFile" accept="video/*" />
-                <button class="btn-primary" onclick="uploadVideo()">Upload</button>
+                <div class="upload-controls">
+                    <input type="file" id="videoFile" accept="video/*" />
+                    <button class="btn-primary" onclick="uploadVideo()">Upload</button>
+                </div>
             </div>
 
-            <!-- Video Info -->
+            <div id="librarySection" class="card">
+                <div class="card-header">
+                    <h2>Video Library</h2>
+                    <button class="btn-small" onclick="listVideos()">↻ Refresh</button>
+                </div>
+                <div id="videoListContainer" class="video-list">
+                    <p class="empty-msg">No videos found. Upload one to get started!</p>
+                </div>
+            </div>
+
             <div id="videoInfo" class="card hidden">
-                <h2>Video Uploaded</h2>
-                <p><strong>Video ID:</strong> <span id="videoId"></span></p>
+                <h2>Active Video</h2>
+                <p><strong>ID:</strong> <span id="videoId" class="id-badge"></span></p>
+                
+                <div id="actionSection" class="action-grid">
+                    <button id="processBtn" class="btn-primary" onclick="processVideo()">▶ Process</button>
+                    <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝 Transcript</button>
+                    <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌 Summary</button>
+                </div>
             </div>
 
-            <!-- Actions -->
-            <div id="actionSection" class="card hidden">
-                <button id="processBtn" class="btn-primary" onclick="processVideo()">▶ Process Video</button>
-                <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝 Transcript</button>
-                <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌 Summary</button>
-            </div>
-
-            <!-- Status -->
             <div id="statusSection" class="card hidden">
                 <h2>Processing Status</h2>
                 <div id="statusList" class="status-list"></div>
             </div>
+        </div>
+        
+</div>
 
         </div>
 

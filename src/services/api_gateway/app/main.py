@@ -4,11 +4,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
-import redis
+from fastapi.staticfiles import StaticFiles
+
 
 from src.shared.config.settings import settings
 from src.shared.logging.logger import get_logger
-from src.shared.storage.cache_service import VideoCaheService
+from src.shared.storage.cache_service import VideoCacheService
 from src.shared.storage.queue_service import QueueService
 from src.shared.storage.storage_service import StorageService
 from src.services.query_services.app.handlers.query_service import QueryService
@@ -21,6 +22,9 @@ from src.services.api_gateway.app.routes import (
     health_routes,
 )
 
+# Define the absolute path to your data folder
+DATA_DIR = "/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/data"
+
 logger = get_logger(__name__)
 
 
@@ -29,26 +33,37 @@ async def lifespan(app: FastAPI):
     """Initialize storage provider based on settings"""
     storage_service = StorageService(settings.STORAGE_PROVIDER)
     queue_service = QueueService(settings.QUEUE_PROVIDER, "video_queue")
-    cache_service = VideoCaheService(settings.CACHE_PROVIDER)
+    cache_service = VideoCacheService(settings.CACHE_PROVIDER)
     mcp = MCPManager(storage_service, settings.LLM_MODEL)
     video_service = VideoService(storage_service, queue_service,cache_service, mcp)
     query_service = QueryService(mcp)
 
-    # Start workers  
-    asyncio.create_task(video_service.start(num_workers=1)) # GPU safe = 1 worker
-
+    app.state.queue_service = queue_service
     app.state.query_service = query_service
     app.state.cache_service = cache_service
     app.state.video_service = video_service
 
     await app.state.cache_service.initialize()
+    await app.state.queue_service.initialize()
+    await app.state.query_service.initialize()
+
+    # Start workers  
+    await video_service.start(num_workers=1) # GPU safe = 1 worker
+
+
     logger.info("API gateway started")
 
-    try:
-        yield
-    finally:
-        await app.state.cache_service.close()
-        logger.info("API gateway stopped")
+    yield  # The app runs here
+
+    # --- SHUTDOWN LOGIC ---
+    logger.info("Shutting down workers...")
+    
+    # End the worker loops
+    await video_service.end()
+    
+    # Close connections
+    await app.state.cache_service.close()
+    logger.info("Cleanup complete. API stopped.")
 
 
 def create_app() -> FastAPI:
@@ -61,6 +76,13 @@ def create_app() -> FastAPI:
         openapi_url="/openapi.json" if settings.ENABLE_DOCS else None,
         lifespan=lifespan,
     )
+
+
+    # Mount the 'data' directory to the '/static/data' path
+    # This allows <img src="/static/data/thumbnails/abc.jpg"> to work
+    # Mount it so http://localhost:8000/static/thumbnails/video_id.jpg works
+    app.mount("/static", StaticFiles(directory=DATA_DIR), name="static")
+
 
     app.add_middleware(
         CORSMiddleware,

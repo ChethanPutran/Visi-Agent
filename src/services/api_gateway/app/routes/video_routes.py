@@ -19,7 +19,7 @@ router = APIRouter()
 
 @router.post("/upload", response_model=VideoUploadResponse)
 async def upload_video(
-    prcess_immediately: bool = Form(True),
+    prcess_immediately: bool = Form(False),
     file: UploadFile = File(...),
     enable_vision_analysis: bool = Form(True),
     video_service: VideoService = Depends(get_video_service)
@@ -45,10 +45,10 @@ async def upload_video(
         metadata = await video_service.upload_video(file=file)
 
         logger.log(logging.DEBUG, f"Video uploaded successfully: {metadata.id} - {metadata.filename}")
-
+        logger.log(logging.DEBUG, f"Scheduling processing for video: {metadata.id} - {metadata.filename}") if prcess_immediately else logger.log(logging.DEBUG, f"Processing not scheduled for video: {metadata.id} - {metadata.filename}")
         if prcess_immediately:
             # Schedule processing
-            video_service.add_video_to_queue(metadata.id, enable_vision_analysis=enable_vision_analysis)
+            await video_service.add_video_to_queue(metadata.id, enable_vision_analysis=enable_vision_analysis)
 
         # Return response
         return VideoUploadResponse(
@@ -96,7 +96,7 @@ async def upload_videos_batch(
             video_id = meta_data.id
 
             # Schedule processing
-            video_service.add_video_to_queue(video_id, enable_vision_analysis=enable_vision_analysis)
+            await video_service.add_video_to_queue(video_id, enable_vision_analysis=enable_vision_analysis)
 
             results.append({
                 "video_id": video_id,
@@ -123,7 +123,7 @@ async def upload_videos_batch(
 
 
 @router.get("/{video_id}/status", response_model=VideoProcessingStatus)
-def get_video_status(
+async def get_video_status(
     video_id: str,
     video_service: VideoService = Depends(get_video_service)
 ):
@@ -131,10 +131,10 @@ def get_video_status(
     Get the processing status of a video
     """
     logger.log(logging.DEBUG, f"Request to endpoint video/status: {video_id}")
-    print(f"Getting status for video: {video_id}")
     try:
-        status = video_service.get_video_status(video_id)
-
+        logger.log(logging.DEBUG, f"Getting status for video: {video_id}")
+        status = await video_service.get_video_status(video_id)
+        logger.log(logging.DEBUG, f"Status for video {video_id}: {status.status if status else 'Not found'}")
         if not status:
             raise HTTPException(status_code=404, detail="Video not found")
 
@@ -216,12 +216,13 @@ async def process_video(
 
     # Get video metadata
     metadata = await video_service.get_video_metadata(video_id)
-    print(metadata)
+    logger.log(logging.DEBUG, f"Video metadata for processing: {metadata.id}") if metadata else logger.log(logging.DEBUG, f"No metadata found for video: {video_id}")
+    
     if not metadata:
         raise HTTPException(status_code=404, detail="Video not found")
 
     # Shedule processing
-    video_service.add_video_to_queue(video_id, enable_vision_analysis=enable_vision_analysis)
+    await video_service.add_video_to_queue(video_id, enable_vision_analysis=enable_vision_analysis)
 
     return JSONResponse(content={
         "success": True,
@@ -276,20 +277,21 @@ async def get_video_transcript(
     try:
         transcript = await video_service.get_video_transcript(video_id, format)
 
-        if not transcript:
+        transcript_text = transcript if isinstance(transcript, str) else transcript.get("text", "") if isinstance(transcript, dict) else ""
+        if not transcript_text:
             raise HTTPException(status_code=404, detail="Transcript not found")
 
         if format == "text":
-            return transcript
+            return transcript_text
         elif format == "srt":
             return StreamingResponse(
-                iter([transcript]),
+                iter([transcript_text.encode("utf-8")]),
                 media_type="text/plain",
                 headers={
                     "Content-Disposition": f"attachment; filename={video_id}.srt"}
             )
         else:  # json
-            return JSONResponse(content=transcript)
+            return JSONResponse(content=transcript_text)
 
     except HTTPException:
         raise

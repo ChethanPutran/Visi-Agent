@@ -59,7 +59,7 @@ class Settings(BaseSettings):
     APP_VERSION: str = "1.0.0"
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000
-    DEBUG: bool = False
+    DEBUG: bool = True
     SECRET_KEY: str = Field(default= os.getenv("SECRET_KEY", "default-secret-key"))
     
     # API Settings
@@ -119,8 +119,10 @@ class Settings(BaseSettings):
     STORAGE_PATH: str = "./data"
     STORAGE_VIDEO_METADATA_EXT: str = ".json"
     STORAGE_PROVIDER: str = StorageType.LOCAL # local, s3, minio, azure, gcs, redis
-    QUEUE_PROVIDER: str = "redis"  # redis, in-memory, rabbitmq, etc.
-    CACHE_PROVIDER: str = "redis"  # redis, in-memory, rabbitmq
+    QUEUE_PROVIDER: str = "in_memory"  # For testing, default to in_memory. In production, consider using Redis or another queue provider.
+    # QUEUE_PROVIDER: str = "redis"  # redis, in_memory, rabbitmq, etc.
+    CACHE_PROVIDER: str = "in_memory"  # For testing, default to in_memory. In production, consider using Redis or another cache provider.
+    # CACHE_PROVIDER: str = "redis"  # redis, in_memory, rabbitmq
     
     # S3/MinIO Configuration
     S3_ENDPOINT: Optional[str] = None

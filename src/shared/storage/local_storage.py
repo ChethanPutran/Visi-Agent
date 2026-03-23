@@ -25,9 +25,10 @@ class LocalStorageProvider(StorageProvider):
         self.transcripts_path = self.base_path / "transcripts"
         self.summaries_path = self.base_path / "summaries"
         self.cache_path = self.base_path / "cache"
+        self.meta_data_path = self.base_path / "metadata"
         
         for path in [self.videos_path, self.transcripts_path, 
-                    self.summaries_path, self.cache_path]:
+                    self.summaries_path, self.cache_path, self.meta_data_path]:
             path.mkdir(parents=True, exist_ok=True)
 
     def _get_chunks(self,docs):
@@ -121,6 +122,8 @@ class LocalStorageProvider(StorageProvider):
         """List files in storage"""
         search_path = self._get_full_path(prefix)
         
+        print(f"Listing files in: {search_path}")
+
         if not search_path.exists():
             return []
         

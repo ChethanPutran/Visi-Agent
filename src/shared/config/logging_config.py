@@ -114,3 +114,5 @@ def setup_logging(log_level: str = None):
         logger.info("Running in development mode")
     elif settings.is_production:
         logger.info("Running in production mode")
+
+    return config
