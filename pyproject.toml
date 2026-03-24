@@ -1,0 +1,52 @@
+[project]
+name = "visi_agent"
+version = "0.1.0"
+dependencies = [
+    "pydantic>=2.12.5",
+    "opencv-python",
+    "fastapi",
+    "Flask",
+    "langchain",
+    "langchain-chroma",
+    "langchain-community",
+    "langchain-core",
+    "langchain-google-genai",
+    "langchain-huggingface",
+    "langchain-openai",
+    "langchain-text-splitters",
+    "mcp",
+    "numpy",
+    "uvicorn",
+    "whisper-openai",
+    "redis",
+    "celery",
+    "openai-whisper", 
+    "ffmpeg-python"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-s" 
+log_cli = true
+log_cli_level = "INFO"
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::pydantic.warnings.PydanticDeprecatedSince20",
+    "ignore::DeprecationWarning" 
+]
+
+[project.optional-dependencies]
+test = [
+    "anyio",
+    "pytest-asyncio",
+    "pytest-tornasync",
+    "pytest-trio",
+    "pytest-twisted"
+]
+
+[project.scripts]
+video-api = "src.main:run_api"

@@ -80,6 +80,7 @@ class MCPManager:
             # Parse data
             if isinstance(transcript, str):
                 transcript = json.loads(transcript)
+
             if isinstance(frames_data, str):
                 frames_data = json.loads(frames_data)
 
@@ -103,6 +104,7 @@ class MCPManager:
 
             # Update agent state
             agent.video_loaded = True
+
             # Convert VideoMetadata to dict using vars()
             agent.video_metadata = vars(session.metadata)
 
@@ -127,6 +129,7 @@ class MCPManager:
     
     async def query_video(self, video_id: str, question: str) -> Dict[str, Any]:
         """Query a video session"""
+        
         if video_id not in self.sessions:
             # Try auto-load
             load_result = await self.load_video(video_id)

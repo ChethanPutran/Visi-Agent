@@ -1,3 +1,0 @@
-NODE_ENV=production ./script.sh
-NODE_ENV=development ./script.sh
-NODE_ENV=testing ./script.sh

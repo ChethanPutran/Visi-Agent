@@ -1,6 +1,6 @@
 
 # Request schemas
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, ConfigDict, Field, field_serializer
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 from enum import Enum
@@ -23,6 +23,7 @@ class ProcessingStage(str, Enum):
     INDEXING = "indexing"
     INITIATING = "initiating"
     NOT_STARTED = "not_started"
+    COMPLETED = "completed"
 
 
 class VideoProcessingRequest(BaseModel):
@@ -82,10 +83,12 @@ class VideoProcessingStatus(BaseModel):
     updated_at: datetime = Field(
         default_factory=datetime.utcnow, description="Last update timestamp")
 
-    class Config:
-        json_encoders = {
-            datetime: lambda v: v.isoformat()
-        }
+    model_config = ConfigDict(from_attributes=True)
+
+    # 2. Use a field_serializer to replace the old json_encoders logic
+    @field_serializer('estimated_completion', 'created_at', 'updated_at')
+    def serialize_dt(self, dt: datetime, _info):
+        return dt.isoformat() if dt else None
 
 class BatchVideoRequest(BaseModel):
     """Schema for batch video processing"""

@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field, validator
 from typing import Optional, List, Dict, Any
-from datetime import datetime
+from datetime import datetime, timezone
 from src.shared.contracts.video_metadata import VideoMetadata
 
 class VideoUploadRequest(BaseModel):
@@ -21,7 +21,8 @@ class VideoUploadResponse(BaseModel):
     metadata: VideoMetadata = Field(..., description="Video metadata")
     upload_url: Optional[str] = Field(
         None, description="Direct upload URL (for S3)")
-    upload_time: str = Field(default=datetime.now().strftime("%d/%m/%Y, %H:%M:%S"), description="Upload timestamp")
+    upload_time: Optional[datetime] = Field(default_factory=lambda: datetime.now(timezone.utc), 
+    description="Upload timestamp")
 
 
 class BatchUploadResult(BaseModel):

@@ -1,0 +1,29 @@
+Metadata-Version: 2.4
+Name: visi_agent
+Version: 0.1.0
+Requires-Dist: pydantic>=2.12.5
+Requires-Dist: opencv-python
+Requires-Dist: fastapi
+Requires-Dist: Flask
+Requires-Dist: langchain
+Requires-Dist: langchain-chroma
+Requires-Dist: langchain-community
+Requires-Dist: langchain-core
+Requires-Dist: langchain-google-genai
+Requires-Dist: langchain-huggingface
+Requires-Dist: langchain-openai
+Requires-Dist: langchain-text-splitters
+Requires-Dist: mcp
+Requires-Dist: numpy
+Requires-Dist: uvicorn
+Requires-Dist: whisper-openai
+Requires-Dist: redis
+Requires-Dist: celery
+Requires-Dist: openai-whisper
+Requires-Dist: ffmpeg-python
+Provides-Extra: test
+Requires-Dist: anyio; extra == "test"
+Requires-Dist: pytest-asyncio; extra == "test"
+Requires-Dist: pytest-tornasync; extra == "test"
+Requires-Dist: pytest-trio; extra == "test"
+Requires-Dist: pytest-twisted; extra == "test"

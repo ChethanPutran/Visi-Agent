@@ -111,10 +111,12 @@ async function selectVideo(id) {
     renderStatus(data);
     
     // Enable buttons if already done
-    const isDone = data.status === "completed";
-    transcriptBtn.disabled = !isDone;
-    summaryBtn.disabled = !isDone;
-    processBtn.disabled = (data.status === "processing" || data.status === "queued");
+    const isDone = data.status === "completed" || data.status === "success";
+    const isFailed = data.status === "failed" || data.status === "cancelled";
+    transcriptBtn.disabled = !isDone || isFailed;
+    summaryBtn.disabled = !isDone || isFailed;
+
+    processBtn.disabled = (data.status === "processing" || data.status === "queued" || data.status === "completed" || data.status === "success");
 
     // Re-render library to show active state
     listVideos();

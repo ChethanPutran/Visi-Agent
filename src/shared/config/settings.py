@@ -38,16 +38,9 @@ class LogLevel(str, Enum):
     ERROR = "error"
     CRITICAL = "critical"
 
-# 1. Environment Detection
-APP_ENV_NAME = os.getenv("APP_ENV", "development").lower()
-env_file_path = f".env.{APP_ENV_NAME}"
-
-if not Path(env_file_path).exists():
-    env_file_path = ".env"
-
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=env_file_path,
+        env_file=f".env.{os.getenv("APP_ENV", "development").lower()}",
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore"
@@ -60,7 +53,7 @@ class Settings(BaseSettings):
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000
     DEBUG: bool = True
-    SECRET_KEY: str = Field(default= os.getenv("SECRET_KEY", "default-secret-key"))
+    SECRET_KEY: str = Field("default-secret-key", validation_alias="SECRET_KEY")
     
     # API Settings
     API_PREFIX: str = "/api/v1"
@@ -68,6 +61,8 @@ class Settings(BaseSettings):
     DOCS_URL: str = "/docs"
     REDOC_URL: str = "/redoc"
     OPENAPI_URL: str = "/openapi.json"
+    VIDEO_SERVICE_WORKERS: int = 3
+    API_WORKERS: int = 1
     
     # CORS Settings
     CORS_ORIGINS: Union[list, List[str]] = ["*"]
@@ -84,7 +79,7 @@ class Settings(BaseSettings):
     RATE_LIMIT_PERIOD: int = 60  # seconds
     
     # OpenAI Configuration
-    OPENAI_API_KEY: str = Field(default= os.getenv("OPENAI_API_KEY", ""), description="OpenAI API key")
+    OPENAI_API_KEY: str = Field("default-openai-key", validation_alias="OPENAI_API_KEY",description="OpenAI API key")
     OPENAI_ORGANIZATION: Optional[str] = None
     OPENAI_PROJECT: Optional[str] = None
     OPENAI_TIMEOUT: int = 30
@@ -119,22 +114,19 @@ class Settings(BaseSettings):
     STORAGE_PATH: str = "./data"
     STORAGE_VIDEO_METADATA_EXT: str = ".json"
     STORAGE_PROVIDER: str = StorageType.LOCAL # local, s3, minio, azure, gcs, redis
-    QUEUE_PROVIDER: str = "in_memory"  # For testing, default to in_memory. In production, consider using Redis or another queue provider.
-    # QUEUE_PROVIDER: str = "redis"  # redis, in_memory, rabbitmq, etc.
-    CACHE_PROVIDER: str = "in_memory"  # For testing, default to in_memory. In production, consider using Redis or another cache provider.
-    # CACHE_PROVIDER: str = "redis"  # redis, in_memory, rabbitmq
+    QUEUE_PROVIDER: str = "in_memory" # redis, in_memory, rabbitmq, etc.
+    CACHE_PROVIDER: str = "in_memory"  # redis, in_memory, rabbitmq
     
-    # S3/MinIO Configuration
+    # Main storage type
+    STORAGE_TYPE: StorageType = StorageType.LOCAL
+
+    # S3 Configuration
     S3_ENDPOINT: Optional[str] = None
     S3_ACCESS_KEY: Optional[str] = None
     S3_SECRET_KEY: Optional[str] = None
     S3_REGION: str = "us-east-1"
     S3_BUCKET: str = "video-analytics"
     S3_SECURE: bool = True
-    
-    # Azure Blob Storage
-    AZURE_CONNECTION_STRING: Optional[str] = None
-    AZURE_CONTAINER: str = "video-analytics"
     
     # Google Cloud Storage
     GCS_PROJECT_ID: Optional[str] = None
@@ -159,17 +151,6 @@ class Settings(BaseSettings):
     CHROMA_HOST: str = "localhost"
     CHROMA_PORT: int = 8000
     CHROMA_COLLECTION: str = "video-analytics"
-    
-    # Qdrant Configuration
-    QDRANT_HOST: str = "localhost"
-    QDRANT_PORT: int = 6333
-    QDRANT_COLLECTION: str = "video-analytics"
-    
-    # Weaviate Configuration
-    WEAVIATE_HOST: str = "localhost"
-    WEAVIATE_PORT: int = 8080
-    WEAVIATE_SCHEME: str = "http"
-    WEAVIATE_CLASS: str = "VideoContent"
     
     # Redis Configuration
     REDIS_ENABLED: bool = True
@@ -231,14 +212,22 @@ class Settings(BaseSettings):
     FEATURE_WEBHOOKS: bool = False
     FEATURE_USER_AUTHENTICATION: bool = False
     
-    # Validation Methods
-    @field_validator("APP_ENV", mode="before")
-    def validate_app_env(cls, v):
+    @field_validator("OPENAI_API_KEY","GEMINI_API_KEY", mode="before") 
+    @classmethod
+    def validate_api_keys(cls, v: Any) -> Any:
         if isinstance(v, str):
-            v = v.lower()
+            return v
         return v
     
+    @field_validator("APP_ENV", mode="before")
+    @classmethod  
+    def validate_app_env(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            return v.lower()
+        return v
+
     @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
     def validate_cors_origins(cls, v):
         if isinstance(v, str):
             if v == "*":
@@ -248,12 +237,14 @@ class Settings(BaseSettings):
     
     
     @field_validator("ALLOWED_VIDEO_FORMATS", mode="before")
+    @classmethod
     def validate_video_formats(cls, v):
         if isinstance(v, str):
             return [fmt.strip().lower() for fmt in v.split(",")]
         return v
     
     @field_validator("STORAGE_PATH", "TEMP_DIR", "VECTOR_DB_PATH")
+    @classmethod
     def ensure_directories_exist(cls, v, values):
         """Ensure directories exist and create them if needed"""
         path = Path(v)
@@ -312,11 +303,6 @@ class Settings(BaseSettings):
                 "bucket": self.S3_BUCKET,
                 "secure": self.S3_SECURE
             }
-        elif self.STORAGE_TYPE == StorageType.AZURE:
-            return {
-                "connection_string": self.AZURE_CONNECTION_STRING,
-                "container": self.AZURE_CONTAINER
-            }
         elif self.STORAGE_TYPE == StorageType.GCS:
             return {
                 "project_id": self.GCS_PROJECT_ID,
@@ -341,19 +327,6 @@ class Settings(BaseSettings):
                 "host": self.CHROMA_HOST,
                 "port": self.CHROMA_PORT,
                 "collection": self.CHROMA_COLLECTION
-            }
-        elif self.VECTOR_DB_TYPE == VectorDBType.QDRANT:
-            return {
-                "host": self.QDRANT_HOST,
-                "port": self.QDRANT_PORT,
-                "collection": self.QDRANT_COLLECTION
-            }
-        elif self.VECTOR_DB_TYPE == VectorDBType.WEAVIATE:
-            return {
-                "host": self.WEAVIATE_HOST,
-                "port": self.WEAVIATE_PORT,
-                "scheme": self.WEAVIATE_SCHEME,
-                "class_name": self.WEAVIATE_CLASS
             }
         else:  # FAISS
             return {

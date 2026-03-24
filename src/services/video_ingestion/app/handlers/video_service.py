@@ -12,7 +12,7 @@ from src.shared.storage.cache_service import VideoCacheService
 from src.shared.storage.queue_service import QueueService
 from src.services.video_processing.app.processors.text.summarizer import TextSummarizer
 from src.services.video_processing.app.processors.vision.frame_analyzer import VideoProcessor
-from src.services.video_processing.app.processors.audio.transcriber import transcribe_audio
+from src.services.video_processing.app.processors.audio.transcriber import Transcriber
 from src.shared.contracts.video_metadata import VideoMetadata
 from src.services.api_gateway.app.schemas.video_schemas import VideoStatus
 from src.services.video_processing.app.contracts.schemas import VideoProcessingStatus, ProcessingStage
@@ -26,6 +26,7 @@ class VideoPipeline:
         self.mcp_manager = mcp_manager
         self.video_processor = VideoProcessor(mcp_manager)
         self.text_processor = TextSummarizer(mcp_manager)
+        self.transcriber = Transcriber()
 
     async def generate_summary(self, video_id, transcript, frames_data):
         return await self.text_processor.generate_summary(video_id, transcript, frames_data)
@@ -46,7 +47,7 @@ class VideoPipeline:
             # 1. Transcribe audio
             logger.info(f"Transcribing audio for {video_id}")
 
-            transcript_task = asyncio.to_thread(transcribe_audio, audio_path)
+            transcript_task = asyncio.to_thread(self.transcriber.transcribe_audio, audio_path)
 
             # 2. Analyze frames (if enabled)
             frames_task = None
@@ -164,15 +165,15 @@ class VideoPipeline:
         # Placeholder implementation
         return 30.0
 
-    def get_video_creation_time(self, video_path: str) -> str:
+    def get_video_creation_time(self, video_path: str) -> datetime:
         """Get video creation time"""
         # Placeholder implementation
-        return "2024-01-01T12:00:00"
+        return datetime.now()
 
-    def get_video_modification_time(self, video_path: str) -> str:
+    def get_video_modification_time(self, video_path: str) -> datetime:
         """Get video modification time"""
         # Placeholder implementation
-        return "2024-01-01T12:30:00"
+        return datetime.now()
 
     def get_video_transcript_word_count(self, video_path: str) -> int:
         """Get word count of the transcript"""
@@ -211,19 +212,18 @@ class VideoPipeline:
             original_filename=file.filename or fname,
             file_size=0,
             content_type=file.content_type or "application/octet-stream",
-            upload_time=datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),
+            upload_time=datetime.now(),
             duration=self.get_video_duration(video_path),
             width=self.get_video_width(video_path),
             height=self.get_video_height(video_path),
             fps=self.get_video_fps(video_path),
             format=self.get_video_format(video_path),
             thumbnail_path=thm_path,
-            process_start_time=self.get_video_creation_time(video_path),
-            process_end_time=self.get_video_modification_time(video_path),
-            transcript_word_count=self.get_video_transcript_word_count(
-                video_path),
-            frame_count=self.get_video_frame_count(video_path),
-            processing_time=self.get_video_processing_time(video_path),
+            process_start_time=None,
+            process_end_time=None,
+            transcript_word_count=None,
+            frame_count=None,
+            processing_time=None,
             storage_path=video_path
         )
         return metadata
@@ -246,9 +246,22 @@ class VideoService:
         logger.info(f"Getting status for video: {video_id}")
         status = await self.cache_service.get_video_status(video_id)
 
+        
         if status:
             return status
         else:
+            meta_data = await self.storage.get_video_metadata(video_id)
+
+            if meta_data:
+                return VideoProcessingStatus(
+                    video_id=video_id,
+                    status=VideoStatus.COMPLETED,
+                    current_stage=ProcessingStage.COMPLETED,
+                    progress=1,
+                    estimated_completion=None,
+                    message="Video is already processed",
+                    error=None
+                )
             return None
 
     async def set_video_status(self, video_id: str, status: VideoProcessingStatus):
@@ -559,6 +572,12 @@ class VideoService:
             status_obj.message = "Processing completed" if status == VideoStatus.COMPLETED else "Processing failed"
             status_obj.error = None if status == VideoStatus.COMPLETED else status_obj.error
             status_obj.estimated_completion = datetime.now()
+            metadata = await self.storage.get_video_metadata(video_id)  # Refresh metadata in case of updates
+
+            if metadata and isinstance(metadata, VideoMetadata):
+                metadata.process_start_time = status_obj.created_at
+                metadata.process_end_time = status_obj.updated_at
+                await self.storage.save_video_metadata(metadata)
 
         # Update cache
         await self.cache_service.set_video_status(video_id, status_obj)

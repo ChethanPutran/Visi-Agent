@@ -1,61 +1,72 @@
 """
 Audio transcription using Whisper
 """
+from typing_extensions import Self
+
 import torch
 import whisper
 from src.shared.config.settings import settings
 from src.shared.logging.logger import get_logger
 from typing import Any, Dict
-
-logger = get_logger(__name__)
-
-# Load model once
-_model = None
-
-import whisper
-import torch
 import threading
-from typing import Any, Dict
-
-from src.shared.config.settings import settings
-from src.shared.logging.logger import get_logger
 
 logger = get_logger(__name__)
 
-_model = None
-_model_lock = threading.Lock()
+class TranscriptionError(Exception):
+    """Custom exception for transcription errors"""
+    pass
 
+class ModelLoadError(Exception):
+    """Custom exception for model loading errors"""
+    pass
 
-def get_model():
-    global _model
-    if _model is None:
-        with _model_lock:
-            if _model is None:
-                device = "cuda" if torch.cuda.is_available() else "cpu"
-                logger.info(f"Loading Whisper model on {device}")
+class Transcriber:
+    """Class for transcribing audio from video using Whisper"""
 
-                _model = whisper.load_model(
-                    settings.WHISPER_MODEL,
-                    device=device
-                )
-    return _model
+    _model = None
+    _model_lock = threading.Lock()
 
+    def __init__(self):
+        pass
 
-def transcribe_audio(video_path: str) -> Dict[str, Any]:
-    """Transcribe audio from video"""
-    try:
-        model = get_model()
+    def __new__(cls):
+        if not hasattr(cls, "_instance"):
+            cls._instance = super(Transcriber, cls).__new__(cls)
+        return cls._instance
 
-        fp16 = torch.cuda.is_available()
+    def get_model(self) -> whisper.Whisper:
+        """Load and return the Whisper model, ensuring it's only loaded once"""
+        if self._model is None:
+            with self._model_lock:
+                if self._model is None:
+                    device = "cuda" if torch.cuda.is_available() else "cpu"
+                    logger.info(f"Loading Whisper model on {device}")
 
-        result = model.transcribe(
-            video_path,
-            fp16=fp16
-        )
+                    self._model = whisper.load_model(
+                        settings.WHISPER_MODEL,
+                        device=device
+                    )
+        return self._model
 
-        return result
+    def transcribe_audio(self, video_path: str) -> Dict[str, Any]:
+        """Transcribe audio from video"""
+        try:
+            model = self.get_model()
 
-    except Exception:
-        logger.exception("Transcription error")
-        raise
-    
+            fp16 = torch.cuda.is_available()
+
+            result = model.transcribe(
+                video_path,
+                fp16=fp16
+            )
+
+            return result
+
+        except Exception:
+            logger.exception("Transcription error")
+            raise
+        
+if __name__ == "__main__":
+    transcriber = Transcriber()
+    data = transcriber.transcribe_audio("data/videos/test_video.mp4")
+    print(data)

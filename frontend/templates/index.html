@@ -1,80 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <title>Visi-Agent | Video Intelligence</title>
     <link rel="stylesheet" href="/static/css/style.css" />
 </head>
+
 <body>
-<div class="container">
-    <header>
-        <h1>Visi-Agent</h1>
-        <p class="subtitle">Multimodal Video Intelligence Dashboard</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Visi-Agent</h1>
+            <p class="subtitle">Multimodal Video Intelligence Dashboard</p>
+        </header>
 
-    <!-- Main Layout -->
-    <div class="main-grid">
-        <div class="left-column">
-            <div id="uploadSection" class="card">
-                <h2>Upload Video</h2>
-                <div class="upload-controls">
-                    <input type="file" id="videoFile" accept="video/*" />
-                    <button class="btn-primary" onclick="uploadVideo()">Upload</button>
+        <!-- Main Layout -->
+        <div class="main-grid">
+            <div class="left-column">
+                <div id="uploadSection" class="card">
+                    <h2>Upload Video</h2>
+                    <div class="upload-controls">
+                        <input type="file" id="videoFile" accept="video/*" />
+                        <button class="btn-primary" onclick="uploadVideo()">Upload</button>
+                    </div>
+                </div>
+
+
+                <div id="videoInfo" class="card hidden">
+                    <h2>Active Video</h2>
+                    <p><strong>ID:</strong> <span id="videoId" class="id-badge"></span></p>
+
+                    <div id="actionSection" class="action-grid">
+                        <button id="processBtn" class="btn-primary" onclick="processVideo()">▶ Process</button>
+                        <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝
+                            Transcript</button>
+                        <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌
+                            Summary</button>
+                    </div>
+                </div>
+
+                <div id="statusSection" class="card hidden">
+                    <h2>Processing Status</h2>
+                    <div id="statusList" class="status-list"></div>
                 </div>
             </div>
+            <!-- Right Column -->
+            <div class="right-column">
 
-            <div id="librarySection" class="card">
-                <div class="card-header">
-                    <h2>Video Library</h2>
-                    <button class="btn-small" onclick="listVideos()">↻ Refresh</button>
+                <div id="librarySection" class="card">
+                    <div class="card-header">
+                        <h2>Video Library</h2>
+                        <button class="btn-small" onclick="listVideos()">↻ Refresh</button>
+                    </div>
+                    <div id="videoListContainer" class="video-list">
+                        <p class="empty-msg">No videos found. Upload one to get started!</p>
+                    </div>
                 </div>
-                <div id="videoListContainer" class="video-list">
-                    <p class="empty-msg">No videos found. Upload one to get started!</p>
+
+                <!-- Transcript Output -->
+                <div id="transcriptSection" class="card hidden">
+                    <h2>📝 Transcript</h2>
+                    <pre id="transcriptOutput"></pre>
                 </div>
+
+                <!-- Summary Output -->
+                <div id="summarySection" class="card hidden">
+                    <h2>📌 Summary</h2>
+                    <pre id="summaryOutput"></pre>
+                </div>
+
             </div>
 
-            <div id="videoInfo" class="card hidden">
-                <h2>Active Video</h2>
-                <p><strong>ID:</strong> <span id="videoId" class="id-badge"></span></p>
-                
-                <div id="actionSection" class="action-grid">
-                    <button id="processBtn" class="btn-primary" onclick="processVideo()">▶ Process</button>
-                    <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝 Transcript</button>
-                    <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌 Summary</button>
-                </div>
-            </div>
 
-            <div id="statusSection" class="card hidden">
-                <h2>Processing Status</h2>
-                <div id="statusList" class="status-list"></div>
-            </div>
         </div>
-        
-</div>
-
-        </div>
-
-      <!-- Right Column -->
-<div class="right-column">
-
-    <!-- Transcript Output -->
-    <div id="transcriptSection" class="card hidden">
-        <h2>📝 Transcript</h2>
-        <pre id="transcriptOutput"></pre>
-    </div>
-
-    <!-- Summary Output -->
-    <div id="summarySection" class="card hidden">
-        <h2>📌 Summary</h2>
-        <pre id="summaryOutput"></pre>
-    </div>
-
-</div>
-
 
     </div>
-</div>
 
-<script src="/static/js/video.js"></script>
+    <script src="/static/js/video.js"></script>
 </body>
+
 </html>

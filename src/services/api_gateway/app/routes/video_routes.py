@@ -136,8 +136,15 @@ async def get_video_status(
         status = await video_service.get_video_status(video_id)
         logger.log(logging.DEBUG, f"Status for video {video_id}: {status.status if status else 'Not found'}")
         if not status:
-            raise HTTPException(status_code=404, detail="Video not found")
-
+            metadata = await video_service.get_video_metadata(video_id)
+            logger.log(logging.DEBUG, f"Metadata for video {video_id}: {metadata.id if metadata else 'Not found'}")
+            if not metadata or metadata.process_end_time is None:
+                raise HTTPException(status_code=200, detail="Video uploaded but not processed yet")
+    
+            return {
+                "video_id": video_id,
+                "status": "success"
+            }
         return status
 
     except HTTPException:

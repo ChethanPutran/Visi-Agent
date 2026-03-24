@@ -94,8 +94,10 @@ class StorageService:
         ext = settings.STORAGE_VIDEO_METADATA_EXT
         metadata_filename = f"metadata/{metadata.id}{ext}"
         
-        # Convert metadata to JSON bytes
-        metadata_dict = metadata.dict() if hasattr(metadata, 'dict') else vars(metadata)
+        # mode='json' converts datetimes to strings automatically
+        metadata_dict = metadata.model_dump(mode='json')
+        
+        # Now json.dumps will work because there are no more datetime objects
         content = BytesIO(json.dumps(metadata_dict, indent=2).encode('utf-8'))
         
         return await self.provider.save_file(content, metadata_filename)
@@ -105,6 +107,7 @@ class StorageService:
         ext = settings.STORAGE_VIDEO_METADATA_EXT
         metadata_filename = f"metadata/{video_id}{ext}"
         
+        # 1. Check existence first
         if not await self.file_exists(metadata_filename):
             return None
         
@@ -113,14 +116,24 @@ class StorageService:
             return None
         
         try:
-            content = file_obj.read().decode('utf-8')
-            data = json.loads(content)
+            # 2. Handle the read - if file_obj is a stream, 
+            # some providers require 'await file_obj.read()'
+            content = file_obj.read()
+            if hasattr(content, '__await__'): # Defensive check for async streams
+                content = await content
+                
+            data = json.loads(content.decode('utf-8'))
+            
+            # 3. Pydantic will automatically convert the JSON strings 
+            # back into datetime objects here.
             return VideoMetadata(**data)
+            
         except Exception as e:
             logger.error(f"Error loading metadata for {video_id}: {str(e)}")
             return None
         finally:
-            if file_obj:
+            # 4. Ensure cleanup
+            if file_obj and hasattr(file_obj, 'close'):
                 file_obj.close()
     
     async def save_transcript(self, video_id: str, transcript_data: Dict[str, Any]) -> str:

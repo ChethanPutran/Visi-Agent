@@ -1,74 +1,9 @@
-import sys
-import argparse
 import os
-import logging
 
 # Prevent Python from writing __pycache__ folders 
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
-def parse_api_args(args_to_parse):
-    """
-    Parse command-line arguments for API command.
-    """
-
-    parser = argparse.ArgumentParser(description="Run Video Analytics API")
-    
-    
-    parser.add_argument("--host", default=os.getenv("APP_HOST", "0.0.0.0"))
-    parser.add_argument("--port", type=int, default=int(os.getenv("APP_PORT", 8000)))
-    parser.add_argument("--reload", action="store_true")
-    parser.add_argument("--workers", type=int, default=int(os.getenv("API_WORKERS", 4)))
-    parser.add_argument(
-        "--log-level",
-        default=os.getenv("LOG_LEVEL", "info"),
-        choices=["debug", "info", "warning", "error", "critical"]
-    )
-
-    return parser.parse_args(args_to_parse)
-
-def main():
-    if len(sys.argv) > 1:
-        args_list = sys.argv[1:]
-        
-        logger = logging.getLogger("main")
-        api_args = parse_api_args(args_list)
-
-        
-        # Initialize logging early
-        from src.shared.config.logging_config import setup_logging
-        
-        config = setup_logging(api_args.log_level)
-        
-        logger.debug(f"Starting API on {api_args.host}:{api_args.port}")
-
-        # Run FastAPI server
-        import uvicorn
- 
-        uvicorn.run(
-            "src.services.api_gateway.app.main:app",
-            host=api_args.host,
-            port=api_args.port,
-            reload=api_args.reload,
-            reload_dirs=["src"],
-            reload_excludes=[
-                "*.pyc",
-                "*.pyo",
-                "*/__pycache__/*",
-                "__pycache__",
-                "data/*",
-                "logs/*",
-                "temp/*",
-                ".pytest_cache/*"
-            ],
-            log_level=api_args.log_level,
-            log_config=config
-        )
-
-
-    else:
-        print("Usage: python main.py [api|mcp|process|worker] [args...]")
-        print("Example: python main.py api --host 0.0.0.0 --port 8000 --reload")
-
-
 if __name__ == "__main__":
-    main()
+    from src.main import run_api
+
+    run_api()

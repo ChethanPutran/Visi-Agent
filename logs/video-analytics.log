@@ -2766,3 +2766,1133 @@ progress
 2026-03-23 15:20:37 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
 2026-03-23 15:20:37 - src.shared.storage.cache_service - INFO - CacheService closed
 2026-03-23 15:20:37 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 18:35:06 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 18:35:06 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 18:35:06 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 18:35:07 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc.125229738976688'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/__pycache__/main.cpython-312.pyc.125229738976688')}
+2026-03-24 18:35:18 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:35:18 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:35:18 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:35:18 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:35:18 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.125224937948304'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.125224937948304'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc')}
+2026-03-24 18:35:19 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/llm_service/app/__pycache__/mcp_service.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/llm_service/app/__pycache__/mcp_service.cpython-312.pyc.125224931912720'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/llm_service/app/__pycache__/mcp_service.cpython-312.pyc.125224931912720')}
+2026-03-24 18:35:20 - watchfiles.main - DEBUG - 6 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.125224890784848'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/audio/__pycache__/transcriber.cpython-312.pyc.125224891096560'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.125224890784848'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/audio/__pycache__/transcriber.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/audio/__pycache__/transcriber.cpython-312.pyc.125224891096560')}
+2026-03-24 18:35:21 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 18:35:21 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 18:35:21 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 18:35:21 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 18:35:21 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 18:35:21 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 18:35:21 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 18:35:21 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 18:35:21 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.125223828959680'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.125223828959680')}
+2026-03-24 18:35:24 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 18:35:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 18:35:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 18:35:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 18:35:24 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 18:35:24 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 18:37:23 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 18:37:23 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 18:37:23 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 18:37:34 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:37:34 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:37:34 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:37:34 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:37:36 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 18:37:36 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 18:37:36 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 18:37:36 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 18:37:36 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 18:37:36 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 18:37:36 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 18:37:36 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 18:37:44 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 18:37:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 18:37:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 18:37:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 18:37:44 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 18:37:44 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 18:37:55 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 18:37:55 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 18:37:55 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 18:38:12 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/main.py')}
+2026-03-24 18:38:12 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/__pycache__/main.cpython-312.pyc.136365268522720'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/__pycache__/main.cpython-312.pyc.136365268522720'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/__pycache__/main.cpython-312.pyc')}
+2026-03-24 18:38:26 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 18:38:26 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 18:38:26 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 18:38:34 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:38:34 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:38:34 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:38:34 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:38:36 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 18:38:36 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 18:38:36 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 18:38:36 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 18:38:36 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 18:38:36 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 18:38:36 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 18:38:36 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 18:38:48 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:39:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:39:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:21 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:21 - src.shared.storage.cache_service - INFO - Get Key : video:59dd53dc-6916-4706-8ca1-6328b852bbdb:status from Cache.
+2026-03-24 18:39:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 59dd53dc-6916-4706-8ca1-6328b852bbdb: Not found
+2026-03-24 18:39:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:39:38 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:39:39 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:39 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:39 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:39 - src.shared.storage.cache_service - INFO - Get Key : video:59dd53dc-6916-4706-8ca1-6328b852bbdb:status from Cache.
+2026-03-24 18:39:39 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 59dd53dc-6916-4706-8ca1-6328b852bbdb: Not found
+2026-03-24 18:39:39 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:39:49 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:39:51 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:51 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:51 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 59dd53dc-6916-4706-8ca1-6328b852bbdb
+2026-03-24 18:39:51 - src.shared.storage.cache_service - INFO - Get Key : video:59dd53dc-6916-4706-8ca1-6328b852bbdb:status from Cache.
+2026-03-24 18:39:51 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 59dd53dc-6916-4706-8ca1-6328b852bbdb: Not found
+2026-03-24 18:39:51 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 18:44:45 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/contracts/schemas.py')}
+2026-03-24 18:44:45 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 18:44:45 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 18:44:45 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 18:44:45 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 18:44:45 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 18:44:45 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 18:44:46 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/contracts/__pycache__/schemas.cpython-312.pyc.130488074990768'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/contracts/__pycache__/schemas.cpython-312.pyc.130488074990768'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/contracts/__pycache__/schemas.cpython-312.pyc')}
+2026-03-24 18:44:55 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:44:55 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:44:55 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:44:55 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:44:58 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 18:44:58 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 18:44:58 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 18:44:58 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 18:44:58 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 18:44:58 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 18:44:58 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 18:44:58 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 18:50:31 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/video_metadata.py')}
+2026-03-24 18:50:32 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 18:50:32 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 18:50:32 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 18:50:32 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 18:50:32 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 18:50:32 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 18:50:33 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.135209159115424'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.135209159115424')}
+2026-03-24 18:50:39 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/video_metadata.py')}
+2026-03-24 18:50:39 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:50:39 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:50:39 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:50:39 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:50:42 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 18:50:42 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 18:50:42 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 18:50:42 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 18:50:42 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 18:50:42 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 18:50:42 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 18:50:42 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 18:50:43 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.132981205713568'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.132981205713568')}
+2026-03-24 18:50:49 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:50:49 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:50:49 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 18:50:49 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 18:50:52 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 18:50:52 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 18:50:52 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 18:50:52 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 18:50:52 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 18:50:52 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 18:50:52 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 18:50:52 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:01:02 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:01:02 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:01:02 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:01:02 - watchfiles.main - DEBUG - 6 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.128554352558752'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/storage/__pycache__/storage_service.cpython-312.pyc.128554352564160'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/storage/__pycache__/storage_service.cpython-312.pyc.128554352564160'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/storage/__pycache__/storage_service.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/shared/contracts/__pycache__/video_metadata.cpython-312.pyc.128554352558752')}
+2026-03-24 19:01:09 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:01:09 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:01:09 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:01:09 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:01:24 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/video_service.py')}
+2026-03-24 19:01:32 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:01:32 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:01:32 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:01:32 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:01:32 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.130667935777040'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/handlers/__pycache__/video_service.cpython-312.pyc.130667935777040')}
+2026-03-24 19:01:34 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.130667889350800'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc.130667889350800'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_processing/app/processors/vision/__pycache__/frame_analyzer.cpython-312.pyc')}
+2026-03-24 19:01:34 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:01:34 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:01:34 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:01:34 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:01:34 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:01:34 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:01:34 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:01:34 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:01:34 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.130667096058272'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.130667096058272')}
+2026-03-24 19:01:38 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:01:38 - src.shared.storage.storage_service - ERROR - Error loading metadata for 59dd53dc-6916-4706-8ca1-6328b852bbdb: 1 validation error for VideoMetadata
+upload_time
+  Input should be a valid datetime or date, invalid character in year [type=datetime_from_date_parsing, input_value='23/03/2026, 15:11:47', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/datetime_from_date_parsing
+2026-03-24 19:01:59 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:114688]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:86443]
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:02:09 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:02:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:02:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:02:09 - src.shared.storage.local_storage - INFO - File saved: data/videos/9174e6e1-26cf-47c8-97da-7098b45c50ab.mp4
+2026-03-24 19:02:10 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:02:10 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:03:15 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/contracts/schemas.py')}
+2026-03-24 19:03:16 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:03:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:03:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:03:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:03:16 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:03:16 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:03:19 - watchfiles.main - DEBUG - 1 change detected: {(<Change.modified: 2>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/video_routes.py')}
+2026-03-24 19:03:23 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:03:23 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:03:23 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:03:23 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:03:26 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:03:26 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:03:26 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:03:26 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:03:26 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:03:26 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:03:26 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:03:26 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:03:26 - watchfiles.main - DEBUG - 6 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.130235455826336'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/contracts/__pycache__/schemas.cpython-312.pyc.130235455721008'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.130235455826336'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/contracts/__pycache__/schemas.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc'), (<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/video_ingestion/app/contracts/__pycache__/schemas.cpython-312.pyc.130235455721008')}
+2026-03-24 19:03:34 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:03:34 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:03:34 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:03:34 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:03:36 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:03:36 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:03:36 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:03:36 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:03:36 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:03:36 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:03:36 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:03:36 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:124928]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:106496]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:106496]
+2026-03-24 19:03:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:169984]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:15787]
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:03:36 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:03:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:03:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:03:36 - src.shared.storage.local_storage - INFO - File saved: data/videos/b63007e6-7855-40e8-9898-ec1942434d3e.mp4
+2026-03-24 19:03:36 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:03:36 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:03:52 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:03:52 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:03:52 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:03:52 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:03:52 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:03:52 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:04:02 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:04:02 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:04:02 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:04:09 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:04:09 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:04:09 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:04:09 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:04:11 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:04:11 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:04:11 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:04:11 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:04:11 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:04:11 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:04:11 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:04:11 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:04:11 - watchfiles.main - DEBUG - 3 changes detected: {(<Change.deleted: 3>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.131956108372384'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc'), (<Change.added: 1>, '/home/chethan/Desktop/Chethan/aiml_projects/advanced_projects/personal_ai/video_analytics/src/services/api_gateway/app/routes/__pycache__/video_routes.cpython-312.pyc.131956108372384')}
+2026-03-24 19:04:21 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:04:21 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:04:21 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:04:21 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:04:21 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:04:21 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:04:41 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:04:41 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:04:41 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:04:48 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:04:48 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:04:48 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:04:48 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:04:51 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:04:51 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:04:51 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:04:51 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:04:51 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:04:51 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:04:51 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:04:51 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:04:54 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:98304]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:193963]
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:04:57 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:04:57 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:04:57 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:04:57 - src.shared.storage.local_storage - INFO - File saved: data/videos/b26246f9-96d3-420f-8921-bb521600ebb5.mp4
+2026-03-24 19:04:57 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:04:57 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:07:35 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:07:35 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:07:35 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:07:35 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:07:35 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:07:35 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:07:40 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:07:40 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:07:40 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:07:47 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:07:47 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:07:47 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:07:47 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:07:50 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:07:50 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:07:50 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:07:50 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:07:50 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:07:50 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:07:50 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:07:50 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:114688]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:175051]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:2528]
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:07:53 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:07:53 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:07:53 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:07:53 - src.shared.storage.local_storage - INFO - File saved: data/videos/3b01c5e4-186f-494f-9ada-428126de3ff4.mp4
+2026-03-24 19:07:53 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:07:53 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:08:53 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:08:53 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:08:53 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:08:53 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:08:53 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:08:53 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:08:58 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:08:58 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:08:58 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:09:05 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:09:05 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:09:05 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:09:05 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:09:07 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:09:07 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:09:07 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:09:07 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:09:07 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:09:07 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:09:07 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:09:07 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:09:10 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:98304]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:193963]
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:09:15 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:09:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:09:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:09:15 - src.shared.storage.local_storage - INFO - File saved: data/videos/43232c3e-83cb-433b-adc2-670328769cfe.mp4
+2026-03-24 19:09:15 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:09:15 - src.services.api_gateway.app.routes.video_routes - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:09:44 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:09:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:09:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:09:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:09:44 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:09:44 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:09:48 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:09:48 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:09:48 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:09:55 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:09:55 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:09:55 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:09:55 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:09:57 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:09:57 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:09:57 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:09:57 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:09:57 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:09:57 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:09:57 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:09:57 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:10:00 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:98304]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:193963]
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:10:03 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:10:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:10:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:10:03 - src.shared.storage.local_storage - INFO - File saved: data/videos/a36edc72-825f-4e03-8945-47030103ded6.mp4
+2026-03-24 19:10:03 - src.services.video_ingestion.app.handlers.video_service - ERROR - Error uploading video: Object of type datetime is not JSON serializable
+2026-03-24 19:15:01 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:15:01 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:15:01 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:15:01 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:15:01 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:15:01 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:15:04 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:15:04 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:15:04 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:15:11 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:15:11 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:15:11 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:15:11 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:15:13 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:15:13 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:15:13 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:15:13 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:15:13 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:15:13 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:15:13 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:15:13 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:15:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:98304]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:193963]
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:15:35 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:15:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:15:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:15:35 - src.shared.storage.local_storage - INFO - File saved: data/videos/91f4cce7-847c-40f1-a6d0-bfe482ef4259.mp4
+2026-03-24 19:15:35 - src.shared.storage.local_storage - INFO - File saved: data/metadata/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:15:35 - src.shared.storage.cache_service - INFO - Adding Key: value video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:metadata to Cache.
+2026-03-24 19:15:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video uploaded successfully: 91f4cce7-847c-40f1-a6d0-bfe482ef4259 - test_video.mp4
+2026-03-24 19:15:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Processing not scheduled for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259 - test_video.mp4
+2026-03-24 19:15:54 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/process: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:54 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:metadata from Cache.
+2026-03-24 19:15:54 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video metadata for processing: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:54 - src.shared.storage.cache_service - INFO - Adding Key: value video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status to Cache.
+2026-03-24 19:15:54 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Added to Queue :: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:55 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 processing 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:55 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:metadata from Cache.
+2026-03-24 19:15:55 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Initiating processing for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259 at path data/videos/91f4cce7-847c-40f1-a6d0-bfe482ef4259.mp4
+2026-03-24 19:15:55 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:15:55 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing Status:: video_id='91f4cce7-847c-40f1-a6d0-bfe482ef4259' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 3, 24, 13, 45, 54, 948895) updated_at=datetime.datetime(2026, 3, 24, 13, 45, 54, 948919)
+2026-03-24 19:15:55 - src.shared.storage.cache_service - INFO - Adding Key: value video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status to Cache.
+2026-03-24 19:15:55 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: data/videos/91f4cce7-847c-40f1-a6d0-bfe482ef4259.mp4
+2026-03-24 19:15:55 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:56 - src.services.video_ingestion.app.handlers.video_service - INFO - Transcribing audio for 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:56 - src.services.video_ingestion.app.handlers.video_service - INFO - Analyzing frames for 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:56 - src.services.video_processing.app.processors.audio.transcriber - INFO - Loading Whisper model on cuda
+2026-03-24 19:15:56 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Processing video: data/videos/91f4cce7-847c-40f1-a6d0-bfe482ef4259.mp4
+2026-03-24 19:15:56 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Extracting key frames...
+2026-03-24 19:15:56 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:56 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:56 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:56 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:15:56 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: processing
+2026-03-24 19:15:58 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:58 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:58 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:15:58 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:15:58 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: processing
+2026-03-24 19:16:00 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:00 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:00 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:00 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:00 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: processing
+2026-03-24 19:16:02 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:02 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:02 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:02 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:02 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: processing
+2026-03-24 19:16:04 - src.services.video_ingestion.app.handlers.video_service - INFO - Generating summary for 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:04 - src.services.video_ingestion.app.handlers.video_service - INFO - Pipeline completed for 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:04 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Saving processing results for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259...
+2026-03-24 19:16:04 - src.shared.storage.local_storage - INFO - File saved: data/transcripts/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:16:04 - src.shared.storage.local_storage - INFO - File saved: data/summaries/91f4cce7-847c-40f1-a6d0-bfe482ef4259.txt
+2026-03-24 19:16:04 - src.shared.storage.local_storage - INFO - File saved: data/frames/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:16:04 - src.shared.storage.cache_service - INFO - Adding Key: value video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:results to Cache.
+2026-03-24 19:16:04 - src.shared.storage.cache_service - INFO - Get Key : video:results:count from Cache.
+2026-03-24 19:16:04 - src.shared.storage.cache_service - INFO - Adding Key: value video:results:count to Cache.
+2026-03-24 19:16:04 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing results for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259 saved successfully
+2026-03-24 19:16:04 - src.shared.storage.local_storage - INFO - File saved: data/metadata/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:16:04 - src.shared.storage.cache_service - INFO - Adding Key: value video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status to Cache.
+2026-03-24 19:16:04 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Video 91f4cce7-847c-40f1-a6d0-bfe482ef4259 processed successfully
+2026-03-24 19:16:04 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:04 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:04 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:04 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:04 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:06 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:06 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:06 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:06 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:06 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:08 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:08 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:10 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:10 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:10 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:10 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:10 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:12 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:12 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:12 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:12 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:14 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:14 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:16 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:16 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:16 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:16 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:18 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:20 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:20 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:22 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:22 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:24 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:24 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:24 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:24 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:26 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:26 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:26 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:26 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:26 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:28 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:28 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:28 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:28 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:28 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:30 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:30 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:32 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:32 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:32 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:32 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:32 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:33 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:16:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:40 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:16:40 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:16:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:16:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:18:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:114688]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:175051]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:2528]
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:18:09 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:18:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:18:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:18:09 - src.shared.storage.local_storage - INFO - File saved: data/videos/5bef1540-fc11-497c-896b-ba30311c9130.mp4
+2026-03-24 19:18:09 - src.shared.storage.local_storage - INFO - File saved: data/metadata/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:18:09 - src.shared.storage.cache_service - INFO - Adding Key: value video:5bef1540-fc11-497c-896b-ba30311c9130:metadata to Cache.
+2026-03-24 19:18:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video uploaded successfully: 5bef1540-fc11-497c-896b-ba30311c9130 - test_video.mp4
+2026-03-24 19:18:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Processing not scheduled for video: 5bef1540-fc11-497c-896b-ba30311c9130 - test_video.mp4
+2026-03-24 19:18:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/process: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:11 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:metadata from Cache.
+2026-03-24 19:18:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video metadata for processing: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:11 - src.shared.storage.cache_service - INFO - Adding Key: value video:5bef1540-fc11-497c-896b-ba30311c9130:status to Cache.
+2026-03-24 19:18:11 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Added to Queue :: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 processing 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:12 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:metadata from Cache.
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Initiating processing for video 5bef1540-fc11-497c-896b-ba30311c9130 at path data/videos/5bef1540-fc11-497c-896b-ba30311c9130.mp4
+2026-03-24 19:18:12 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing Status:: video_id='5bef1540-fc11-497c-896b-ba30311c9130' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 3, 24, 13, 48, 11, 291487) updated_at=datetime.datetime(2026, 3, 24, 13, 48, 11, 291514)
+2026-03-24 19:18:12 - src.shared.storage.cache_service - INFO - Adding Key: value video:5bef1540-fc11-497c-896b-ba30311c9130:status to Cache.
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video 5bef1540-fc11-497c-896b-ba30311c9130: data/videos/5bef1540-fc11-497c-896b-ba30311c9130.mp4
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Transcribing audio for 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Analyzing frames for 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:12 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Processing video: data/videos/5bef1540-fc11-497c-896b-ba30311c9130.mp4
+2026-03-24 19:18:12 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Extracting key frames...
+2026-03-24 19:18:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:13 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:13 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: processing
+2026-03-24 19:18:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:15 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:15 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: processing
+2026-03-24 19:18:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:17 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:17 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: processing
+2026-03-24 19:18:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Generating summary for 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Pipeline completed for 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:18 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Saving processing results for video 5bef1540-fc11-497c-896b-ba30311c9130...
+2026-03-24 19:18:18 - src.shared.storage.local_storage - INFO - File saved: data/transcripts/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:18:18 - src.shared.storage.local_storage - INFO - File saved: data/summaries/5bef1540-fc11-497c-896b-ba30311c9130.txt
+2026-03-24 19:18:18 - src.shared.storage.local_storage - INFO - File saved: data/frames/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:18:18 - src.shared.storage.cache_service - INFO - Adding Key: value video:5bef1540-fc11-497c-896b-ba30311c9130:results to Cache.
+2026-03-24 19:18:18 - src.shared.storage.cache_service - INFO - Get Key : video:results:count from Cache.
+2026-03-24 19:18:18 - src.shared.storage.cache_service - INFO - Adding Key: value video:results:count to Cache.
+2026-03-24 19:18:18 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing results for video 5bef1540-fc11-497c-896b-ba30311c9130 saved successfully
+2026-03-24 19:18:18 - src.shared.storage.local_storage - INFO - File saved: data/metadata/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:18:18 - src.shared.storage.cache_service - INFO - Adding Key: value video:5bef1540-fc11-497c-896b-ba30311c9130:status to Cache.
+2026-03-24 19:18:18 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Video 5bef1540-fc11-497c-896b-ba30311c9130 processed successfully
+2026-03-24 19:18:19 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:19 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:19 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:19 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:19 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:21 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:21 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:23 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:23 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:25 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:25 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:25 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:25 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:25 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:27 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:27 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:29 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:29 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:29 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:29 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:29 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:31 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:31 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:31 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:31 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:31 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:33 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:33 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:33 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:33 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:33 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:35 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:35 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:35 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:37 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:37 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:37 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:18:37 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:18:37 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:18:38 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:20:44 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:20:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:20:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:20:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:20:44 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:20:44 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
+2026-03-24 19:23:51 - src.shared.config.logging_config - INFO - Logging configured with level: LogLevel.DEBUG
+2026-03-24 19:23:51 - src.shared.config.logging_config - INFO - Application environment: Environment.DEVELOPMENT
+2026-03-24 19:23:51 - src.shared.config.logging_config - INFO - Running in development mode
+2026-03-24 19:23:58 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:23:58 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:23:58 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2026-03-24 19:23:58 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2026-03-24 19:24:01 - src.shared.storage.storage_service - INFO - Using local storage at data
+2026-03-24 19:24:01 - src.services.llm_service.app.mcp_service - INFO - Using model: gpt-4
+2026-03-24 19:24:01 - src.shared.storage.cache_service - INFO - CacheService initialized with provider: dict
+2026-03-24 19:24:01 - src.shared.storage.queue_service - INFO - QueueService initialized with provider: LocalQueueService
+2026-03-24 19:24:01 - src.services.query_services.app.handlers.query_service - INFO - Initializing QueryService
+2026-03-24 19:24:01 - src.services.video_ingestion.app.handlers.video_service - INFO - GPU Semaphore initialized within the active event loop.
+2026-03-24 19:24:01 - src.services.api_gateway.app.main - INFO - API gateway started
+2026-03-24 19:24:01 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 started
+2026-03-24 19:24:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:114688]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:215040]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:175051]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:18912]
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:24:14 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:24:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:24:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:24:14 - src.shared.storage.local_storage - INFO - File saved: data/videos/8b622355-8446-4ac9-ba4c-1fab25aa06f7.mp4
+2026-03-24 19:24:14 - src.shared.storage.local_storage - INFO - File saved: data/metadata/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:24:14 - src.shared.storage.cache_service - INFO - Adding Key: value video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:metadata to Cache.
+2026-03-24 19:24:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video uploaded successfully: 8b622355-8446-4ac9-ba4c-1fab25aa06f7 - test_video.mp4
+2026-03-24 19:24:14 - src.services.api_gateway.app.routes.video_routes - DEBUG - Processing not scheduled for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7 - test_video.mp4
+2026-03-24 19:24:16 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/process: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:metadata from Cache.
+2026-03-24 19:24:16 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video metadata for processing: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.shared.storage.cache_service - INFO - Adding Key: value video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status to Cache.
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Added to Queue :: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 processing 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:metadata from Cache.
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Initiating processing for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7 at path data/videos/8b622355-8446-4ac9-ba4c-1fab25aa06f7.mp4
+2026-03-24 19:24:16 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing Status:: video_id='8b622355-8446-4ac9-ba4c-1fab25aa06f7' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 3, 24, 13, 54, 16, 401603) updated_at=datetime.datetime(2026, 3, 24, 13, 54, 16, 401630)
+2026-03-24 19:24:16 - src.shared.storage.cache_service - INFO - Adding Key: value video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status to Cache.
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video 8b622355-8446-4ac9-ba4c-1fab25aa06f7: data/videos/8b622355-8446-4ac9-ba4c-1fab25aa06f7.mp4
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Transcribing audio for 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.services.video_ingestion.app.handlers.video_service - INFO - Analyzing frames for 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:16 - src.services.video_processing.app.processors.audio.transcriber - INFO - Loading Whisper model on cuda
+2026-03-24 19:24:16 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Processing video: data/videos/8b622355-8446-4ac9-ba4c-1fab25aa06f7.mp4
+2026-03-24 19:24:16 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Extracting key frames...
+2026-03-24 19:24:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:18 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:24:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7: processing
+2026-03-24 19:24:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:20 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:20 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:24:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7: processing
+2026-03-24 19:24:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:22 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:22 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:24:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7: processing
+2026-03-24 19:24:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Generating summary for 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Pipeline completed for 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:24 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Saving processing results for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7...
+2026-03-24 19:24:24 - src.shared.storage.local_storage - INFO - File saved: data/transcripts/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:24:24 - src.shared.storage.local_storage - INFO - File saved: data/summaries/8b622355-8446-4ac9-ba4c-1fab25aa06f7.txt
+2026-03-24 19:24:24 - src.shared.storage.local_storage - INFO - File saved: data/frames/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:24:24 - src.shared.storage.cache_service - INFO - Adding Key: value video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:results to Cache.
+2026-03-24 19:24:24 - src.shared.storage.cache_service - INFO - Get Key : video:results:count from Cache.
+2026-03-24 19:24:24 - src.shared.storage.cache_service - INFO - Adding Key: value video:results:count to Cache.
+2026-03-24 19:24:24 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing results for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7 saved successfully
+2026-03-24 19:24:24 - src.shared.storage.local_storage - INFO - File saved: data/metadata/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:24:24 - src.shared.storage.cache_service - INFO - Adding Key: value video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status to Cache.
+2026-03-24 19:24:24 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Video 8b622355-8446-4ac9-ba4c-1fab25aa06f7 processed successfully
+2026-03-24 19:24:24 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:24 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:24 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:24 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:24:24 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7: completed
+2026-03-24 19:24:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:24:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:24:30 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:24:30 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:24:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:24:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:24:34 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:24:34 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:24:34 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:24:34 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:24:34 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:24:34 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:24:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:36 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:24:36 - src.shared.storage.cache_service - INFO - Get Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:24:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 8b622355-8446-4ac9-ba4c-1fab25aa06f7: completed
+2026-03-24 19:24:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:24:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:24:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:24:40 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:24:40 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:24:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:24:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:24:43 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:24:45 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:24:45 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:24:45 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:24:45 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:24:45 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:24:45 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:25:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:25:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:25:03 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:25:03 - src.shared.storage.cache_service - INFO - Get Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:25:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 91f4cce7-847c-40f1-a6d0-bfe482ef4259: completed
+2026-03-24 19:25:03 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:25:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/transcript: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:25:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/summary: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:26:21 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:26:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:26:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:26:23 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:26:23 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:26:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:26:23 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:26:25 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/transcript: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:26:26 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/summary: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:26:49 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:27:12 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:27:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:27:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:27:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:27:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:27:18 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:27:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:27:18 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:27:20 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/transcript: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:27:22 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/summary: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:16384]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:114688]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:175051]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:2528]
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:27:36 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:27:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:27:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:27:36 - src.shared.storage.local_storage - INFO - File saved: data/videos/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.mp4
+2026-03-24 19:27:36 - src.shared.storage.local_storage - INFO - File saved: data/metadata/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:27:36 - src.shared.storage.cache_service - INFO - Adding Key: value video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:metadata to Cache.
+2026-03-24 19:27:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video uploaded successfully: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa - test_video.mp4
+2026-03-24 19:27:36 - src.services.api_gateway.app.routes.video_routes - DEBUG - Processing not scheduled for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa - test_video.mp4
+2026-03-24 19:27:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/process: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:40 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:metadata from Cache.
+2026-03-24 19:27:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video metadata for processing: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:40 - src.shared.storage.cache_service - INFO - Adding Key: value video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status to Cache.
+2026-03-24 19:27:40 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Added to Queue :: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 processing af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:41 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:metadata from Cache.
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Initiating processing for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa at path data/videos/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.mp4
+2026-03-24 19:27:41 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status from Cache.
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing Status:: video_id='af5cf9e8-d3b0-4fb2-8aec-2457adb40efa' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 3, 24, 13, 57, 40, 369716) updated_at=datetime.datetime(2026, 3, 24, 13, 57, 40, 369732)
+2026-03-24 19:27:41 - src.shared.storage.cache_service - INFO - Adding Key: value video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status to Cache.
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa: data/videos/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.mp4
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - INFO - Transcribing audio for af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:41 - src.services.video_ingestion.app.handlers.video_service - INFO - Analyzing frames for af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:41 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Processing video: data/videos/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.mp4
+2026-03-24 19:27:41 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Extracting key frames...
+2026-03-24 19:27:42 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:42 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:42 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:42 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status from Cache.
+2026-03-24 19:27:42 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa: processing
+2026-03-24 19:27:44 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:44 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:44 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:44 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status from Cache.
+2026-03-24 19:27:44 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa: processing
+2026-03-24 19:27:46 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:46 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:46 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:46 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status from Cache.
+2026-03-24 19:27:46 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa: processing
+2026-03-24 19:27:47 - src.services.video_ingestion.app.handlers.video_service - INFO - Generating summary for af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:47 - src.services.video_ingestion.app.handlers.video_service - INFO - Pipeline completed for af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:47 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Saving processing results for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa...
+2026-03-24 19:27:47 - src.shared.storage.local_storage - INFO - File saved: data/transcripts/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:27:47 - src.shared.storage.local_storage - INFO - File saved: data/summaries/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.txt
+2026-03-24 19:27:47 - src.shared.storage.local_storage - INFO - File saved: data/frames/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:27:47 - src.shared.storage.cache_service - INFO - Adding Key: value video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:results to Cache.
+2026-03-24 19:27:47 - src.shared.storage.cache_service - INFO - Get Key : video:results:count from Cache.
+2026-03-24 19:27:47 - src.shared.storage.cache_service - INFO - Adding Key: value video:results:count to Cache.
+2026-03-24 19:27:47 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing results for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa saved successfully
+2026-03-24 19:27:47 - src.shared.storage.local_storage - INFO - File saved: data/metadata/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:27:47 - src.shared.storage.cache_service - INFO - Adding Key: value video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status to Cache.
+2026-03-24 19:27:47 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa processed successfully
+2026-03-24 19:27:48 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:48 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:48 - src.shared.storage.cache_service - INFO - Get Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status from Cache.
+2026-03-24 19:27:48 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa: completed
+2026-03-24 19:27:51 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/transcript: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:27:52 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/summary: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:30:05 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/summary: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:30:05 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/transcript: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:30:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/delete: 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:30:09 - src.shared.storage.local_storage - INFO - File deleted: videos/8b622355-8446-4ac9-ba4c-1fab25aa06f7.mp4
+2026-03-24 19:30:09 - src.shared.storage.local_storage - INFO - File deleted: transcripts/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:30:09 - src.shared.storage.local_storage - INFO - File deleted: summaries/8b622355-8446-4ac9-ba4c-1fab25aa06f7.txt
+2026-03-24 19:30:09 - src.shared.storage.local_storage - INFO - File deleted: frames/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:30:09 - src.shared.storage.local_storage - INFO - File deleted: metadata/8b622355-8446-4ac9-ba4c-1fab25aa06f7.json
+2026-03-24 19:30:09 - src.shared.storage.cache_service - INFO - Delete Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:metadata from Cache.
+2026-03-24 19:30:09 - src.shared.storage.cache_service - INFO - Delete Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:status from Cache.
+2026-03-24 19:30:09 - src.shared.storage.cache_service - INFO - Delete Key : video:8b622355-8446-4ac9-ba4c-1fab25aa06f7:results from Cache.
+2026-03-24 19:30:09 - src.services.video_ingestion.app.handlers.video_service - INFO - Deleted video 8b622355-8446-4ac9-ba4c-1fab25aa06f7
+2026-03-24 19:30:09 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:30:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/delete: af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:30:11 - src.shared.storage.local_storage - INFO - File deleted: videos/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.mp4
+2026-03-24 19:30:11 - src.shared.storage.local_storage - INFO - File deleted: transcripts/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:30:11 - src.shared.storage.local_storage - INFO - File deleted: summaries/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.txt
+2026-03-24 19:30:11 - src.shared.storage.local_storage - INFO - File deleted: frames/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:30:11 - src.shared.storage.local_storage - INFO - File deleted: metadata/af5cf9e8-d3b0-4fb2-8aec-2457adb40efa.json
+2026-03-24 19:30:11 - src.shared.storage.cache_service - INFO - Delete Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:metadata from Cache.
+2026-03-24 19:30:11 - src.shared.storage.cache_service - INFO - Delete Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:status from Cache.
+2026-03-24 19:30:11 - src.shared.storage.cache_service - INFO - Delete Key : video:af5cf9e8-d3b0-4fb2-8aec-2457adb40efa:results from Cache.
+2026-03-24 19:30:11 - src.services.video_ingestion.app.handlers.video_service - INFO - Deleted video af5cf9e8-d3b0-4fb2-8aec-2457adb40efa
+2026-03-24 19:30:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:30:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/delete: 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:30:13 - src.shared.storage.local_storage - INFO - File deleted: videos/91f4cce7-847c-40f1-a6d0-bfe482ef4259.mp4
+2026-03-24 19:30:13 - src.shared.storage.local_storage - INFO - File deleted: transcripts/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:30:13 - src.shared.storage.local_storage - INFO - File deleted: summaries/91f4cce7-847c-40f1-a6d0-bfe482ef4259.txt
+2026-03-24 19:30:13 - src.shared.storage.local_storage - INFO - File deleted: frames/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:30:13 - src.shared.storage.local_storage - INFO - File deleted: metadata/91f4cce7-847c-40f1-a6d0-bfe482ef4259.json
+2026-03-24 19:30:13 - src.shared.storage.cache_service - INFO - Delete Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:metadata from Cache.
+2026-03-24 19:30:13 - src.shared.storage.cache_service - INFO - Delete Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:status from Cache.
+2026-03-24 19:30:13 - src.shared.storage.cache_service - INFO - Delete Key : video:91f4cce7-847c-40f1-a6d0-bfe482ef4259:results from Cache.
+2026-03-24 19:30:13 - src.services.video_ingestion.app.handlers.video_service - INFO - Deleted video 91f4cce7-847c-40f1-a6d0-bfe482ef4259
+2026-03-24 19:30:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:30:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:30:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:30:15 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:30:15 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:30:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:30:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:04 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:112]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:137]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_data with data[141:32768]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:114688]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:107520]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:256000]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:161195]
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-03-24 19:32:08 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-03-24 19:32:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video: test_video.mp4
+2026-03-24 19:32:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Uploading video: test_video.mp4
+2026-03-24 19:32:08 - src.shared.storage.local_storage - INFO - File saved: data/videos/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.mp4
+2026-03-24 19:32:08 - src.shared.storage.local_storage - INFO - File saved: data/metadata/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:08 - src.shared.storage.cache_service - INFO - Adding Key: value video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:metadata to Cache.
+2026-03-24 19:32:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video uploaded successfully: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3 - test_video.mp4
+2026-03-24 19:32:08 - src.services.api_gateway.app.routes.video_routes - DEBUG - Processing not scheduled for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3 - test_video.mp4
+2026-03-24 19:32:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/process: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:11 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:metadata from Cache.
+2026-03-24 19:32:11 - src.services.api_gateway.app.routes.video_routes - DEBUG - Video metadata for processing: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:11 - src.shared.storage.cache_service - INFO - Adding Key: value video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status to Cache.
+2026-03-24 19:32:11 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Added to Queue :: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 processing 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:12 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:metadata from Cache.
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Initiating processing for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3 at path data/videos/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.mp4
+2026-03-24 19:32:12 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing Status:: video_id='61d37ba9-3b60-45a6-9718-6dbb9fcf74c3' status='queued' current_stage=<ProcessingStage.NOT_STARTED: 'not_started'> progress=0.0 estimated_completion=None stages=[] message='Video queued for processing' error=None created_at=datetime.datetime(2026, 3, 24, 14, 2, 11, 507420) updated_at=datetime.datetime(2026, 3, 24, 14, 2, 11, 507443)
+2026-03-24 19:32:12 - src.shared.storage.cache_service - INFO - Adding Key: value video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status to Cache.
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Processing video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3: data/videos/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.mp4
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Starting pipeline for 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Transcribing audio for 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:12 - src.services.video_ingestion.app.handlers.video_service - INFO - Analyzing frames for 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:12 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Processing video: data/videos/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.mp4
+2026-03-24 19:32:12 - src.services.video_processing.app.processors.vision.frame_analyzer - INFO - Extracting key frames...
+2026-03-24 19:32:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:13 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:13 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:13 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3: processing
+2026-03-24 19:32:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:15 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:15 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:15 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3: processing
+2026-03-24 19:32:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:17 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:17 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:17 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3: processing
+2026-03-24 19:32:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Generating summary for 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:18 - src.services.video_ingestion.app.handlers.video_service - INFO - Pipeline completed for 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:18 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Saving processing results for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3...
+2026-03-24 19:32:18 - src.shared.storage.local_storage - INFO - File saved: data/transcripts/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:18 - src.shared.storage.local_storage - INFO - File saved: data/summaries/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.txt
+2026-03-24 19:32:18 - src.shared.storage.local_storage - INFO - File saved: data/frames/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:18 - src.shared.storage.cache_service - INFO - Adding Key: value video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:results to Cache.
+2026-03-24 19:32:18 - src.shared.storage.cache_service - INFO - Get Key : video:results:count from Cache.
+2026-03-24 19:32:18 - src.shared.storage.cache_service - INFO - Adding Key: value video:results:count to Cache.
+2026-03-24 19:32:18 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Processing results for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3 saved successfully
+2026-03-24 19:32:18 - src.shared.storage.local_storage - INFO - File saved: data/metadata/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:18 - src.shared.storage.cache_service - INFO - Adding Key: value video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status to Cache.
+2026-03-24 19:32:18 - src.services.video_ingestion.app.handlers.video_service - DEBUG - Video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3 processed successfully
+2026-03-24 19:32:19 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:19 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:19 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:19 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:19 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3: completed
+2026-03-24 19:32:25 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:32:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:32:27 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:32:27 - src.shared.storage.cache_service - INFO - Get Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:32:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 5bef1540-fc11-497c-896b-ba30311c9130: completed
+2026-03-24 19:32:27 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/status: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:30 - src.services.video_ingestion.app.handlers.video_service - INFO - Getting status for video: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:30 - src.shared.storage.cache_service - INFO - Get Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Status for video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3: completed
+2026-03-24 19:32:30 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:32 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/summary: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:33 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/transcript: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:38 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/delete: 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:32:38 - src.shared.storage.local_storage - INFO - File deleted: videos/5bef1540-fc11-497c-896b-ba30311c9130.mp4
+2026-03-24 19:32:38 - src.shared.storage.local_storage - INFO - File deleted: transcripts/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:32:38 - src.shared.storage.local_storage - INFO - File deleted: summaries/5bef1540-fc11-497c-896b-ba30311c9130.txt
+2026-03-24 19:32:38 - src.shared.storage.local_storage - INFO - File deleted: frames/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:32:38 - src.shared.storage.local_storage - INFO - File deleted: metadata/5bef1540-fc11-497c-896b-ba30311c9130.json
+2026-03-24 19:32:38 - src.shared.storage.cache_service - INFO - Delete Key : video:5bef1540-fc11-497c-896b-ba30311c9130:metadata from Cache.
+2026-03-24 19:32:38 - src.shared.storage.cache_service - INFO - Delete Key : video:5bef1540-fc11-497c-896b-ba30311c9130:status from Cache.
+2026-03-24 19:32:38 - src.shared.storage.cache_service - INFO - Delete Key : video:5bef1540-fc11-497c-896b-ba30311c9130:results from Cache.
+2026-03-24 19:32:38 - src.services.video_ingestion.app.handlers.video_service - INFO - Deleted video 5bef1540-fc11-497c-896b-ba30311c9130
+2026-03-24 19:32:38 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/delete: 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:40 - src.shared.storage.local_storage - INFO - File deleted: videos/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.mp4
+2026-03-24 19:32:40 - src.shared.storage.local_storage - INFO - File deleted: transcripts/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:40 - src.shared.storage.local_storage - INFO - File deleted: summaries/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.txt
+2026-03-24 19:32:40 - src.shared.storage.local_storage - INFO - File deleted: frames/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:40 - src.shared.storage.local_storage - INFO - File deleted: metadata/61d37ba9-3b60-45a6-9718-6dbb9fcf74c3.json
+2026-03-24 19:32:40 - src.shared.storage.cache_service - INFO - Delete Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:metadata from Cache.
+2026-03-24 19:32:40 - src.shared.storage.cache_service - INFO - Delete Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:status from Cache.
+2026-03-24 19:32:40 - src.shared.storage.cache_service - INFO - Delete Key : video:61d37ba9-3b60-45a6-9718-6dbb9fcf74c3:results from Cache.
+2026-03-24 19:32:40 - src.services.video_ingestion.app.handlers.video_service - INFO - Deleted video 61d37ba9-3b60-45a6-9718-6dbb9fcf74c3
+2026-03-24 19:32:40 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:43 - src.services.api_gateway.app.routes.video_routes - DEBUG - Request to endpoint video/list
+2026-03-24 19:32:48 - src.services.api_gateway.app.main - INFO - Shutting down workers...
+2026-03-24 19:32:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Stopping 1 workers...
+2026-03-24 19:32:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 received shutdown signal. Cleaning up...
+2026-03-24 19:32:48 - src.services.video_ingestion.app.handlers.video_service - INFO - Worker 0 has exited.
+2026-03-24 19:32:48 - src.shared.storage.cache_service - INFO - CacheService closed
+2026-03-24 19:32:48 - src.services.api_gateway.app.main - INFO - Cleanup complete. API stopped.
