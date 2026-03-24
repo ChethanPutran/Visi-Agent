@@ -10,12 +10,8 @@ from src.shared.contracts.video_metadata import VideoMetadata
 class VideoStatus(str, Enum):
     UPLOADED = "uploaded"
     PROCESSING = "processing"
-    TRANSCRIBING = "transcribing"
-    ANALYZING = "analyzing"
-    INDEXING = "indexing"
-    COMPLETED = "completed"
+    PROCESSED = "processed"
     FAILED = "failed"
-    QUEUED = "queued"
     CANCELLED = "cancelled"
 
 

@@ -27,6 +27,23 @@ async def home(request: Request):
     )
 
 
+@router.get("/history/{video_id}")
+async def get_chat_history(
+     video_id: str,
+     query_service: QueryService = Depends(get_query_service)
+    ):
+    try:
+        logger.info(f"Fetching chat history for video {video_id}")
+        history = await query_service.get_chat_history(video_id)
+        return {
+            "video_id": video_id,
+            "history": history
+        }
+    except Exception as e:
+        logger.error(f"Error fetching chat history: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))     
+    
+
 @router.post("/ask", response_model=VideoQueryResponse)
 async def ask_video_question(
     request: VideoQueryRequest,
@@ -52,14 +69,21 @@ async def ask_video_question(
         )
         query_type = request.query_type
 
+       # Assuming 'result' contains the data you mentioned in the error
         return VideoQueryResponse(
             success=True,
             video_id=request.video_id,
             question=request.question or str(query_type),
             answer=result["answer"],
-            timestamps=result.get("timestamps", []),
+            
+            # FIX: Extract the float from the dict (e.g., getting the 'start' time)
+            # If your model expects a list of floats:
+            timestamps=[t['start'] if isinstance(t, dict) else t for t in result.get("timestamps", [0.0])],
+            
             confidence=result.get("confidence", 0.0),
-            sources=result.get("sources", [])
+            
+            # FIX: Wrap the string into a dictionary to satisfy the 'dict_type' requirement
+            sources=[{"segment_id": s} if isinstance(s, str) else s for s in result.get("sources", [{}])]
         )
 
     except Exception as e:
@@ -88,9 +112,9 @@ async def query_temporal_range(
             video_id=request.video_id,
             question=f"What happens between {request.start_time}s and {request.end_time}s?",
             answer=result["answer"],
-            timestamps=result.get("timestamps", []),
+            timestamps=result.get("timestamps", [0.0]),
             confidence=result.get("confidence", 1.0),
-            sources=[]
+            sources=result.get("sources", [{}])
         )
 
     except Exception as e:

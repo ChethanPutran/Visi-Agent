@@ -2,10 +2,17 @@ import asyncio
 import os
 from typing import Dict, Any, List
 from langchain.agents import create_agent
-from langchain.messages import SystemMessage
 from langchain_core.prompts import PromptTemplate,ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import StrOutputParser
+from src.shared.config.settings import settings
+
+from ..prompts import (
+    agent_prompt,
+    video_desc_extract_prompt_template,
+    video_summary_prompt_template,
+    chat_prompt
+)
 from src.services.llm_service.app.agent.tools.video_search import (
     initialize_video_search,
     get_video_summary as get_video_summary_tool,
@@ -20,46 +27,35 @@ logger = get_logger(__name__)
 class VideoAnalyticsAgent:
     """Main agent class for video analytics"""
 
-    def __init__(self, model='google'):
+    def __init__(self, model: str = settings.LLM_MODEL):
         """Initialize the LangChain agent with tools"""
+
+        # 1. Determine and initialize the LLM first
+        if "gemini" in model:
+            self.llm = ChatGoogleGenerativeAI(
+                model=model,
+                temperature=settings.LLM_TEMPERATURE,
+                max_retries=settings.LLM_MAX_RETRIES,
+                google_api_key=settings.GEMINI_API_KEY
+            )
+        elif model == "openai":
+            # self.llm = ChatOpenAI(model="gpt-4o", temperature=0)
+            raise NotImplementedError("OpenAI support is not configured yet.")
+        else:
+            # Fallback or Error to ensure self.llm is never None
+            raise ValueError(f"Unsupported model type: {model}")
+
+        self.str_parser = StrOutputParser()
+
+        # 3. Create chains (Now the "|" operator is safe because self.llm is guaranteed)
+        self.frame_info_chain = video_desc_extract_prompt_template | self.llm | self.str_parser
+        self.summary_chain = video_summary_prompt_template | self.llm | self.str_parser
+        self.chat_chain = chat_prompt | self.llm | self.str_parser
         self.video_loaded = False
         self.video_metadata = {}
         self.processing_status = "idle"
         self.agent_executor = None
-        self.llm  = None
-        if model=="openai":
-            # self.llm = ChatOpenAI(model="gpt-4o", temperature=0)
-            pass
-        elif model=="google":
-            self.llm = ChatGoogleGenerativeAI(
-                model="gemini-3-flash-preview",
-                temperature=1.0,  # Gemini 3.0+ defaults to 1.0
-                max_tokens=None,
-                timeout=None,
-                max_retries=2
-            )
-
-        # Wrap the system message in a PromptTemplate
-        self.video_desc_extract_prompt_template = PromptTemplate.from_template("""You are a video analytics agent. I'll show you several video frames with their timestamps.
-            For each frame, describe what you see in 1-2 sentences.
-            """)
-        # Wrap the system message in a PromptTemplate
-        self.video_summary_prompt_template = PromptTemplate.from_template("""Based on the following video transcript and visual descriptions, create a comprehensive summary:
-
-        TRANSCRIPT:
-        {transcript_text}
-
-        VISUAL DESCRIPTIONS (Key Frames):
-        {visual_context}
-
-        Please provide:
-        1. A 3-4 sentence overview of the video
-        2. Key topics discussed
-        3. Main visual elements
-        4. Any important actions or events
-
-        Summary:""")
-
+       
         self.str_parser = StrOutputParser()
 
         self.tools = [
@@ -69,20 +65,32 @@ class VideoAnalyticsAgent:
             analyze_visual_patterns
         ]
 
-        self.agent_prompt = SystemMessage(
-            "You are a video analytics agent. Use the provided tools to answer questions about the video\
-            content, summary, and visual patterns."
-        )
-        self.frame_info_chain = self.video_desc_extract_prompt_template | self.llm | self.str_parser
-        self.summary_chain = self.video_summary_prompt_template | self.llm | self.str_parser
-
         self.agent = create_agent(
             model=self.llm,
             tools=self.tools,
-            system_prompt=self.agent_prompt
+            system_prompt=agent_prompt
         )
 
-    def generate_video_summary(self, transcript_segments: List[Dict], frames_data: List[Dict]) -> str:
+    async def chat(self, question:str, chat_history: List[Dict[str, Any]], video_id: str = None) -> Dict[str, Any]:
+        """Chat with the agent, optionally in the context of a video"""
+        try:
+            response = await self.chat_chain.ainvoke({
+                "history": chat_history,
+                "question": question
+            })
+            return {
+                "success": True,
+                "answer": response,
+                "video_id": video_id
+            }
+        except Exception as e:
+            logger.error(f"Error during chat: {e}")
+            return {
+                "success": False,
+                "error": str(e),
+                "video_id": video_id
+            }
+    def generate_video_summary(self, transcript_segments: List[Dict[str, Any]], frames_data: List[Dict[str, Any]]) -> str:
         """Generate a comprehensive summary using transcript and visual data"""
 
         # Prepare combined context
@@ -105,7 +113,7 @@ class VideoAnalyticsAgent:
             print(f"Error generating summary: {e}")
             return "Summary generation failed."
 
-    def analyze_frames_batch(self, frames_batch: List[Dict]) -> str:
+    def analyze_frames_batch(self, frames_batch: List[Dict[str, Any]]) -> str:
         """Analyze multiple frames in a single batch for efficiency"""
 
         try:

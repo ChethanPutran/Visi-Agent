@@ -21,9 +21,9 @@ class VideoSession:
     last_query_time: Optional[datetime] = None
 
 
-class MCPManager:
+class MCPService:
     """Manages MCP video sessions with persistence"""
-    _instance: Optional["MCPManager"] = None
+    _instance: Optional["MCPService"] = None
 
     def __init__(self, storage_service: StorageService, model: str):
         if self._initialized:
@@ -166,10 +166,31 @@ class MCPManager:
                 "video_id": video_id
             }
     
-    def generate_summary(self, video_id, transcript_segments,frames_data):
+
+    async def chat(self,question:str, chat_history: List[Dict[str, Any]], video_id: Optional[str] = None) -> Dict[str, Any]:
+        """Chat with the agent, optionally in the context of a video"""
+        if video_id:
+            if video_id not in self.sessions:
+                load_result = await self.load_video(video_id)
+                if not load_result["success"]:
+                    return {
+                        "success": False,
+                        "error": f"Video {video_id} not loaded: {load_result.get('error', 'Unknown error')}"
+                    }
+            session = self.sessions[video_id]
+            response = await session.agent.chat(question, chat_history, video_id)
+
+        else:
+            # General chat without video context
+            agent = VideoAnalyticsAgent(self.model)
+            response = await agent.chat(question, chat_history)
+            
+        return response
+        
+    def generate_summary(self, video_id: str, transcript_segments: List[Dict[str, Any]], frames_data: List[Dict[str, Any]]) -> str:
         return "This is a placeholder response for video summary for video_id: {video_id}"
         agent = self._get_agent(video_id)
-        return agent.generate_video_summary(transcript_segments,frames_data)
+        return agent.generate_video_summary(transcript_segments, frames_data)
     
     async def get_summary(self, video_id: str) -> Dict[str, Any]:
         """Get video summary via MCP"""

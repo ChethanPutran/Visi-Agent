@@ -101,9 +101,13 @@ def setup_logging(log_level: str = None):
     logging.config.dictConfig(config)
     
     # Set third-party loggers
-    logging.getLogger("openai").setLevel(logging.WARNING)
-    logging.getLogger("httpx").setLevel(logging.WARNING)
-    logging.getLogger("httpcore").setLevel(logging.WARNING)
+    # logging.getLogger("openai").setLevel(logging.WARNING)
+    # logging.getLogger("httpx").setLevel(logging.WARNING)
+    # logging.getLogger("httpcore").setLevel(logging.WARNING)
+    # logging.getLogger("uvicorn").setLevel(logging.INFO)
+    # logging.getLogger("uvicorn.error").setLevel(logging.INFO)
+    # logging.getLogger("uvicorn.access").setLevel(logging.INFO)
+    # logging.getLogger("fastapi").setLevel(logging.INFO)
     
     # Log startup message
     logger = logging.getLogger(__name__)

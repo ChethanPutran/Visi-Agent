@@ -1,82 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visi-Agent | Video Intelligence</title>
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Visi-Agent</h1>
+    <div class="app-wrapper">
+        <header class="main-header">
+            <div class="logo">
+                <i class="fas fa-eye"></i>
+                <h1>Visi-Agent</h1>
+            </div>
             <p class="subtitle">Multimodal Video Intelligence Dashboard</p>
         </header>
 
-        <!-- Main Layout -->
         <div class="main-grid">
-            <div class="left-column">
+            <aside class="left-column">
                 <div id="uploadSection" class="card">
-                    <h2>Upload Video</h2>
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Upload Video</h3>
                     <div class="upload-controls">
                         <input type="file" id="videoFile" accept="video/*" />
                         <button class="btn-primary" onclick="uploadVideo()">Upload</button>
                     </div>
                 </div>
 
-
                 <div id="videoInfo" class="card hidden">
-                    <h2>Active Video</h2>
-                    <p><strong>ID:</strong> <span id="videoId" class="id-badge"></span></p>
-
+                    <h3><i class="fas fa-info-circle"></i> Active Video</h3>
+                    <div class="id-container">
+                        <span id="videoId" class="id-badge"></span>
+                    </div>
                     <div id="actionSection" class="action-grid">
                         <button id="processBtn" class="btn-primary" onclick="processVideo()">▶ Process</button>
-                        <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝
-                            Transcript</button>
-                        <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌
-                            Summary</button>
+                        <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝 Transcript</button>
+                        <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌 Summary</button>
                     </div>
                 </div>
 
                 <div id="statusSection" class="card hidden">
-                    <h2>Processing Status</h2>
+                    <h3><i class="fas fa-tasks"></i> Status</h3>
                     <div id="statusList" class="status-list"></div>
                 </div>
-            </div>
-            <!-- Right Column -->
-            <div class="right-column">
+            </aside>
 
+            <section class="mid-column">
+                <div id="chatSection" class="chat-card">
+                    <div class="chat-header">
+                        <div class="header-info">
+                            <span class="status-dot"></span>
+                            <h2>Visi-Agent Chat</h2>
+                        </div>
+                        <button class="new-chat-btn" onclick="resetChat()" title="Global Mode">
+                            <i class="fas fa-rotate-left"></i>
+                        </button>
+                    </div>
+
+                    <div id="chatContainer" class="chat-messages">
+                        <div class="empty-state">
+                            <div class="icon-circle"><i class="fas fa-robot"></i></div>
+                            <p>Select a video or ask a global question to begin.</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <div class="input-wrapper">
+                            <textarea id="chatInput" placeholder="Ask Visi-Agent anything..." rows="1"></textarea>
+                            <button class="send-btn" onclick="handleSendMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <p class="input-footer">AI can provide incorrect information. Verify key facts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-column">
                 <div id="librarySection" class="card">
                     <div class="card-header">
-                        <h2>Video Library</h2>
-                        <button class="btn-small" onclick="listVideos()">↻ Refresh</button>
+                        <h3><i class="fas fa-folder"></i> Library</h3>
+                        <button class="btn-small" onclick="listVideos()">↻</button>
                     </div>
-                    <div id="videoListContainer" class="video-list">
-                        <p class="empty-msg">No videos found. Upload one to get started!</p>
-                    </div>
+                    <div id="videoListContainer" class="video-list"></div>
                 </div>
 
-                <!-- Transcript Output -->
-                <div id="transcriptSection" class="card hidden">
-                    <h2>📝 Transcript</h2>
-                    <pre id="transcriptOutput"></pre>
+                <div id="transcriptSection" class="card hidden results-card">
+                    <h3>📝 Transcript</h3>
+                    <div id="transcriptOutput" class="scroll-box"></div>
                 </div>
 
-                <!-- Summary Output -->
-                <div id="summarySection" class="card hidden">
-                    <h2>📌 Summary</h2>
-                    <pre id="summaryOutput"></pre>
+                <div id="summarySection" class="card hidden results-card">
+                    <h3>📌 Summary</h3>
+                    <div id="summaryOutput" class="scroll-box"></div>
                 </div>
-
-            </div>
-
-
+            </aside>
         </div>
-
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js"></script>
 
-    <script src="/static/js/video.js"></script>
+    <script src="/static/js/app.js"></script>
 </body>
-
 </html>

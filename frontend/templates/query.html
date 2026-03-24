@@ -1,8 +1,103 @@
-<h2>🔍 Ask the Video</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi-Agent | Video Intelligence</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="main-header">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1>Visi-Agent</h1>
+            </div>
+            <p class="subtitle">Multimodal Video Intelligence Dashboard</p>
+        </header>
 
-<textarea id="query" rows="4" cols="60"></textarea>
-<button onclick="runQuery()">Ask</button>
+        <div class="main-grid">
+            <aside class="left-column">
+                <div id="uploadSection" class="card">
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Upload Video</h3>
+                    <div class="upload-controls">
+                        <input type="file" id="videoFile" accept="video/*" />
+                        <button class="btn-primary" onclick="uploadVideo()">Upload</button>
+                    </div>
+                </div>
 
-<pre id="result"></pre>
+                <div id="videoInfo" class="card hidden">
+                    <h3><i class="fas fa-play-circle"></i> Active Video</h3>
+                    <div class="id-container">
+                        <span id="videoId" class="id-badge"></span>
+                    </div>
+                    <div id="actionSection" class="action-grid">
+                        <button id="processBtn" class="btn-primary" onclick="processVideo()">▶ Process</button>
+                        <button id="transcriptBtn" class="btn-secondary" onclick="fetchTranscript()" disabled>📝 Transcript</button>
+                        <button id="summaryBtn" class="btn-secondary" onclick="fetchSummary()" disabled>📌 Summary</button>
+                    </div>
+                </div>
 
-<script src="/static/js/query.js"></script>
+                <div id="statusSection" class="card hidden">
+                    <h3><i class="fas fa-spinner"></i> Processing Status</h3>
+                    <div id="statusList" class="status-list"></div>
+                </div>
+            </aside>
+
+            <section class="mid-column">
+                <div id="chatSection" class="chat-card">
+                    <div class="chat-header">
+                        <div class="header-info">
+                            <span class="status-dot"></span>
+                            <h2>Visi-Agent AI</h2>
+                        </div>
+                        <button class="new-chat-btn" onclick="resetChat()" title="Reset Library View">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+
+                    <div id="chatContainer" class="chat-messages">
+                        <div class="empty-state">
+                            <div class="icon-circle"><i class="fas fa-robot"></i></div>
+                            <p>Select a video to begin analysis or ask a broad question.</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <div class="input-wrapper">
+                            <textarea id="chatInput" placeholder="Ask anything about the video..." rows="1"></textarea>
+                            <button class="send-btn" onclick="handleSendMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <p class="input-footer">AI-generated content may be inaccurate.</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right-column">
+                <div id="librarySection" class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-database"></i> Video Library</h3>
+                        <button class="btn-small" onclick="listVideos()">REFRESH</button>
+                    </div>
+                    <div id="videoListContainer" class="video-list"></div>
+                </div>
+
+                <div id="transcriptSection" class="card hidden">
+                    <h3>📝 Full Transcript</h3>
+                    <div id="transcriptOutput" class="scroll-box"></div>
+                </div>
+
+                <div id="summarySection" class="card hidden">
+                    <h3>📌 AI Summary</h3>
+                    <div id="summaryOutput" class="scroll-box"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

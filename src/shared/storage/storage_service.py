@@ -175,7 +175,7 @@ class StorageService:
         """List all videos in storage"""
         metadatas = await self.list_files("metadata/")
 
-        print(f"Found {len(metadatas)} metadata files in storage")
+        logger.debug(f"Found {len(metadatas)} metadata files in storage")
 
         videos = []
         for metadata in metadatas:
@@ -270,6 +270,11 @@ class StorageService:
         for cache_file in cache_files:
             success = success and await self.delete_file(cache_file['path'])
         
+        # Delete any other related files (e.g. thumbnails)
+        thumbnails = await self.list_files("thumbnails/")
+        for thumbnail in thumbnails:
+            if video_id in thumbnail.get('name', '') or video_id in thumbnail.get('path', ''):
+                success = success and await self.delete_file(thumbnail['path'])
         return success
     
     async def get_storage_info(self) -> Dict[str, Any]:

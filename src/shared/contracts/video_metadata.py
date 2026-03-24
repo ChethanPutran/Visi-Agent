@@ -29,6 +29,7 @@ class VideoMetadata(BaseModel):
     format: VideoFormat = Field(..., description="Video format")
     upload_time: datetime = Field(..., description="Upload timestamp")
     thumbnail_path: Optional[str] = Field(None, description="Path to video thumbnail image")
+    status: str = Field(default="uploaded", description="Processing status: uploaded, processing, completed, failed")
     process_start_time: Optional[datetime] = Field(
         None, description="Processing start time")
     process_end_time: Optional[datetime] = Field(

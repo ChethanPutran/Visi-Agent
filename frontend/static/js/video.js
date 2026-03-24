@@ -1,27 +1,25 @@
-
+// --- CONFIGURATION & STATE ---
+const API_BASE_URL = "http://localhost:8000/api/v1";
 let VIDEO_ID = null;
 let statusInterval = null;
 
+// --- DOM ELEMENTS ---
 const uploadSection = document.getElementById("uploadSection");
 const videoInfo = document.getElementById("videoInfo");
 const actionSection = document.getElementById("actionSection");
 const statusSection = document.getElementById("statusSection");
-const outputSection = document.getElementById("outputSection");
-
-const videoIdSpan = document.getElementById("videoId");
 const statusList = document.getElementById("statusList");
-const videoList = document.getElementById("videoList");
-const output = document.getElementById("output");
+const videoIdSpan = document.getElementById("videoId");
+
+const chatContainer = document.getElementById('chatContainer');
+const chatInput = document.querySelector('.chat-input-area textarea');
+const sendBtn = document.querySelector('.send-btn');
 
 const processBtn = document.getElementById("processBtn");
 const transcriptBtn = document.getElementById("transcriptBtn");
 const summaryBtn = document.getElementById("summaryBtn");
 
-const transcriptSection = document.getElementById("transcriptSection");
-const summarySection = document.getElementById("summarySection");
-const transcriptOutput = document.getElementById("transcriptOutput");
-const summaryOutput = document.getElementById("summaryOutput");
-
+// --- 1. VIDEO MANAGEMENT (UPLOAD/LIST/SELECT) ---
 
 async function uploadVideo() {
     const fileInput = document.getElementById("videoFile");
@@ -32,49 +30,40 @@ async function uploadVideo() {
 
     uploadSection.classList.add("hidden");
 
-    const res = await fetch("http://localhost:8000/api/v1/videos/upload", {
-        method: "POST",
-        body: formData
-    });
-    const data = await res.json();
+    try {
+        const res = await fetch(`${API_BASE_URL}/videos/upload`, {
+            method: "POST",
+            body: formData
+        });
+        const data = await res.json();
 
-    VIDEO_ID = data.video_id;
-    videoIdSpan.textContent = VIDEO_ID;
-    videoInfo.classList.remove("hidden");
-    actionSection.classList.remove("hidden");
+        setGlobalVideoContext(data.video_id);
+        videoInfo.classList.remove("hidden");
+        actionSection.classList.remove("hidden");
+    } catch (e) {
+        alert("Upload failed");
+        uploadSection.classList.remove("hidden");
+    }
 }
-
-// UPLOADED = "uploaded"
-// PROCESSING = "processing"
-// TRANSCRIBING = "transcribing"
-// ANALYZING = "analyzing"
-// INDEXING = "indexing"
-// COMPLETED = "completed"
-// FAILED = "failed"
-// QUEUED = "queued"
-// CANCELLED = "cancelled"
-
 
 async function listVideos() {
     try {
-        const res = await fetch("http://localhost:8000/api/v1/videos/list");
+        const res = await fetch(`${API_BASE_URL}/videos/list`);
         const data = await res.json();
         renderVideoLibrary(data.videos);
     } catch (error) {
         console.error("Failed to fetch videos:", error);
     }
 }
+
 function renderVideoLibrary(videos) {
     const container = document.getElementById("videoListContainer");
+    if (!container) return;
     container.innerHTML = "";
 
     videos.forEach(video => {
-        // Assume 'video' is the metadata object returned from your /list endpoint
         const id = video.id;
-        // The path stored in DB is likely "thumbnails/uuid.jpg"
-        const thumbUrl = video.thumbnail_path 
-            ? `http://localhost:8000/static/${video.thumbnail_path}` 
-            : null;
+        const thumbUrl = video.thumbnail_path ? `${API_BASE_URL.replace('/api/v1', '')}/static/${video.thumbnail_path}` : null;
 
         const item = document.createElement("div");
         item.classList.add("video-item");
@@ -96,184 +85,165 @@ function renderVideoLibrary(videos) {
         container.appendChild(item);
     });
 }
+
 async function selectVideo(id) {
-    VIDEO_ID = id;
-    document.getElementById("videoId").textContent = VIDEO_ID;
+    setGlobalVideoContext(id);
     
-    // Show sections
     videoInfo.classList.remove("hidden");
+    statusSection.classList.remove("hidden");
     
-    // Check status immediately to enable/disable buttons
-    const res = await fetch(`http://localhost:8000/api/v1/videos/${VIDEO_ID}/status`);
+    const res = await fetch(`${API_BASE_URL}/videos/${id}/status`);
     const data = await res.json();
     
-    statusSection.classList.remove("hidden");
     renderStatus(data);
+    updateButtonStates(data.status);
+    listVideos(); // Refresh active class in list
+}
+
+// Helper to keep Chat and Video ID in sync
+function setGlobalVideoContext(id) {
+    VIDEO_ID = id;
+    if(videoIdSpan) videoIdSpan.textContent = id;
+    console.log("Global context set to:", id);
     
-    // Enable buttons if already done
-    const isDone = data.status === "completed" || data.status === "success";
-    const isFailed = data.status === "failed" || data.status === "cancelled";
-    transcriptBtn.disabled = !isDone || isFailed;
-    summaryBtn.disabled = !isDone || isFailed;
-
-    processBtn.disabled = (data.status === "processing" || data.status === "queued" || data.status === "completed" || data.status === "success");
-
-    // Re-render library to show active state
-    listVideos();
+    // Clear chat when switching videos (Optional - like ChatGPT new thread)
+    chatContainer.innerHTML = '<p class="empty-msg">Chatting about video: ' + id + '</p>';
 }
 
-async function deleteVideo(id, event) {
-    event.stopPropagation(); // Prevent selectVideo from firing
-    if (!confirm("Delete this video and all associated data?")) return;
-
-    try {
-        await fetch(`http://localhost:8000/api/v1/videos/${id}`, { method: "DELETE" });
-        if (VIDEO_ID === id) {
-            VIDEO_ID = null;
-            videoInfo.classList.add("hidden");
-            statusSection.classList.add("hidden");
-        }
-        listVideos();
-    } catch (error) {
-        alert("Delete failed");
-    }
-}
-
-
-// Helper to check status manually without starting a long poll
-async function checkCurrentStatus() {
-    const res = await fetch(`http://localhost:8000/api/v1/videos/${VIDEO_ID}/status`);
-    const data = await res.json();
-    statusSection.classList.remove("hidden");
-    renderStatus(data);
-    
-    // Enable buttons if already completed
-    if (data.status === "completed") {
-        transcriptBtn.disabled = false;
-        summaryBtn.disabled = false;
-    }
-}
-
+// --- 2. PROCESSING & STATUS ---
 
 async function processVideo() {
     statusSection.classList.remove("hidden");
-    statusList.innerHTML = "";
-
-    // Disable process button
     processBtn.disabled = true;
-    transcriptBtn.disabled = true;
-    summaryBtn.disabled = true;
 
-    await fetch(`http://localhost:8000/api/v1/videos/${VIDEO_ID}/process`, { method: "POST" });
-
+    await fetch(`${API_BASE_URL}/videos/${VIDEO_ID}/process`, { method: "POST" });
     startStatusPolling();
 }
 
 function startStatusPolling() {
+    if (statusInterval) clearInterval(statusInterval);
     statusInterval = setInterval(async () => {
-        const res = await fetch(`http://localhost:8000/api/v1/videos/${VIDEO_ID}/status`);
+        const res = await fetch(`${API_BASE_URL}/videos/${VIDEO_ID}/status`);
         const data = await res.json();
 
         renderStatus(data);
+        updateButtonStates(data.status);
 
-        if (data.status === "completed") {
+        if (["processed", "failed", "cancelled"].includes(data.status)) {
             clearInterval(statusInterval);
-            // Enable transcript and summary
-            transcriptBtn.disabled = false;
-            summaryBtn.disabled = false;
-        }else if (data.status === "failed") {
-            clearInterval(statusInterval);
-            alert("Video processing failed. Please try again.");
-        }else if (data.status === "cancelled") {
-            clearInterval(statusInterval);
-            alert("Video processing was cancelled.");
-        }else if (data.status === "queued") {
-            clearInterval(statusInterval);
-            alert("Video processing is queued. Please wait.");
-        }else if (data.status === "processing") {
-            // Optionally, you can add a timeout to stop polling after a certain period
-            // setTimeout(() => {
-            //     clearInterval(statusInterval);
-            //     alert("Video processing is taking longer than expected. Please check back later.");
-            //
-
         }
-    
     }, 2000);
 }
 
+function updateButtonStates(status) {
+    const isDone = status === "processed" || status === "failed" || status === "cancelled";
+    const isFailed = status === "failed" || status === "cancelled";
+    transcriptBtn.disabled = !isDone;
+    summaryBtn.disabled = !isDone;
+    processBtn.disabled = (status === "processed" || status === "uploaded");
+
+    if (isFailed) {
+        transcriptBtn.disabled = true;
+        summaryBtn.disabled = true;
+        processBtn.textContent = "Reprocess";
+    }
+    if (status === "processed") {
+        processBtn.textContent = "Processed";
+    }
+}
 
 function renderStatus(data) {
     statusList.innerHTML = "";
-    const thumbHtml = data.thumbnail_path 
-        ? `<img src="/static/${data.thumbnail_path}" class="video-thumbnail" />` 
-        : `<div class="no-thumb">No Preview</div>`;
+    const thumbUrl = data.thumbnail_path ? `${API_BASE_URL.replace('/api/v1', '')}/static/${data.thumbnail_path}` : '';
     const card = document.createElement("div");
     card.classList.add("status-card");
 
     card.innerHTML = `
-        ${thumbHtml}
-        <p><strong>Video ID:</strong> ${data.video_id || VIDEO_ID}</p>
-        <p><strong>Status:</strong> <span style="color:${getStatusColor(data.status)}; font-weight:bold;">${data.status}</span></p>
-        <p><strong>Current Stage:</strong> ${data.current_stage}</p>
+        ${thumbUrl ? `<img src="${thumbUrl}" class="video-thumbnail" />` : `<div class="no-thumb">No Preview</div>`}
+        <p><strong>Status:</strong> <span style="color:${getStatusColor(data.status)};">${data.status}</span></p>
         <div class="progress-bar-container">
-            <div class="progress-bar" style="width:${data.progress * 100 || 0}%;"></div>
-            <span class="progress-text">${data.progress * 100 || 0}%</span>
+            <div class="progress-bar" style="width:${(data.progress || 0) * 100}%;"></div>
         </div>
-        <p><strong>Message:</strong> ${data.message || ""}</p>
-        ${data.error ? `<p style="color:red;"><strong>Error:</strong> ${data.error}</p>` : ""}
+        <p><small>${data.message || ""}</small></p>
     `;
-
     statusList.appendChild(card);
-}
-function renderVideosList(data) {
-    videoList.innerHTML = "";
-
-    const card = document.createElement("div");
-    card.classList.add("status-card");
-
-    for (const video of data.videos) {
-        const videoItem = document.createElement("p");
-        videoItem.textContent = video;
-        card.appendChild(videoItem);
-    }
-
-    card.innerHTML = `
-        <p><strong>Video ID:</strong> ${data.video_id || VIDEO_ID}</p>
-        <p><strong>Status:</strong> <span style="color:${getStatusColor(data.status)}; font-weight:bold;">${data.status}</span></p>
-        <p><strong>Current Stage:</strong> ${data.current_stage}</p>
-        <div class="progress-bar-container">
-            <div class="progress-bar" style="width:${data.progress * 100 || 0}%;"></div>
-            <span class="progress-text">${data.progress * 100 || 0}%</span>
-        </div>
-        <p><strong>Message:</strong> ${data.message || ""}</p>
-        ${data.error ? `<p style="color:red;"><strong>Error:</strong> ${data.error}</p>` : ""}
-    `;
-
-    videoList.appendChild(card);
 }
 
 function getStatusColor(status) {
-    if (status === "processing") return "orange";
-    if (status === "completed") return "green";
-    if (status === "failed") return "red";
-    return "gray";
+    const colors = { processing: "orange", processed: "green", failed: "red", cancelled: "gray" };
+    return colors[status] || "gray";
 }
 
+// --- 3. CHAT FUNCTIONALITY (VISI-AGENT) ---
 
-async function fetchTranscript() {
-    const res = await fetch(`http://localhost:8000/api/v1/videos/${VIDEO_ID}/transcript`);
-    const data = await res.json();
-    transcriptSection.classList.remove("hidden");
-    transcriptOutput.textContent = JSON.stringify(data, null, 2);
+function appendMessage(text, isAi = false) {
+    const emptyMsg = chatContainer.querySelector('.empty-msg, .empty-state');
+    if (emptyMsg) emptyMsg.remove();
+
+    const wrapper = document.createElement('div');
+    wrapper.className = `message-wrapper ${isAi ? 'ai' : 'user'}`;
+    wrapper.innerHTML = `
+        <div class="avatar">${isAi ? 'VA' : 'U'}</div>
+        <div class="message-content">${text}</div>
+    `;
+    chatContainer.appendChild(wrapper);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    return wrapper;
 }
 
-async function fetchSummary() {
-    const res = await fetch(`http://localhost:8000/api/v1/videos/${VIDEO_ID}/summary`);
-    const data = await res.json();
-    summarySection.classList.remove("hidden");
-    summaryOutput.textContent = data.summary;
+async function handleSendMessage() {
+    const question = chatInput.value.trim();
+    if (!question) return;
+    if (!VIDEO_ID) return alert("Please select or upload a video first!");
+
+    appendMessage(question, false);
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+
+    // Add thinking state
+    const aiMsgWrapper = appendMessage("Thinking...", true);
+    const contentDiv = aiMsgWrapper.querySelector('.message-content');
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/query/ask`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                video_id: VIDEO_ID,
+                question: question,
+                include_timestamps: true,
+                query_type: "natural_language"
+            })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            contentDiv.innerText = data.answer;
+            if (data.timestamps?.length > 0) {
+                const tsHtml = data.timestamps.map(ts => `<button class="ts-badge" onclick="seekTo(${ts})">${ts}s</button>`).join('');
+                contentDiv.innerHTML += `<div class="ts-container">${tsHtml}</div>`;
+            }
+        } else {
+            contentDiv.innerText = "Error: " + (data.detail || "I couldn't process that.");
+        }
+    } catch (error) {
+        contentDiv.innerText = "Connection lost. Is the backend running?";
+    }
 }
 
-// Initial load
+// --- EVENT LISTENERS ---
+
+chatInput.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + "px";
+});
+
+sendBtn.addEventListener('click', handleSendMessage);
+chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleSendMessage();
+    }
+});
+
 window.onload = listVideos;

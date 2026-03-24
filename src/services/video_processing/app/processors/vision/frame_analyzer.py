@@ -2,7 +2,7 @@ import base64
 from typing import Dict, List
 import cv2
 import numpy as np
-from src.services.llm_service.app.mcp_service import MCPManager
+from src.services.llm_service.app.mcp_service import MCPService
 from src.shared.logging.logger import get_logger
 import tempfile
 import asyncio 
@@ -30,7 +30,7 @@ class FrameBatch:
 
 
 class VideoProcessor:
-    def __init__(self, mcp_manager: MCPManager = None) -> None:
+    def __init__(self, mcp_manager: MCPService = None) -> None:
         self.mcp_manager = mcp_manager
 
     def encode_image_to_base64(self, frame: np.ndarray) -> str:

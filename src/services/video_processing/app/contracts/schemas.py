@@ -5,13 +5,8 @@ from typing import Optional, List, Dict, Any
 from datetime import datetime
 from enum import Enum
 from src.shared.contracts.video_metadata import VideoFormat
+from src.services.api_gateway.app.schemas.video_schemas import VideoStatus
 
-
-class VideoStatus(str, Enum):
-    QUEUED = "queued"
-    PROCESSING = "processing"
-    COMPLETED = "completed"
-    FAILED = "failed"
 
 
 class ProcessingStage(str, Enum):
@@ -24,6 +19,8 @@ class ProcessingStage(str, Enum):
     INITIATING = "initiating"
     NOT_STARTED = "not_started"
     COMPLETED = "completed"
+    FAILED = "failed"
+    QUEUED = "queued"
 
 
 class VideoProcessingRequest(BaseModel):
@@ -52,7 +49,7 @@ class VideoProcessingRequest(BaseModel):
 class ProcessingStageInfo(BaseModel):
     """Information about a processing stage"""
     stage: ProcessingStage = Field(..., description="Processing stage")
-    status: str = Field(..., description="Stage status")
+    status: VideoStatus = Field(..., description="Stage status")
     start_time: Optional[datetime] = Field(
         None, description="Stage start time")
     end_time: Optional[datetime] = Field(None, description="Stage end time")
@@ -67,7 +64,7 @@ class ProcessingStageInfo(BaseModel):
 class VideoProcessingStatus(BaseModel):
     """Schema for video processing status"""
     video_id: str = Field(..., description="Video ID")
-    status: str = Field(..., description="Overall status")
+    status: VideoStatus = Field(..., description="Overall status")
     current_stage: Optional[ProcessingStage] = Field(
         None, description="Current processing stage")
     progress: float = Field(0.0, ge=0.0, le=1.0,

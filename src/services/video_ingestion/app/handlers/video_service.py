@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 from typing import Dict, List, Optional, Any, Tuple
 from fastapi import UploadFile
+from src.services.llm_service.app.mcp_service import MCPService
 from src.shared.contracts.video_metadata import VideoMetadata, VideoFormat
 from src.shared.storage.storage_service import StorageService
 from src.shared.storage.cache_service import VideoCacheService
@@ -22,7 +23,7 @@ logger = get_logger(__name__)
 
 
 class VideoPipeline:
-    def __init__(self, mcp_manager) -> None:
+    def __init__(self, mcp_manager: MCPService) -> None:
         self.mcp_manager = mcp_manager
         self.video_processor = VideoProcessor(mcp_manager)
         self.text_processor = TextSummarizer(mcp_manager)
@@ -32,40 +33,59 @@ class VideoPipeline:
         return await self.text_processor.generate_summary(video_id, transcript, frames_data)
 
     async def process(self, video_path: str, video_id: str,
-                      enable_vision_analysis: bool = True) -> Dict[str, Any]:
+                      enable_vision_analysis: bool = True, callback=None) -> Dict[str, Any]:
         """Process video through all stages"""
         logger.info(f"Starting pipeline for {video_id}")
 
         audio_path = None
-        video = None
         error = None
         result = {}
 
         try:
+            # --- STAGE: AUDIO ---
+            if callback:
+                await callback(ProcessingStage.AUDIO_EXTRACTION, 0.1, "Extracting audio...")
+                logger.debug(f"Updating status for {video_id}: {ProcessingStage.AUDIO_EXTRACTION} | Data: 0.1")
             audio_path = await self.extract_audio(video_path)
 
-            # 1. Transcribe audio
-            logger.info(f"Transcribing audio for {video_id}")
+            # --- STAGE: START CONCURRENT TASKS ---
+            if callback:
+                await callback(ProcessingStage.TRANSCRIPTION, 0.3, "Analyzing media content...")
+                logger.debug(f"Updating status for {video_id}: {ProcessingStage.TRANSCRIPTION} | Data: 0.3")
 
-            transcript_task = asyncio.to_thread(self.transcriber.transcribe_audio, audio_path)
 
-            # 2. Analyze frames (if enabled)
+            # Run transcription in thread (since it's likely CPU bound/wrapper)
+            transcript_task = asyncio.to_thread(
+                self.transcriber.transcribe_audio, audio_path)
+
             frames_task = None
             if enable_vision_analysis:
-                logger.info(f"Analyzing frames for {video_id}")
+                # Start vision analysis in background
                 frames_task = asyncio.create_task(
                     self.video_processor.process_video(video_id, video_path)
                 )
 
+            # Wait for transcription first
             transcript = await transcript_task
+
+            # Update progress after transcription is done
+            if callback:
+                await callback(ProcessingStage.VISION_ANALYSIS, 0.6, "Finalizing visual analysis...")
+                logger.debug(f"Updating status for {video_id}: {ProcessingStage.VISION_ANALYSIS} | Data: 0.6")
+
+            # Now wait for frames (it might already be done)
             frames_data = await frames_task if frames_task else None
 
-            # 3. Generate summary
-            logger.info(f"Generating summary for {video_id}")
+            # --- STAGE: SUMMARY ---
+            if callback:
+                await callback(ProcessingStage.SUMMARIZATION, 0.8, "Generating AI summary...")
+                logger.debug(f"Updating status for {video_id}: {ProcessingStage.SUMMARIZATION} | Data: 0.8")
+
             summary = await self.generate_summary(video_id, transcript, frames_data)
 
-            # 4. Index for search (optional)
-            # await index_video_content(video_id, transcript, frames_data)
+            if callback:
+                await callback(ProcessingStage.COMPLETED, 1.0, "Processing complete!")
+                logger.debug(f"Updating status for {video_id}: {ProcessingStage.COMPLETED} | Data: 1.0")
 
             result = {
                 "video_id": video_id,
@@ -75,21 +95,25 @@ class VideoPipeline:
                 "success": True
             }
 
-            logger.info(f"Pipeline completed for {video_id}")
-            
         except Exception as e:
+            logger.error(f"Pipeline failed for {video_id}: {str(e)}")
             error = e
-        finally:
-            if video:
-                video.close()
+            # If you need to update DB on failure:
+            if callback:
+                await callback(ProcessingStage.FAILED, 0.0, f"Error: {str(e)}")
+                logger.debug(f"Updating status for {video_id}: {ProcessingStage.FAILED} | Data: 0.0")
 
+        finally:
+            # Cleanup
             if audio_path and os.path.exists(audio_path):
-                # Clean up temporary audio file
-                os.unlink(audio_path)
+                try:
+                    os.unlink(audio_path)
+                except Exception as e:
+                    logger.error(f"Failed to delete temp audio: {e}")
 
             if error:
-                raise error
-            
+                raise error  # Re-raise after cleanup
+
             return result
 
     async def extract_audio(self, video_path: str, moviepy=False) -> str:
@@ -112,15 +136,16 @@ class VideoPipeline:
             # Check if the process is still running
             if process.returncode is None:
                 try:
-                    logger.warning(f"Killing FFmpeg process for {video_path} due to cancellation")
+                    logger.warning(
+                        f"Killing FFmpeg process for {video_path} due to cancellation")
                     process.kill()
                     # to clear the zombie from the OS process table
-                    await process.wait() 
+                    await process.wait()
                 except ProcessLookupError:
                     # Process already died on its own
                     pass
-            raise # Re-raise to let the worker exit
-        
+            raise  # Re-raise to let the worker exit
+
         return audio_path
 
     async def extract_thumbnail(self, video_path: str, thumbnail_path: str):
@@ -143,7 +168,6 @@ class VideoPipeline:
             raise
         except Exception as e:
             logger.error(f"Thumbnail extraction failed: {e}")
-        
 
     def get_video_duration(self, video_path: str) -> float:
         """Get video duration in seconds"""
@@ -194,14 +218,13 @@ class VideoPipeline:
         """Get video format (e.g., mp4, avi)"""
         # Placeholder implementation
         return VideoFormat.MP4
-    
 
     async def get_metadata(self, video_path: str, video_id: str, file: Any) -> VideoMetadata:
         """Extract and return video metadata"""
 
         fname = pathlib.Path(video_path).name
         thm_path = os.path.join("thumbnails", f"{video_id}.jpg")
-        
+
         # Extract thumbnail
         await self.extract_thumbnail(video_path,  os.path.join(os.path.dirname(video_path), "..", thm_path))
 
@@ -230,7 +253,7 @@ class VideoPipeline:
 
 
 class VideoService:
-    def __init__(self, storage_service: StorageService, queue_provider: QueueService, cache_service: VideoCacheService, mcp_service):
+    def __init__(self, storage_service: StorageService, queue_provider: QueueService, cache_service: VideoCacheService, mcp_service: MCPService):
         self.storage = storage_service
         self.video_queue = queue_provider
         self.cache_service = cache_service
@@ -246,16 +269,15 @@ class VideoService:
         logger.info(f"Getting status for video: {video_id}")
         status = await self.cache_service.get_video_status(video_id)
 
-        
         if status:
             return status
         else:
             meta_data = await self.storage.get_video_metadata(video_id)
 
-            if meta_data:
+            if meta_data and meta_data.process_end_time is not None:
                 return VideoProcessingStatus(
                     video_id=video_id,
-                    status=VideoStatus.COMPLETED,
+                    status=VideoStatus.PROCESSED,
                     current_stage=ProcessingStage.COMPLETED,
                     progress=1,
                     estimated_completion=None,
@@ -297,7 +319,7 @@ class VideoService:
                         raise ValueError(
                             f"Metadata not found for video {job['video_id']}")
 
-                    async with self.semaphore: # type: ignore
+                    async with self.semaphore:  # type: ignore
                         await self.process_video(
                             job["video_id"],
                             video_metadata.storage_path,
@@ -306,7 +328,8 @@ class VideoService:
 
                 except Exception as e:
                     logger.error(f"Worker {worker_id} error: {str(e)}")
-                    break
+                    await asyncio.sleep(1) 
+                    continue
         # This is triggered by task.cancel() in the lifespan
         except asyncio.CancelledError:
             logger.info(
@@ -320,7 +343,8 @@ class VideoService:
         # Create the semaphore here, inside the active event loop
         if self.semaphore is None:
             self.semaphore = asyncio.Semaphore(2)
-            logger.info("GPU Semaphore initialized within the active event loop.")
+            logger.info(
+                "GPU Semaphore initialized within the active event loop.")
 
         workers = []
         for i in range(1):
@@ -340,7 +364,7 @@ class VideoService:
         try:
             # Wait for workers to acknowledge cancellation
             await asyncio.wait_for(
-                asyncio.gather(*self.workers, return_exceptions=True), 
+                asyncio.gather(*self.workers, return_exceptions=True),
                 timeout=5.0
             )
         except asyncio.TimeoutError:
@@ -355,14 +379,14 @@ class VideoService:
         #     "enable_vision_analysis": enable_vision_analysis
         # })
         status = VideoProcessingStatus(
-                            video_id=video_id,
-                            status=VideoStatus.QUEUED,
-                            current_stage=ProcessingStage.NOT_STARTED,
-                            progress=0.0,
-                            estimated_completion=None,
-                            message="Video queued for processing",
-                            error=None
-                        )
+            video_id=video_id,
+            status=VideoStatus.UPLOADED,
+            current_stage=ProcessingStage.QUEUED,
+            progress=0.0,
+            estimated_completion=None,
+            message="Video queued for processing",
+            error=None
+        )
         await self.set_video_status(video_id, status)
         await self.video_queue.push({
             "video_id": video_id,
@@ -377,47 +401,70 @@ class VideoService:
                             ) -> Dict[str, Any]:
         """Process a video through the pipeline"""
 
-        logger.debug(
-            f"Initiating processing for video {video_id} at path {video_path}")
-        processing_status = await self.cache_service.get_video_status(video_id)
-
-        logger.debug(f"Processing Status:: {processing_status}")
-        if not processing_status:
+        # Fetch initial status from cache
+        status_obj = await self.cache_service.get_video_status(video_id)
+        
+        if not status_obj:
             raise ValueError(f"Video {video_id} not found in processing queue")
+
+        async def progress_callback(stage, progress, message):
+            await self._update_status(
+                video_id,
+                status_obj,
+                VideoStatus.PROCESSING,
+                data={
+                    "current_stage": stage,
+                    "progress": progress,
+                    "message": message
+                }
+            )
+            await asyncio.sleep(0.5)
+
         try:
-            # Update status
-            await self._update_status(video_id, processing_status, VideoStatus.PROCESSING)
+            # 1. Trigger the INITIATING stage
+            await self._update_status(video_id, status_obj, VideoStatus.PROCESSING,
+                                      data={"current_stage": ProcessingStage.INITIATING,
+                                            "progress": 0.05,
+                                            "message": "Initializing pipeline..."})
 
-            logger.info(f"Processing video {video_id}: {video_path}")
-
-            # Run processing pipeline
+            # 2. Run pipeline (This will call progress_callback many times)
             result = await self.pipeline.process(
                 video_path=video_path,
                 video_id=video_id,
                 enable_vision_analysis=enable_vision_analysis,
-
+                callback=progress_callback
             )
 
-            if save_results:
-                # Save results
+            # 3. Save Results
+            if save_results and result.get("success"):
+                # Update message before saving
+                await self._update_status(video_id, status_obj, VideoStatus.PROCESSING,
+                                          data={"current_stage": ProcessingStage.COMPLETED,
+                                                "message": "Saving results..."})
                 await self._save_processing_results(video_id, result)
 
-            # Auto-load to MCP
-            if auto_load_mcp and result.get("success", False):
+            # MCP Integration
+            if auto_load_mcp and result.get("success"):
                 mcp_result = await self.mcp_manager.load_video(video_id)
-                result["mcp_loaded"] = mcp_result["success"]
-                if mcp_result["success"]:
+                result["mcp_loaded"] = mcp_result.get("success", False)
+                if result["mcp_loaded"]:
                     logger.info(f"Auto-loaded video {video_id} to MCP")
 
-            # Update status
-            await self._update_status(video_id, processing_status, VideoStatus.COMPLETED)
+            # 4. Final Success
+            await self._update_status(video_id, status_obj, VideoStatus.PROCESSED)
 
-            logger.debug(f"Video {video_id} processed successfully")
             return result
 
         except Exception as e:
-            logger.error(f"Error processing video {video_id}: {str(e)}")
-            await self._update_status(video_id, processing_status, VideoStatus.FAILED, data={"error": str(e)})
+            logger.error(
+                f"Pipeline Failed for {video_id}: {str(e)}", exc_info=True)
+            # Ensure the DB/Cache reflects the failure
+            await self._update_status(
+                video_id,
+                status_obj,
+                VideoStatus.FAILED,
+                data={"error": str(e), "current_stage": "failed"}
+            )
             raise e
 
     async def process_video_batch(self, video_ids: List[str], video_paths: List[str],
@@ -541,52 +588,52 @@ class VideoService:
             "timestamp": datetime.now()
         }
 
-    # Private methods
-    async def _update_status(self, video_id: str, status_obj: VideoProcessingStatus, status: VideoStatus,
+    async def _update_status(self,
+                             video_id: str,
+                             status_obj: VideoProcessingStatus,
+                             status: VideoStatus,
                              data: Optional[Dict] = None):
-        """Update video processing status"""
+
+        logger.debug(f"Updating status for {video_id}: {status} | Data: {data}")
         if not status_obj:
             return
-        # Update status object
+
         status_obj.status = status
         status_obj.updated_at = datetime.now()
 
-        status_obj.current_stage = data.get(
-            "current_stage") if data and "current_stage" in data else status_obj.current_stage
-        status_obj.progress = data.get(
-            "progress", 0) if data and "progress" in data else status_obj.progress
-        status_obj.estimated_completion = data.get(
-            "estimated_completion") if data and "estimated_completion" in data else status_obj.estimated_completion
-        status_obj.message = data.get(
-            "message") if data and "message" in data else status_obj.message
-        status_obj.error = data.get(
-            "error") if data and "error" in data else status_obj.error
-
         if data:
-            status_obj.updated_at = datetime.now()
+            status_obj.current_stage = data.get(
+                "current_stage", status_obj.current_stage)
+            status_obj.progress = data.get("progress", status_obj.progress)
+            status_obj.message = data.get("message", status_obj.message)
+            status_obj.error = data.get("error", status_obj.error)
+            status_obj.estimated_completion = data.get(
+                "estimated_completion", status_obj.estimated_completion)
 
-        # Update in-memory
-        if status == VideoStatus.COMPLETED or status == VideoStatus.FAILED:
-            # Build final status
+        if status == VideoStatus.PROCESSED or status == VideoStatus.FAILED:
             status_obj.progress = 1.0
-            status_obj.message = "Processing completed" if status == VideoStatus.COMPLETED else "Processing failed"
-            status_obj.error = None if status == VideoStatus.COMPLETED else status_obj.error
-            status_obj.estimated_completion = datetime.now()
-            metadata = await self.storage.get_video_metadata(video_id)  # Refresh metadata in case of updates
+            # If no message was passed in 'data', set a default
+            if not data or "message" not in data:
+                status_obj.message = "Processing completed" if status == VideoStatus.PROCESSED else "Processing failed"
 
-            if metadata and isinstance(metadata, VideoMetadata):
+            status_obj.estimated_completion = datetime.now()
+
+            # Sync to permanent storage
+            metadata = await self.storage.get_video_metadata(video_id)
+            if metadata:
                 metadata.process_start_time = status_obj.created_at
-                metadata.process_end_time = status_obj.updated_at
+                metadata.process_end_time = datetime.now()
+                metadata.status = status
                 await self.storage.save_video_metadata(metadata)
 
-        # Update cache
+        # CRITICAL: Always push to cache so the frontend sees the update
         await self.cache_service.set_video_status(video_id, status_obj)
 
     async def _save_processing_results(self, video_id: str, result: Dict[str, Any]):
         """Save processing results to storage"""
 
         logger.debug(f"Saving processing results for video {video_id}...")
-        
+
         # Save transcript
         if "transcript" in result:
             await self.storage.save_transcript(video_id, result["transcript"])
@@ -602,4 +649,5 @@ class VideoService:
         # Cache results
         await self.cache_service.set_video_results(video_id, result)
 
-        logger.debug(f"Processing results for video {video_id} saved successfully")
+        logger.debug(
+            f"Processing results for video {video_id} saved successfully")
