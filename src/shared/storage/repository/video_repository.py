@@ -4,10 +4,13 @@ from typing import List, Optional, BinaryIO, Dict, Any
 from io import BytesIO
 from os import path
 from fastapi import UploadFile
+from langchain_community.vectorstores import FAISS
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from src.services.video_processing.app.contracts.schemas import VideoProcessingStatus
 from src.shared.config.settings import settings
 from src.shared.storage.base.base_cache import CacheProvider
-from src.shared.storage.base.base_vector_store import VectorStoreProvider
+from src.shared.storage.base.base_vector_store import VectorStore, VectorStoreProvider
 from src.shared.contracts.video_metadata import VideoMetadata
 from src.shared.storage.base.base_storage import StorageProvider
 from src.shared.logging.logger import get_logger
@@ -32,7 +35,11 @@ class VideoRepository:
         # Now json.dumps will work because there are no more datetime objects
         content = BytesIO(json.dumps(metadata_dict, indent=2).encode('utf-8'))
 
-        return await self.storage.save_file(content, metadata_filename)
+        await self.storage.save_file(content, metadata_filename)
+
+        await self.set_video_metadata(metadata.id, metadata)
+
+        return metadata_filename
 
     async def save_raw_video(self, video_id: str, file_stream: BinaryIO):
         """Handles the actual file persistence"""
@@ -361,3 +368,61 @@ class VideoRepository:
                 'cache': len(cache)
             }
         }
+
+    async def save_embeddings(self, video_id: str, embeddings: List[Dict[str, Any]]) -> bool:
+        """Save vector embeddings for a video"""
+        try:
+            await self.vector_store.upsert_vectors(video_id, embeddings)
+            return True
+        except Exception as e:
+            logger.error(f"Error saving embeddings for {video_id}: {str(e)}")
+            return False
+
+
+    async def clear_storage(self) -> bool:
+        """Clear all files from storage - USE WITH CAUTION"""
+        files = await self.storage.list_files()
+        success = True
+        for file_info in files:
+            success = success and await self.storage.delete_file(file_info['path'])
+        return success
+    
+    async def get_vector_store(self, video_id: str) -> VectorStore:
+        """Get the standardized path for the vector store index file"""
+        return await self.vector_store.get_vector_store(video_id)
+    
+    async def vector_store_exists(self, video_id: str) -> bool:
+        """Check if vector store index file exists in storage"""
+        return await self.vector_store.vector_store_exists(video_id)
+
+    async def _get_or_create_vector_store(self, video_id: str):   
+        # Check if vector store already exists
+        if await self.vector_store.vector_store_exists(video_id):
+            return True
+        
+        # Create new vector store
+        # Load transcript and frames data
+        transcript_segments = await self.get_transcript(video_id)
+        frames_data = await self.get_frames_data(video_id)
+
+        if transcript_segments is None or frames_data is None:
+            logger.error(f"Cannot create vector store for {video_id}: Missing transcript or frames data")
+            return False
+
+
+        docs = []
+        # Combine creation logic to avoid code duplication
+        for seg in transcript_segments:
+            docs.append(Document(
+            page_content=f"Audio Transcript [{seg['start']:.1f}s]: {seg['text']}",
+            metadata={"type": "transcript", "start": seg['start'], "end": seg['end']}
+        ))
+        for frame in frames_data:
+            docs.append(Document(
+                page_content=f"Visual Scene [{frame['timestamp']:.1f}s]: {frame['description']}",
+                metadata={"type": "visual", "timestamp": frame['timestamp']}
+            ))
+        
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        return FAISS.from_documents(text_splitter.split_documents(docs), self.embeddings)
+

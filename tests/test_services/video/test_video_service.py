@@ -1,5 +1,5 @@
 from src.services.video_ingestion.app.handlers.video_service import VideoService
-from src.services.llm_service.app.mcp_service import MCPManager
+from src.services.llm_service.app.llm_service import MCPManager
 from src.shared.storage.factories.blob_storage_service import StorageService
 from src.shared.storage.providers.cache.redis_cache import CacheService
 from src.shared.logging.logger import get_logger

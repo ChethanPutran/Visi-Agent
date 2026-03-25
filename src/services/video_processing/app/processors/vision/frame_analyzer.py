@@ -1,8 +1,8 @@
 import base64
-from typing import Dict, List
+from typing import Any, Dict, List
 import cv2
 import numpy as np
-from src.services.llm_service.app.mcp_service import MCPService
+from src.services.llm_service.app.llm_service import LLMService
 from src.shared.logging.logger import get_logger
 import tempfile
 import asyncio 
@@ -30,22 +30,70 @@ class FrameBatch:
 
 
 class VideoProcessor:
-    def __init__(self, mcp_manager: MCPService) -> None:
-        self.mcp_manager = mcp_manager
+    def __init__(self, llm_service: LLMService) -> None:
+        self.llm_service = llm_service
 
-    def encode_image_to_base64(self, frame):
+    def _encode_to_base64(self, frame):
         """Convert a frame to base64 for GPT-4 Vision API"""
         # Using a quality of 80 is usually the sweet spot for LLMs
         _, buffer = cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
         return base64.b64encode(buffer).decode('utf-8')
 
-    def _check_mcp(self):
-        assert self.mcp_manager is not None, "MCP Manager is not set!"
+    def _check_llm(self):
+        assert self.llm_service is not None, "LLM Service is not set!"
 
-    def analyze_frames_batch(self, video_id, frame_batch):
-        self._check_mcp()
-        return self.mcp_manager.analyze_frames_batch(video_id, frame_batch)
+    # def analyze_frames_batch(self, video_id, frame_batch):
+    #     self._check_llm()
+    #     return self.llm_service.analyze_frames_batch(video_id, frame_batch)
     
+    def get_frames_for_segments(self, video_path: str, segments: List[Dict[str, Any]], sample_rate: float = 1.0):
+        """
+        Extracts a batch of frames for each caption segment.
+        sample_rate: seconds between frame captures within a segment.
+        """
+        cap = cv2.VideoCapture(video_path)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        results = []
+
+        for segment in segments:
+            start_s, end_s = segment['start'], segment['end']
+            frames_in_segment = []
+            
+            # Jump to start of segment
+            cap.set(cv2.CAP_PROP_POS_MSEC, start_s * 1000)
+            
+            # Calculate how many frames to skip to hit our sample rate
+            skip_frames = int(fps * sample_rate)
+            current_ms = start_s * 1000
+            
+            while current_ms < (end_s * 1000):
+                ret, frame = cap.read()
+                if not ret: break
+                
+                # Resize for CLIP/LLM (CLIP usually takes 224x224 or similar)
+                resized = cv2.resize(frame, (512, 512), interpolation=cv2.INTER_AREA)
+                
+                frames_in_segment.append({
+                    "timestamp": current_ms / 1000.0,
+                    "image": resized, # Keep raw for CLIP
+                    "base64": self._encode_to_base64(resized) # For LLM Vision
+                })
+                
+                # Skip to next sample point
+                current_ms += (sample_rate * 1000)
+                cap.set(cv2.CAP_PROP_POS_MSEC, current_ms)
+
+            results.append({
+                "start": start_s,
+                "end": end_s,
+                "text": segment.get('text', ''),
+                "frame_batch": frames_in_segment
+            })
+
+        cap.release()
+        return results
+
+ 
     def extract_frames_from_caption_segments(self, video_id: str, video_path: str, segments: List, use_llm: bool):
         cap = cv2.VideoCapture(video_path)
         fps = cap.get(cv2.CAP_PROP_FPS)
@@ -242,7 +290,7 @@ class VideoProcessor:
 
         return frames_data    
 
-    async def process_video(self, video_id, video_path: str, batch_size: int = 5, use_llm: bool = True) -> List[Dict[str,str]]:
+    async def process_video(self, video_id, video_path: str, batch_size: int = 5, use_llm: bool = False, store_frames: bool = False) -> List[Dict[str,str]]:
         """
         Process a video file: extract audio, transcribe, analyze frames, and generate summary.
 
@@ -250,12 +298,13 @@ class VideoProcessor:
             video_path: Path to the video file
             use_gpt4v: Whether to use GPT-4 Vision for frame analysis
             batch_size: Number of frames to send in a single API call
+            store_frames: Whether to store the actual frame images
 
         Returns:
             tuple: (transcript_segments, frames_data, summary)
         """
-        if use_llm:
-            self._check_mcp()
+        # if use_llm:
+        #     self._check_mcp()
 
             
         logger.info(f"Processing video: {video_path}")
@@ -286,15 +335,23 @@ class VideoProcessor:
                 })
 
                 # Extract the information in the video chunk using llm if asked
-                if use_llm:
-                    # Process batch when it reaches batch_size
-                    if len(frame_batch) >= batch_size:
-                        description = self.analyze_frames_batch(
-                            video_id, frame_batch)
-                        time_range = f"{frame_batch[0]['timestamp']:.2f}-{frame_batch[-1]['timestamp']:.2f}"
-                        frames_data.append({"time_range":time_range,"description":description})
-                        frame_batch = []
-                        break
+                # Process batch when it reaches batch_size
+                if len(frame_batch) >= batch_size:
+                    if use_llm:
+                        description = self.analyze_frames_batch(video_id, frame_batch)
+                    else:
+                        description = ''
+
+                    frames_data.append(
+                        {
+                        "start_time":frame_batch[0]['timestamp'],
+                            "end_time":frame_batch[-1]['timestamp'],
+                            "time_range": f"{frame_batch[0]['timestamp']:.2f}-{frame_batch[-1]['timestamp']:.2f}",
+                            "description": description,
+                            "frames": frame_batch if store_frames else []
+                        })
+                    frame_batch = []
+                    break
 
             count += 1
 
@@ -306,9 +363,14 @@ class VideoProcessor:
             else:
                 description = ''
 
-            time_range = f"{frame_batch[0]['timestamp']}-{frame_batch[-1]['timestamp']}"
-            frames_data.append({"time_range":time_range,"description":description})
-
+            frames_data.append(
+                {
+                "start_time":frame_batch[0]['timestamp'],
+                    "end_time":frame_batch[-1]['timestamp'],
+                    "time_range": f"{frame_batch[0]['timestamp']:.2f}-{frame_batch[-1]['timestamp']:.2f}",
+                    "description": description,
+                    "frames": frame_batch if store_frames else []   
+                })
         cap.release()
 
         # Sort frames by timestamp
@@ -317,21 +379,21 @@ class VideoProcessor:
         return frames_data
 
 
-if __name__ == "__main__":
-    from src.shared.config.settings import LLMModel, StorageType
-    from src.shared.storage.factories.blob_storage_service import StorageService
+# if __name__ == "__main__":
+#     from src.shared.config.settings import LLMModel, StorageType
+#     from src.shared.storage.factories.blob_storage_service import StorageService
 
-    # Example usage
-    se = StorageService(StorageType.LOCAL)
-    mcp_manager = MCPService(se, LLMModel.GEMINI)
-    video_processor = VideoProcessor(mcp_manager)
-    video_path = "path_to_your_video.mp4"
+#     # Example usage
+#     se = StorageService(StorageType.LOCAL)
+#     llm_service = MCPService(se, LLMModel.GEMINI)
+#     video_processor = VideoProcessor(llm_service)
+#     video_path = "path_to_your_video.mp4"
 
-    VIDEO_ID = "8bf5d8af-aa6d-4ae1-818a-68ac6012b58d"
+#     VIDEO_ID = "8bf5d8af-aa6d-4ae1-818a-68ac6012b58d"
     
-    # Run the video processing in an async context
-    async def main():
-        frames_data = await video_processor.process_video(VIDEO_ID, video_path, use_llm=True)
-        print(frames_data)
+#     # Run the video processing in an async context
+#     async def main():
+#         frames_data = await video_processor.process_video(VIDEO_ID, video_path, use_llm=True)
+#         print(frames_data)
 
-    asyncio.run(main())
+#     asyncio.run(main())

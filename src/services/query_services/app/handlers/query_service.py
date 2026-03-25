@@ -1,19 +1,19 @@
 from datetime import datetime
 from typing import Dict, Any
 
-from src.shared.storage.providers.cache.redis_cache import ChatCacheService
+from src.shared.storage.repository.chat_repository import ChatRepository
 from src.shared.logging.logger import get_logger
-from src.services.llm_service.app.mcp_service import MCPService
+from src.services.llm_service.app.llm_service import LLMService
 
 logger = get_logger(__name__)
 
 class QueryService:
     """Service for handling query operations"""
 
-    def __init__(self, mcp_service: MCPService, cache_service: ChatCacheService):
+    def __init__(self, llm_service: LLMService, repository: ChatRepository):
         # Initialize any required resources, e.g., database connections
-        self.mcp_service = mcp_service
-        self.cache_service = cache_service
+        self.llm_service = llm_service
+        self.repository = repository
 
     async def initialize(self):
         """Initialize any resources if needed"""
@@ -40,7 +40,7 @@ class QueryService:
                            max_results: int
                            ):
         
-        history = await self.cache_service.get_chat_history_key(video_id)  
+        history = await self.repository.get_chat_history(video_id)  
 
         if history:
             messages = history + [
@@ -52,7 +52,7 @@ class QueryService:
                 {"role": "user", "content": question}
             ]
             
-        result = await self.mcp_service.chat(
+        result = await self.llm_service.chat(
             question=question,
             chat_history=messages,
             video_id=video_id)
@@ -67,14 +67,14 @@ class QueryService:
 
         messages.append({"role": "assistant", "content": result["answer"]})
         
-        await self.cache_service.set_chat_history_key(video_id, messages)
+        await self.repository.set_chat_history(video_id, messages)
          
         return result
     
     async def get_chat_history(self,
                            video_id: str):
         
-        history = await self.cache_service.get_chat_history_key(video_id) 
+        history = await self.repository.get_chat_history(video_id) 
 
         # Exclude the system prompt and return only user-assistant interactions
         history_except_first = history[1:] if history and len(history) > 1 else [] 

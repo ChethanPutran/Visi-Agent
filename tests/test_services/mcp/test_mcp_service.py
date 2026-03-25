@@ -8,7 +8,7 @@ logger = get_logger(__name__)
 
 def test_video_service():
     from src.services.video_ingestion.app.handlers.video_service import VideoService
-    from src.services.llm_service.app.mcp_service import MCPManager
+    from src.services.llm_service.app.llm_service import MCPManager
     from src.shared.storage.factories.blob_storage_service import StorageService
 
     store = StorageService("local")
@@ -17,7 +17,7 @@ def test_video_service():
 
 async def test_mcp_service():
     from src.shared.storage.factories.blob_storage_service import StorageService
-    from src.services.llm_service.app.mcp_service import MCPManager
+    from src.services.llm_service.app.llm_service import MCPManager
 
     store = StorageService("local")
     mcp = MCPManager(store, model="google")

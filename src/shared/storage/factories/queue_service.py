@@ -16,7 +16,7 @@ class QueueService:
     _instance = None
     _provider:QueueProvider
 
-    def __init__(self, provider_type: str, queue_name: str):
+    def __init__(self, provider_type: QueueProviders, queue_name: str):
         if self._initialized:
             return
         
@@ -35,7 +35,7 @@ class QueueService:
         self._initialized = True
 
     # Singleton pattern   
-    def __new__(cls, queue_provider: str):
+    def __new__(cls, queue_provider: QueueProviders, queue_name: str):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance._initialized = False

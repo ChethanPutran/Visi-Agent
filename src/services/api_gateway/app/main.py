@@ -9,14 +9,13 @@ from fastapi.staticfiles import StaticFiles
 
 from src.shared.config.settings import settings
 from src.shared.logging.logger import get_logger
-from src.shared.storage.providers.cache.redis_cache import ChatCacheService, VideoCacheService
-from src.shared.storage.queue_service import QueueService
+from src.shared.storage.factories import QueueService, BlobStorageService, VectorStoreService, CacheService
 from src.shared.storage.repository.video_repository import VideoRepository
 from src.shared.storage.factories.blob_storage_service import BlobStorageService
 from src.shared.storage.factories.vector_storage_service import VectorStoreService
 from src.services.query_services.app.handlers.query_service import QueryService
 from src.services.video_ingestion.app.handlers.video_service import VideoService
-from src.services.llm_service.app.mcp_service import MCPService
+from src.services.llm_service.app.llm_service import MCPService
 from src.services.api_gateway.app.routes import (
     home_routes,
     video_routes,
@@ -36,25 +35,23 @@ async def lifespan(app: FastAPI):
     # Inside your dependency injection container or main.py
     storage_service = BlobStorageService(settings.STORAGE_PROVIDER) # Singleton Factory
     vector_provider = VectorStoreService(settings.VECTOR_PROVIDER) # Singleton Factory
-    queue_service = QueueService(settings.QUEUE_PROVIDER, "video_queue")
+    queue_service = QueueService(settings.QUEUE_PROVIDER, settings.QUEUE_NAME)  # Singleton Factory
+    cache_service = CacheService(settings.CACHE_PROVIDER) # Singleton Factory
 
-    video_cache_service = VideoCacheService(settings.CACHE_PROVIDER)
-    chat_cache_service = ChatCacheService(settings.CACHE_PROVIDER)
 
     mcp = MCPService(storage_service, settings.LLM_MODEL)
-    video_repo = VideoRepository(storage=storage_service.provider,vector_store=vector_provider.provider)
-    video_service = VideoService(video_repo, queue_service,video_cache_service, mcp)
-    query_service = QueryService(mcp,chat_cache_service)
+    video_repo = VideoRepository(storage=storage_service.provider,
+                                 vector_store=vector_provider.provider,
+                                 cache=cache_service.provider
+                                 )
+    video_service = VideoService(video_repo, queue_service, mcp)
+    query_service = QueryService(mcp,cache_service.provider)
 
-    app.state.queue_service = queue_service
+    app.state.queue_service = queue_service.provider
+    app.state.cache_service = cache_service.provider
     app.state.query_service = query_service
-    app.state.video_cache_service = video_cache_service
-    app.state.chat_cache_service = chat_cache_service
     app.state.video_service = video_service
 
-    await app.state.video_cache_service.initialize()
-    await app.state.chat_cache_service.initialize()
-    await app.state.queue_service.initialize()
     await app.state.query_service.initialize()
 
     # Start workers  
@@ -72,8 +69,7 @@ async def lifespan(app: FastAPI):
     await video_service.end()
     
     # Close connections
-    await app.state.video_cache_service.close()
-    await app.state.chat_cache_service.close()
+    await app.state.cache_service.close()
     logger.info("Cleanup complete. API stopped.")
 
 

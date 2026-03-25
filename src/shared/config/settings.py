@@ -39,7 +39,7 @@ class VectorDBType(str, Enum):
     QDRANT = "qdrant"
     WEAVIATE = "weaviate"
 
-class LLMModel(str, Enum):
+class LLMModels(str, Enum):
     GEMINI = "gemini-3-flash-preview"
     GPT4 = "gpt-4"
 
@@ -80,6 +80,7 @@ class Settings(BaseSettings):
     # --- Infrastructure Providers ---
     STORAGE_PROVIDER: StorageProviders = StorageProviders.LOCAL # local,  s3, minio, azure, gcs, redis
     QUEUE_PROVIDER: QueueProviders = QueueProviders.LOCAL # local, redis
+    QUEUE_NAME: str = "video_queue"
     CACHE_PROVIDER: CacheProviders = CacheProviders.LOCAL # local, redis
     STORAGE_PATH: str = "./data/storage"
     TEMP_DIR: str = "./temp"
@@ -118,7 +119,7 @@ class Settings(BaseSettings):
     S3_SECURE: bool = True
 
     # --- LLM Configuration ---
-    LLM_MODEL: str = "gemini-3-flash-preview"
+    LLM_MODEL: LLMModels = LLMModels.GEMINI
     LLM_TEMPERATURE: float = 0.1
     LLM_MAX_TOKENS: int = 1000
     LLM_TOP_P: float = 1.0

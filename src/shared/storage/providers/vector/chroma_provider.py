@@ -93,3 +93,9 @@ class ChromaVectorProvider(VectorStoreProvider):
             )
         except Exception as e:
             logger.error(f"Failed to clear Chroma collection: {e}")
+
+    async def vector_store_exists(self, namespace: str | None = None) -> bool:
+        return f"vector_store/{namespace}_chroma" in os.listdir(self.persist_directory)
+    
+    async def create_vector_store(self, namespace: str | None = None):
+        return await super().create_vector_store(namespace)

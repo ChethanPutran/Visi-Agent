@@ -23,3 +23,7 @@ class CacheProvider(ABC):
     async def increment(self, key: str) -> int:
         """Increment value in cache"""
         pass
+    @abstractmethod
+    async def close(self) -> int:
+        """Close cache connection"""
+        pass

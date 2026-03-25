@@ -3,8 +3,8 @@ from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
 from datetime import datetime
 from src.services.llm_service.app.agent.core.video_agent import VideoAnalyticsAgent
-from src.services.llm_service.app.agent.tools.video_search import initialize_video_search
-from src.shared.storage.factories.blob_storage_service import StorageService
+from src.shared.config.settings import LLMModels
+from src.shared.storage.repository import VideoRepository, ChatRepository
 from src.shared.contracts.video_metadata import VideoMetadata
 from src.shared.logging.logger import get_logger
 
@@ -21,23 +21,22 @@ class VideoSession:
     last_query_time: Optional[datetime] = None
 
 
-class MCPService:
+class LLMService:
     """Manages MCP video sessions with persistence"""
-    _instance: Optional["MCPService"] = None
+    _instance: Optional["LLMService"] = None
 
-    def __init__(self, storage_service: StorageService, model: str):
+    def __init__(self, video_repo: VideoRepository, model: LLMModels = LLMModels.GEMINI):
         if self._initialized:
             return
 
         self._model = model
-        self.storage_service = storage_service
+        self.video_repo = video_repo
         self.sessions: Dict[str, VideoSession] = {}
         self.agent_pool: Dict[str, VideoAnalyticsAgent] = {}
-        self.video_agent_pool: Dict[str, VideoAnalyticsAgent] = {}
         self._initialized = True
         logger.info(f"Using model: {model}")
         
-    def __new__(cls, storage_service: StorageService, model: str):
+    def __new__(cls, video_repo: VideoRepository, model: LLMModels = LLMModels.GEMINI):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance._initialized = False
@@ -45,10 +44,10 @@ class MCPService:
 
 
     @property
-    def model(self) -> str:
+    def model(self) -> LLMModels:
         return self._model
     
-    def _get_agent(self,video_id):
+    async def _get_agent(self,video_id):
         # Create or reuse agent
         agent = self.agent_pool.get(video_id)
         if not agent:
@@ -56,13 +55,6 @@ class MCPService:
             self.agent_pool[video_id] = agent
         return agent
 
-    def _get_video_agent(self,video_id):
-        # Create or reuse agent
-        agent = self.video_agent_pool.get(video_id)
-        if not agent:
-            agent = VideoAnalyticsAgent(self.model)
-            self.video_agent_pool[video_id] = agent
-        return agent
 
     async def load_video(self, video_id: str, auto_load: bool = True) -> Dict[str, Any]:
         """Load a video into MCP session"""
@@ -76,9 +68,9 @@ class MCPService:
                 }
             
             # Get video data from storage
-            transcript = await self.storage_service.get_transcript(video_id)
-            frames_data = await self.storage_service.get_frames_data(video_id)
-            metadata = await self.storage_service.get_video_metadata(video_id)
+            transcript = await self.video_repo.get_transcript(video_id)
+            frames_data = await self.video_repo.get_frames_data(video_id)
+            metadata = await self.video_repo.get_video_metadata(video_id)
 
             if not transcript or not frames_data or metadata is None:
                 return {
@@ -94,14 +86,8 @@ class MCPService:
                 frames_data = json.loads(frames_data)
 
           
-            agent = self._get_video_agent(video_id)
+            agent = await self._get_agent(video_id)
 
-            # Initialize search with processed data
-            initialize_video_search(
-                transcript_segments=transcript.get("segments", []),
-                frames_data=frames_data.get("frames", []),
-                video_path=metadata.storage_path
-            )
 
             # Create session
             session = VideoSession(
@@ -112,7 +98,9 @@ class MCPService:
             )
 
             # Update agent state
-            agent.video_loaded = True
+            store = await self.video_repo.get_vector_store(video_id)  # Ensure vector store is initialized
+            
+            agent.load_video(store)
 
             # Convert VideoMetadata to dict and store in agent for easy access
             agent.video_metadata = vars(session.metadata)
@@ -158,13 +146,6 @@ class MCPService:
             session.query_count += 1
             session.last_query_time = datetime.now()
             
-            # Enhance response
-            response.update({
-                "video_id": video_id,
-                "query_count": session.query_count,
-                "loaded_at": session.loaded_at.isoformat()
-            })
-            
             return response
             
         except Exception as e:
@@ -195,88 +176,22 @@ class MCPService:
             
         return response
         
-    def generate_summary(self, video_id: str, transcript_segments: List[Dict[str, Any]], frames_data: List[Dict[str, Any]]) -> str:
-        return "This is a placeholder response for video summary for video_id: {video_id}"
-        agent = self._get_agent(video_id)
-        return agent.generate_video_summary(transcript_segments, frames_data)
-    
-    async def get_summary(self, video_id: str) -> Dict[str, Any]:
-        """Get video summary via MCP"""
-        if video_id not in self.sessions:
-            load_result = await self.load_video(video_id)
-            if not load_result["success"]:
-                return load_result
-        
-        session = self.sessions[video_id]
-        
-        try:
-            response = await session.agent.get_video_summary()
-            response["video_id"] = video_id
-            return response
-            
-        except Exception as e:
-            logger.error(f"Failed to get summary for {video_id}: {str(e)}")
-            return {
-                "success": False,
-                "error": str(e)
-            }
-    
-    def get_session_info(self, video_id: str) -> Optional[Dict[str, Any]]:
-        """Get session information"""
-        if video_id in self.sessions:
-            session = self.sessions[video_id]
-            return {
-                "video_id": session.video_id,
-                "loaded_at": session.loaded_at.isoformat(),
-                "query_count": session.query_count,
-                "last_query_time": session.last_query_time.isoformat() if session.last_query_time else None,
-                "metadata": session.metadata
-            }
-        return None
-    
-    def list_sessions(self) -> List[Dict[str, Any]]:
-        """List all active sessions"""
-        return [
-            session_info
-            for video_id in self.sessions.keys()
-            if (session_info := self.get_session_info(video_id)) is not None
-        ]
-    
-    def unload_video(self, video_id: str) -> bool:
-        """Unload a video from memory"""
-        if video_id in self.sessions:
-            del self.sessions[video_id]
-            logger.info(f"Unloaded video {video_id} from MCP")
-            return True
-        return False
-    
-    def analyze_frames_batch(self, video_id,frame_buffer):
-        # return "This is a placeholder response for frame analysis for video_id: {video_id}"
-        agent = self._get_video_agent(video_id)
-        response = agent.analyze_frames_batch(frame_buffer)
-        return response
-    
-    async def health_check(self) -> Dict[str, Any]:
-        """Health check"""
-        return {
-            "status": "healthy",
-            "active_sessions": len(self.sessions),
-            "agent_pool_size": len(self.agent_pool),
-            "timestamp": datetime.now().isoformat()
-        }
-
+    async def generate_summary(self, video_id: str, transcript: Dict[str, Any], frames_data: Optional[List[Dict]] = None) -> str:
+        """Generate video summary from transcript and frames"""
+        agent = await self._get_agent(video_id)
+        return await agent.generate_summary(video_id, transcript, frames_data)
 
 if __name__ == "__main__":    # Example usage
-    from src.shared.storage.factories.blob_storage_service import StorageService
-    from src.shared.config.settings import StorageType, LLMModel
+    # from src.shared.storage.providers import ChromaVectorProvider, LocalStorageProvider
+    # from src.shared.config.settings import StorageProviders, LLMModel
 
-    storage_service = StorageService(StorageType.LOCAL)
-    mcp_service = MCPService(storage_service, model=LLMModel.GEMINI)
+    # video_repo = VideoRepository(storage=LocalStorageProvider())
+    # mcp_service = MCPService(video_repo, model=LLMModel.GEMINI)
 
-    VIDEO_ID = "8bf5d8af-aa6d-4ae1-818a-68ac6012b58d"
+    # VIDEO_ID = "8bf5d8af-aa6d-4ae1-818a-68ac6012b58d"
 
-    async def test_load_video():
-        await mcp_service.load_video(VIDEO_ID)
+    # async def test_load_video():
+    #     await mcp_service.load_video(VIDEO_ID)
 
-    import asyncio
-    asyncio.run(test_load_video())
+    # import asyncio
+    # asyncio.run(test_load_video())
