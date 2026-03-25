@@ -8,8 +8,8 @@ from typing import Dict, List, Optional, Any, Tuple
 from fastapi import UploadFile
 from src.services.llm_service.app.mcp_service import MCPService
 from src.shared.contracts.video_metadata import VideoMetadata, VideoFormat
-from src.shared.storage.storage_service import StorageService
-from src.shared.storage.cache_service import VideoCacheService
+from src.shared.storage.repository.video_repository import VideoRepository
+from src.shared.storage.providers.cache.redis_cache import VideoCacheService
 from src.shared.storage.queue_service import QueueService
 from src.services.video_processing.app.processors.text.summarizer import TextSummarizer
 from src.services.video_processing.app.processors.vision.frame_analyzer import VideoProcessor
@@ -24,6 +24,7 @@ logger = get_logger(__name__)
 
 class VideoPipeline:
     def __init__(self, mcp_manager: MCPService) -> None:
+
         self.mcp_manager = mcp_manager
         self.video_processor = VideoProcessor(mcp_manager)
         self.text_processor = TextSummarizer(mcp_manager)
@@ -253,8 +254,8 @@ class VideoPipeline:
 
 
 class VideoService:
-    def __init__(self, storage_service: StorageService, queue_provider: QueueService, cache_service: VideoCacheService, mcp_service: MCPService):
-        self.storage = storage_service
+    def __init__(self, repository: VideoRepository, queue_provider: QueueService, cache_service: VideoCacheService, mcp_service: MCPService):
+        self.repository = repository
         self.video_queue = queue_provider
         self.cache_service = cache_service
         self.mcp_manager = mcp_service
@@ -263,6 +264,19 @@ class VideoService:
         # Limit GPU tasks to avoid OOM - can be tuned based on GPU capacity and model size
         self.semaphore = None  # Initialized in lifespan with num_workers
 
+    async def ingest_video(self, video_file, video_id):
+        # 1. Save the raw file first
+        await self.repository.save_raw_video(video_id, video_file)
+
+        # 2. AI Processing (OpenCV + LLM + Embedding)
+        # This returns a list of dicts with descriptions and embeddings
+        processed_frames = await self.ai.process_video(video_id)
+
+        # 3. Use Repository to persist the AI data to Pinecone/Chroma
+        await self.repository.save_video_metadata(video_id, processed_frames)
+        
+        return {"status": "success", "video_id": video_id}
+    
     async def get_video_status(self, video_id: str) -> Optional[VideoProcessingStatus]:
         """Get processing status of a video"""
 
@@ -272,7 +286,7 @@ class VideoService:
         if status:
             return status
         else:
-            meta_data = await self.storage.get_video_metadata(video_id)
+            meta_data = await self.repository.get_video_metadata(video_id)
 
             if meta_data and meta_data.process_end_time is not None:
                 return VideoProcessingStatus(

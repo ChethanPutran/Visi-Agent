@@ -5,7 +5,7 @@ import aiofiles
 from typing import BinaryIO, Optional
 from fastapi import UploadFile
 from pathlib import Path
-from .base_storage import StorageProvider
+from ...base.base_storage import StorageProvider
 from src.shared.logging.logger import get_logger
 from src.shared.config.settings import settings
 from langchain_chroma import Chroma
@@ -31,29 +31,7 @@ class LocalStorageProvider(StorageProvider):
                     self.summaries_path, self.cache_path, self.meta_data_path]:
             path.mkdir(parents=True, exist_ok=True)
 
-    def _get_chunks(self,docs):
-        # Split the transcript into chunks
-        splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-        chunks = splitter.create_documents([docs])
-
-        print(f"Total chunks created: {len(chunks)}")
-        return chunks
-
-    def _create_vector_store(self,docs, embeddings, PERSIST_DIR="data/vectors", COLLECTION_NAME="default_collection"):
-        # Create and persist Chroma vector store
-        vectordb = Chroma.from_documents(
-            documents=docs,
-            embedding=embeddings,
-            persist_directory=PERSIST_DIR,
-            collection_name=COLLECTION_NAME
-        )
-        
-        print(f"Vector database stored successfully in {PERSIST_DIR}")
-
-    def _load_vector_store(self,embedding_model,persist_directory: str = "data/vectors", collection_name: str = "default_collection",) -> VectorStore:
-        vectordb = Chroma(embedding_function=embedding_model,persist_directory=persist_directory, collection_name=collection_name)
-        return vectordb
-
+    
     
     def _get_full_path(self, file_path: str) -> Path:
         """Convert relative path to absolute path"""

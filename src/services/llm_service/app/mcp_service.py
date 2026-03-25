@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from src.services.llm_service.app.agent.core.video_agent import VideoAnalyticsAgent
 from src.services.llm_service.app.agent.tools.video_search import initialize_video_search
-from src.shared.storage.storage_service import StorageService
+from src.shared.storage.factories.blob_storage_service import StorageService
 from src.shared.contracts.video_metadata import VideoMetadata
 from src.shared.logging.logger import get_logger
 
@@ -33,6 +33,7 @@ class MCPService:
         self.storage_service = storage_service
         self.sessions: Dict[str, VideoSession] = {}
         self.agent_pool: Dict[str, VideoAnalyticsAgent] = {}
+        self.video_agent_pool: Dict[str, VideoAnalyticsAgent] = {}
         self._initialized = True
         logger.info(f"Using model: {model}")
         
@@ -55,6 +56,14 @@ class MCPService:
             self.agent_pool[video_id] = agent
         return agent
 
+    def _get_video_agent(self,video_id):
+        # Create or reuse agent
+        agent = self.video_agent_pool.get(video_id)
+        if not agent:
+            agent = VideoAnalyticsAgent(self.model)
+            self.video_agent_pool[video_id] = agent
+        return agent
+
     async def load_video(self, video_id: str, auto_load: bool = True) -> Dict[str, Any]:
         """Load a video into MCP session"""
         try:
@@ -67,7 +76,7 @@ class MCPService:
                 }
             
             # Get video data from storage
-            transcript = await self.storage_service.get_transcript(video_id, "json")
+            transcript = await self.storage_service.get_transcript(video_id)
             frames_data = await self.storage_service.get_frames_data(video_id)
             metadata = await self.storage_service.get_video_metadata(video_id)
 
@@ -85,7 +94,7 @@ class MCPService:
                 frames_data = json.loads(frames_data)
 
           
-            agent = self._get_agent(video_id)
+            agent = self._get_video_agent(video_id)
 
             # Initialize search with processed data
             initialize_video_search(
@@ -105,7 +114,7 @@ class MCPService:
             # Update agent state
             agent.video_loaded = True
 
-            # Convert VideoMetadata to dict using vars()
+            # Convert VideoMetadata to dict and store in agent for easy access
             agent.video_metadata = vars(session.metadata)
 
             # Store session
@@ -165,7 +174,6 @@ class MCPService:
                 "error": str(e),
                 "video_id": video_id
             }
-    
 
     async def chat(self,question:str, chat_history: List[Dict[str, Any]], video_id: Optional[str] = None) -> Dict[str, Any]:
         """Chat with the agent, optionally in the context of a video"""
@@ -243,8 +251,8 @@ class MCPService:
         return False
     
     def analyze_frames_batch(self, video_id,frame_buffer):
-        return "This is a placeholder response for frame analysis for video_id: {video_id}"
-        agent = self._get_agent(video_id)
+        # return "This is a placeholder response for frame analysis for video_id: {video_id}"
+        agent = self._get_video_agent(video_id)
         response = agent.analyze_frames_batch(frame_buffer)
         return response
     
@@ -256,3 +264,19 @@ class MCPService:
             "agent_pool_size": len(self.agent_pool),
             "timestamp": datetime.now().isoformat()
         }
+
+
+if __name__ == "__main__":    # Example usage
+    from src.shared.storage.factories.blob_storage_service import StorageService
+    from src.shared.config.settings import StorageType, LLMModel
+
+    storage_service = StorageService(StorageType.LOCAL)
+    mcp_service = MCPService(storage_service, model=LLMModel.GEMINI)
+
+    VIDEO_ID = "8bf5d8af-aa6d-4ae1-818a-68ac6012b58d"
+
+    async def test_load_video():
+        await mcp_service.load_video(VIDEO_ID)
+
+    import asyncio
+    asyncio.run(test_load_video())

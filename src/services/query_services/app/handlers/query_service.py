@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Dict, Any
 
-from src.shared.storage.cache_service import ChatCacheService
+from src.shared.storage.providers.cache.redis_cache import ChatCacheService
 from src.shared.logging.logger import get_logger
 from src.services.llm_service.app.mcp_service import MCPService
 

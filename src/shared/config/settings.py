@@ -16,12 +16,20 @@ class Environment(str, Enum):
     PRODUCTION = "production"
     TESTING = "testing"
 
-class StorageType(str, Enum):
+class StorageProviders(str, Enum):
     LOCAL = "local"
     S3 = "s3"
     MINIO = "minio"
     AZURE = "azure"
     GCS = "gcs"
+    REDIS = "redis"
+
+class CacheProviders(str, Enum):
+    LOCAL = "local"
+    REDIS = "redis"
+
+class QueueProviders(str, Enum):
+    LOCAL = "local"
     REDIS = "redis"
 
 class VectorDBType(str, Enum):
@@ -31,12 +39,17 @@ class VectorDBType(str, Enum):
     QDRANT = "qdrant"
     WEAVIATE = "weaviate"
 
+class LLMModel(str, Enum):
+    GEMINI = "gemini-3-flash-preview"
+    GPT4 = "gpt-4"
+
 class LogLevel(str, Enum):
     DEBUG = "debug"
     INFO = "info"
     WARNING = "warning"
     ERROR = "error"
     CRITICAL = "critical"
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=f".env.{os.getenv('APP_ENV', 'development').lower()}",
@@ -65,9 +78,9 @@ class Settings(BaseSettings):
     RATE_LIMIT_PERIOD: int = 60 # seconds
     
     # --- Infrastructure Providers ---
-    STORAGE_PROVIDER: StorageType = StorageType.LOCAL # local,  s3, minio, azure, gcs, redis
-    QUEUE_PROVIDER: str = "in_memory" 
-    CACHE_PROVIDER: str = "in_memory"
+    STORAGE_PROVIDER: StorageProviders = StorageProviders.LOCAL # local,  s3, minio, azure, gcs, redis
+    QUEUE_PROVIDER: QueueProviders = QueueProviders.LOCAL # local, redis
+    CACHE_PROVIDER: CacheProviders = CacheProviders.LOCAL # local, redis
     STORAGE_PATH: str = "./data/storage"
     TEMP_DIR: str = "./temp"
     STORAGE_PATH: str = "./data"
@@ -83,8 +96,18 @@ class Settings(BaseSettings):
     WHISPER_DEVICE: str = "cuda" if os.path.exists("/dev/nvidia0") else "cpu"
     
     # --- Vector DB ---
-    VECTOR_DB_TYPE: VectorDBType = VectorDBType.FAISS
+    VECTOR_PROVIDER: VectorDBType = VectorDBType.FAISS
     VECTOR_DB_PATH: str = "./data/vectors"
+
+    # --- Pinecone Configuration ---
+    PINECONE_API_KEY: Optional[SecretStr] = None
+    PINECONE_ENVIRONMENT: Optional[str] = None
+    PINECONE_INDEX_NAME: Optional[str] = None
+
+    # --- Chroma Configuration ---
+    CHROMA_PERSISTENT_DIR: str = "./data/chroma"
+    CHROMA_COLLECTION_NAME: str = "default_collection"
+    CHROMA_EMBEDDING_MODEL: str = "all-MiniLM-L6-v2" # This is a common sentence transformer model, adjust as needed
 
     # --- S3 / Minio Configuration ---
     S3_ENDPOINT: Optional[str] = None
@@ -112,6 +135,13 @@ class Settings(BaseSettings):
     VISION_BATCH_SIZE: int = 5
     VISION_ENABLED: bool = True
     FRAME_INTERVAL_SECONDS: int = 2 # seconds
+
+    # --- Query Service Configuration ---
+    QUERY_INCLUDE_TIMESTAMPS: bool = True
+    QUERY_MAX_RESULTS: int = 5
+    REDIS_HOST: str = "localhost"
+    REDIS_PORT: int = 6379
+    REDIS_DECODE_RESPONSES: bool = True
 
     # --- Logging Configuration ---
     LOG_LEVEL: LogLevel = LogLevel.DEBUG

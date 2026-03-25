@@ -1,6 +1,6 @@
 
 
-from src.shared.storage.cache_service import CacheService
+from src.shared.storage.providers.cache.redis_cache import CacheService
 from src.shared.logging.logger import get_logger
 
 logger = get_logger(__name__)
@@ -9,14 +9,14 @@ logger = get_logger(__name__)
 def test_video_service():
     from src.services.video_ingestion.app.handlers.video_service import VideoService
     from src.services.llm_service.app.mcp_service import MCPManager
-    from src.shared.storage.storage_service import StorageService
+    from src.shared.storage.factories.blob_storage_service import StorageService
 
     store = StorageService("local")
     mcp = MCPManager(store, model="google")
 
 
 async def test_mcp_service():
-    from src.shared.storage.storage_service import StorageService
+    from src.shared.storage.factories.blob_storage_service import StorageService
     from src.services.llm_service.app.mcp_service import MCPManager
 
     store = StorageService("local")

@@ -2,22 +2,19 @@
 Base storage interface
 """
 from abc import ABC, abstractmethod
-from typing import BinaryIO, Optional, Dict, Any
-from fastapi import UploadFile
-import os
-from pathlib import Path
+from typing import Any, BinaryIO, Optional
 
 
 class StorageProvider(ABC):
     """Abstract base class for storage providers"""
     
     @abstractmethod
-    async def save_file(self, file: BinaryIO, file_path: str) -> str:
+    async def save_file(self, file: Any, file_path: str) -> str:
         """Save a file to storage"""
         pass
     
     @abstractmethod
-    async def get_file(self, file_path: str) -> Optional[BinaryIO]:
+    async def get_file(self, file_path: str) -> Optional[Any]:
         """Retrieve a file from storage"""
         pass
     

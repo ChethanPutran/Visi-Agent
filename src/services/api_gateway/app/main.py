@@ -9,9 +9,11 @@ from fastapi.staticfiles import StaticFiles
 
 from src.shared.config.settings import settings
 from src.shared.logging.logger import get_logger
-from src.shared.storage.cache_service import ChatCacheService, VideoCacheService
+from src.shared.storage.providers.cache.redis_cache import ChatCacheService, VideoCacheService
 from src.shared.storage.queue_service import QueueService
-from src.shared.storage.storage_service import StorageService
+from src.shared.storage.repository.video_repository import VideoRepository
+from src.shared.storage.factories.blob_storage_service import BlobStorageService
+from src.shared.storage.factories.vector_storage_service import VectorStoreService
 from src.services.query_services.app.handlers.query_service import QueryService
 from src.services.video_ingestion.app.handlers.video_service import VideoService
 from src.services.llm_service.app.mcp_service import MCPService
@@ -31,12 +33,17 @@ logger = get_logger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Initialize storage provider based on settings"""
-    storage_service = StorageService(settings.STORAGE_PROVIDER)
+    # Inside your dependency injection container or main.py
+    storage_service = BlobStorageService(settings.STORAGE_PROVIDER) # Singleton Factory
+    vector_provider = VectorStoreService(settings.VECTOR_PROVIDER) # Singleton Factory
     queue_service = QueueService(settings.QUEUE_PROVIDER, "video_queue")
+
     video_cache_service = VideoCacheService(settings.CACHE_PROVIDER)
     chat_cache_service = ChatCacheService(settings.CACHE_PROVIDER)
+
     mcp = MCPService(storage_service, settings.LLM_MODEL)
-    video_service = VideoService(storage_service, queue_service,video_cache_service, mcp)
+    video_repo = VideoRepository(storage=storage_service.provider,vector_store=vector_provider.provider)
+    video_service = VideoService(video_repo, queue_service,video_cache_service, mcp)
     query_service = QueryService(mcp,chat_cache_service)
 
     app.state.queue_service = queue_service
