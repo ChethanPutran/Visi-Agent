@@ -1,10 +1,10 @@
-# 👁️ Visi-Agent: Multimodal Video Analytics RAG
+# Visi-Agent: Multimodal Video Analytics RAG
 
 **Visi-Agent** is an Agentic AI system that enables natural language querying of video content. By synchronizing visual frame descriptions with audio transcripts, it allows users to "talk" to their videos and retrieve specific time-stamped information.
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Installation & Setup
 Clone the repository and install the dependencies defined in the `pyproject.toml`.
@@ -53,7 +53,7 @@ python app.py
 
 ---
 
-## 🌐 API Reference
+## API Reference
 
 ### Video Processing
 | Method | Endpoint | Description |
@@ -72,7 +72,7 @@ python app.py
 
 ---
 
-## 🏗️ Technical Architecture
+## Technical Architecture
 
 * **Temporal Ingestion:** Syncs audio transcripts with visual frame descriptions for precise retrieval.
 * **Agentic Search:** Uses LangChain tools to intelligently query time-stamped data.
