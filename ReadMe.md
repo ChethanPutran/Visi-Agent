@@ -733,5 +733,5 @@ git push origin feature/my-feature
 
 ## 📄 License
 
-See the repository license for licensing information.
+MIT License
 
