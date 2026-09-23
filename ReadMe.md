@@ -1,213 +1,737 @@
-# Visi-Agent: Multimodal Video Analytics RAG
+# Visi-Agent
 
-**Visi-Agent** is an Agentic AI system that enables natural language querying of video content. By synchronizing visual frame descriptions with audio transcripts, it allows users to "talk" to their videos and retrieve specific time-stamped information.
+### Agentic Multimodal Video Analytics & Retrieval
+
+Visi-Agent is an **agentic AI system for querying video using natural language**.
+
+It transforms unstructured video into a searchable multimodal representation by combining **speech transcription, visual frame analysis, temporal alignment, vector retrieval, and LLM-based reasoning**. Users can upload a video and ask questions about what happened, when it happened, and what was said or shown.
+
+> **Ask questions about your videos instead of manually searching through them.**
 
 ---
 
-##  Getting Started
+## ✨ Overview
 
-### 1. Installation & Setup
-Clone the repository and install the dependencies defined in the `pyproject.toml`.
+Traditional video search is mostly keyword-based and often requires manually scanning the timeline.
+
+Visi-Agent approaches video understanding as a **multimodal retrieval and reasoning problem**.
+
+A video is processed into temporally aligned information from multiple modalities:
+
+* 🎙️ **Audio** → speech transcription using Whisper
+* 👁️ **Vision** → sampled video frames and visual descriptions
+* ⏱️ **Temporal Context** → timestamps connecting events across modalities
+* 🧠 **Embeddings** → vector representations for semantic retrieval
+* 🔎 **Retrieval** → similarity-based search over video content
+* 🤖 **Agentic Reasoning** → LLM tools for search and temporal analysis
+* 💬 **Conversation** → contextual follow-up questions about the video
+
+This allows queries such as:
+
+```text
+"What happened when the speaker mentioned the project?"
+
+"When did the car enter the scene?"
+
+"Summarize the discussion about the database."
+
+"What happened immediately after the person entered the room?"
+
+"Find the part of the video where they discuss the deployment architecture."
+```
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                         ┌─────────────────────┐
+                         │       User          │
+                         │ Natural Language    │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │    Flask Frontend   │
+                         │   Web Interface     │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │    FastAPI Gateway  │
+                         │  REST API / Routing │
+                         └──────────┬──────────┘
+                                    │
+                  ┌─────────────────┴─────────────────┐
+                  │                                   │
+                  ▼                                   ▼
+        ┌──────────────────┐                ┌──────────────────┐
+        │ Video Ingestion  │                │  Query Service   │
+        │     Service      │                │                  │
+        └────────┬─────────┘                └────────┬─────────┘
+                 │                                   │
+                 ▼                                   │
+        ┌──────────────────┐                         │
+        │ Video Processing │                         │
+        │     Pipeline     │                         │
+        └────────┬─────────┘                         │
+                 │                                   │
+        ┌────────┴─────────┐                         │
+        │                  │                         │
+        ▼                  ▼                         │
+ ┌─────────────┐    ┌──────────────┐                │
+ │   Whisper   │    │ Vision /     │                │
+ │ Transcriber │    │ Frame        │                │
+ │             │    │ Analysis     │                │
+ └──────┬──────┘    └──────┬───────┘                │
+        │                  │                         │
+        └────────┬─────────┘                         │
+                 ▼                                   │
+        ┌──────────────────┐                         │
+        │ Temporal          │                         │
+        │ Multimodal Data   │                         │
+        └────────┬─────────┘                         │
+                 │                                   │
+                 ▼                                   │
+        ┌──────────────────┐                         │
+        │ Vector Storage   │◄────────────────────────┘
+        │ FAISS / Chroma / │
+        │ Pinecone / ...   │
+        └────────┬─────────┘
+                 │
+                 ▼
+        ┌──────────────────┐
+        │ Video Analytics  │
+        │ Agent            │
+        │                  │
+        │ Search Tool      │
+        │ Temporal Tool    │
+        │ LLM Reasoning    │
+        └────────┬─────────┘
+                 │
+                 ▼
+        ┌──────────────────┐
+        │ Timestamp-aware  │
+        │ Answer           │
+        └──────────────────┘
+```
+
+---
+
+## 🔄 Processing Pipeline
+
+### 1. Video Upload
+
+A user uploads a video through the application.
+
+The ingestion layer stores the video and creates metadata required for subsequent processing.
+
+### 2. Audio Extraction
+
+Audio is extracted from the video using **FFmpeg**.
+
+```text
+Video
+  │
+  └──► FFmpeg
+          │
+          └──► Audio
+```
+
+### 3. Speech Transcription
+
+The extracted audio is processed using **OpenAI Whisper** to generate timestamped transcript segments.
+
+Example:
+
+```json
+{
+  "start": 42.3,
+  "end": 47.8,
+  "text": "We will deploy the service using Kubernetes."
+}
+```
+
+### 4. Visual Processing
+
+Video frames are sampled at configurable intervals.
+
+The system associates frames with corresponding temporal segments of the transcript, creating a multimodal representation of the video.
+
+```text
+Video Timeline
+
+0s ─────── 10s ─────── 20s ─────── 30s
+          │             │
+       Transcript    Visual Frames
+          │             │
+          └──────┬──────┘
+                 ▼
+        Temporal Context
+```
+
+### 5. Multimodal Representation
+
+Each temporal segment can contain information from multiple sources:
+
+```text
+Temporal Segment
+│
+├── Transcript
+│
+├── Visual Frames
+│
+├── Visual Description
+│
+└── Timestamp
+```
+
+This provides the retrieval layer with both **what was said** and **what was visible**.
+
+### 6. Vector Retrieval
+
+Semantic representations are stored using a vector-store abstraction.
+
+The repository currently includes implementations for:
+
+* FAISS
+* Chroma
+* Pinecone
+
+This abstraction makes it possible to change the vector backend without rewriting the application-level retrieval logic.
+
+### 7. Agentic Querying
+
+The video agent uses an LLM together with tools for interacting with the indexed video.
+
+Current agent capabilities include:
+
+* **Video search**
+* **Temporal analysis**
+* **Conversational querying**
+
+Instead of simply performing one vector lookup, the agent can decide when to search the video and when to perform temporal reasoning over retrieved events.
+
+### 8. Answer Generation
+
+Retrieved information is passed to the LLM to generate a natural-language response.
+
+The goal is to preserve the relationship between the answer and the original video timeline.
+
+---
+
+## 🧠 Agent Architecture
+
+The core video agent is built around LangChain's agent/tool abstraction.
+
+Conceptually:
+
+```text
+                     User Question
+                           │
+                           ▼
+                    ┌─────────────┐
+                    │     LLM     │
+                    │    Agent    │
+                    └──────┬──────┘
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+              ▼                         ▼
+       ┌──────────────┐         ┌─────────────────┐
+       │ Video Search │         │    Temporal     │
+       │     Tool     │         │    Analysis     │
+       └──────┬───────┘         └────────┬────────┘
+              │                          │
+              └───────────┬──────────────┘
+                          ▼
+                   Retrieved Context
+                          │
+                          ▼
+                    Final Answer
+```
+
+The temporal analysis tool can perform multiple searches and combine events to reason about their chronological ordering.
+
+---
+
+## 🧩 Main Components
+
+### API Gateway
+
+The API gateway provides the external REST interface and coordinates the backend services.
+
+Responsibilities include:
+
+* Request routing
+* Video endpoints
+* Query endpoints
+* Health checks
+* Configuration
+* Middleware
+* Rate limiting
+* Authentication hooks
+
+### Video Ingestion Service
+
+Responsible for accepting and managing uploaded videos.
+
+### Video Processing Service
+
+Coordinates the multimodal processing pipeline:
+
+* Audio extraction
+* Whisper transcription
+* Frame sampling
+* Visual analysis
+* Summarization
+* Embedding generation
+
+### LLM Service
+
+Provides the LLM-powered capabilities used by the application and video agent.
+
+### Query Service
+
+Handles natural-language queries, conversation history, and interaction with the LLM layer.
+
+### Storage Layer
+
+The project uses provider abstractions for:
+
+* Object/blob storage
+* Caching
+* Queues
+* Vector databases
+
+This allows infrastructure implementations to be changed without tightly coupling the application to a single provider.
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer                  | Technology                                 |
+| ---------------------- | ------------------------------------------ |
+| Language               | Python                                     |
+| API                    | FastAPI                                    |
+| Frontend               | Flask                                      |
+| Agent Framework        | LangChain                                  |
+| LLM                    | Google Gemini                              |
+| Speech-to-Text         | OpenAI Whisper                             |
+| Video Processing       | OpenCV                                     |
+| Video/Audio Processing | FFmpeg                                     |
+| Embeddings             | CLIP / configurable vector representations |
+| Vector Stores          | FAISS, Chroma, Pinecone                    |
+| Cache                  | Local / Redis                              |
+| Queue                  | Local / Redis                              |
+| Object Storage         | Local / S3-compatible                      |
+| Protocol               | Model Context Protocol (MCP)               |
+| Validation             | Pydantic                                   |
+| Testing                | Pytest                                     |
+| Containerization       | Docker                                     |
+
+---
+
+## 📁 Project Structure
+
+```text
+Visi-Agent/
+│
+├── frontend/
+│   └── app.py
+│
+├── src/
+│   │
+│   ├── services/
+│   │   │
+│   │   ├── api_gateway/
+│   │   │   └── app/
+│   │   │       ├── middleware/
+│   │   │       ├── routes/
+│   │   │       └── schemas/
+│   │   │
+│   │   ├── video_ingestion/
+│   │   │   └── app/
+│   │   │
+│   │   ├── video_processing/
+│   │   │   └── app/
+│   │   │       ├── processors/
+│   │   │       │   ├── audio/
+│   │   │       │   ├── vision/
+│   │   │       │   └── text/
+│   │   │       └── workers/
+│   │   │
+│   │   ├── llm_service/
+│   │   │   └── app/
+│   │   │       ├── agent/
+│   │   │       ├── prompts/
+│   │   │       └── tools/
+│   │   │
+│   │   ├── query_services/
+│   │   │   └── app/
+│   │   │
+│   │   └── session_service/
+│   │       └── app/
+│   │
+│   ├── shared/
+│   │   ├── config/
+│   │   ├── contracts/
+│   │   ├── logging/
+│   │   ├── messaging/
+│   │   └── storage/
+│   │       ├── base/
+│   │       ├── factories/
+│   │       ├── providers/
+│   │       └── repository/
+│   │
+│   └── main.py
+│
+├── tests/
+├── scripts/
+├── data/
+├── logs/
+├── Dockerfile
+├── pyproject.toml
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure the following are installed:
+
+* Python 3.10+
+* FFmpeg
+* Git
+* An LLM API key
+* Optional: Pinecone credentials if using Pinecone
+* Optional: CUDA-enabled GPU for faster Whisper inference
+
+### 1. Clone the repository
 
 ```bash
-# Clone the repository
 git clone https://github.com/ChethanPutran/Visi-Agent.git
 cd Visi-Agent
+```
 
-# Navigate to your local project path
-cd /video_analytics
+### 2. Create a virtual environment
 
-# Set up virtual environment
-python -m venv venv
-source venv/bin/activate
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+On Windows:
+
+```powershell
+.venv\Scripts\activate
+```
+
+### 3. Install the project
+
+```bash
 pip install .
 ```
 
-### 2. Configuration
-Create a `.env` file in the root directory and add your API credentials:
+For development/testing dependencies:
+
+```bash
+pip install ".[test]"
+```
+
+### 4. Install FFmpeg
+
+Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install ffmpeg
+```
+
+Verify:
+
+```bash
+ffmpeg -version
+```
+
+### 5. Configure environment variables
+
+Create an environment configuration file appropriate for your environment, for example:
+
+```text
+.env.development
+```
+
+Example:
+
 ```env
-GEMINI_API_KEY=your_key_here
-PINECONE_API_KEY=your_key_here
-PINECONE_ENV=your_environment_here
-LLM_MODEL=your_gemini_model_here
+APP_ENV=development
+
+GEMINI_API_KEY=your_gemini_api_key
+
+VECTOR_PROVIDER=faiss
+VECTOR_DB_PATH=./data/vectors
+
+WHISPER_MODEL=base
+
+LLM_MODEL=gemini-3-flash-preview
+
+VISION_ENABLED=true
+VISION_FRAME_INTERVAL=2
+VISION_BATCH_SIZE=5
+```
+
+If using Pinecone:
+
+```env
+VECTOR_PROVIDER=pinecone
+
+PINECONE_API_KEY=your_pinecone_api_key
+PINECONE_ENVIRONMENT=your_environment
+PINECONE_INDEX_NAME=your_index
 ```
 
 ---
 
-## 🛠️ Running the Application
+## ▶️ Running the Application
 
-### Step 1: Start the Backend (FastAPI)
-The backend manages the video processing pipeline (Whisper + Vision) and the Pinecone vector index.
+### Start the backend
+
+The project exposes a `video-api` command through `pyproject.toml`.
+
 ```bash
-# From the project root
 video-api
 ```
 
-### Step 2: Start the Frontend
-The UI is built with Streamlit. Run it from the `frontend/` directory:
+The API runs on:
+
+```text
+http://localhost:8000
+```
+
+FastAPI documentation is available at:
+
+```text
+http://localhost:8000/docs
+```
+
+### Start the frontend
+
 ```bash
 cd frontend
 python app.py
 ```
-> **Access:** Open your browser and go to `http://localhost:5000`
+
+The frontend runs on:
+
+```text
+http://localhost:5000
+```
 
 ---
 
-## API Reference
+## 🔌 API
 
 ### Video Processing
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `POST` | `/api/v1/videos/upload` | Upload a video file |
-| `POST` | `/api/v1/videos/{id}/process` | Trigger Vision + Whisper indexing |
-| `GET` | `/api/v1/videos/{id}/status` | Check ingestion progress |
-| `GET` | `/api/v1/videos/{id}/transcript` | Retrieve synced audio data |
-| `GET` | `/api/v1/videos/list` | List all processed videos |
 
-### Queries
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `POST` | `/api/v1/queries/ask` | Ask a natural language question |
-| `GET` | `/api/v1/queries/history/{id}` | View query history for a video |
+| Method | Endpoint                         | Purpose                 |
+| ------ | -------------------------------- | ----------------------- |
+| `POST` | `/api/v1/videos/upload`          | Upload a video          |
+| `POST` | `/api/v1/videos/{id}/process`    | Start video processing  |
+| `GET`  | `/api/v1/videos/{id}/status`     | Check processing status |
+| `GET`  | `/api/v1/videos/{id}/transcript` | Retrieve transcript     |
+| `GET`  | `/api/v1/videos/list`            | List processed videos   |
 
----
+### Querying
 
-## Technical Architecture
-
-* **Temporal Ingestion:** Syncs audio transcripts with visual frame descriptions for precise retrieval.
-* **Agentic Search:** Uses LangChain tools to intelligently query time-stamped data.
-* **MCP Ready:** Implements the Model Context Protocol to act as a plugin for Claude or other LLM hosts.
-* **Multimodal Context:** Combines OpenAI Whisper (STT) and Vision-LLM outputs (Gemini 1.5 Flash).
+| Method | Endpoint                       | Purpose                       |
+| ------ | ------------------------------ | ----------------------------- |
+| `POST` | `/api/v1/queries/ask`          | Ask a question about a video  |
+| `GET`  | `/api/v1/queries/history/{id}` | Retrieve conversation history |
 
 ---
 
-##  Folder Structure
+## 💬 Example Workflow
 
+```text
+1. Upload video
+       │
+       ▼
+2. Extract audio
+       │
+       ▼
+3. Generate Whisper transcript
+       │
+       ├──────────────┐
+       │              │
+       ▼              ▼
+   Transcript     Sample Frames
+       │              │
+       │              ▼
+       │        Visual Analysis
+       │              │
+       └───────┬──────┘
+               ▼
+       Temporal Multimodal
+           Representation
+               │
+               ▼
+          Vector Index
+               │
+               ▼
+        User asks question
+               │
+               ▼
+          Agent searches
+               │
+               ▼
+        Temporal reasoning
+               │
+               ▼
+          LLM response
+               │
+               ▼
+      Timestamp-aware answer
 ```
-└── 📁src
-    └── 📁services
-        └── 📁api_gateway
-            └── 📁app
-                └── 📁dependencies
-                    ├── services.py
-                └── 📁middleware
-                    ├── auth.py
-                    ├── logging.py
-                    ├── rate_limit.py
-                └── 📁routes
-                    ├── config_routes.py
-                    ├── health_routes.py
-                    ├── home_routes.py
-                    ├── query_routes.py
-                    ├── video_routes.py
-                └── 📁schemas
-                    ├── response_schemas.py
-                    ├── video_schemas.py
-                ├── main.py
-        └── 📁llm_service
-            └── 📁app
-                └── 📁agent
-                    └── 📁core
-                        ├── video_agent.py
-                    └── 📁memory
-                        ├── local_memory.py
-                    └── 📁prompts
-                        ├── __init__.py
-                        ├── agent_prompt.py
-                        ├── chat.py
-                        ├── video_desc.py
-                        ├── video_summary.py
-                    └── 📁tools
-                        ├── __init__.py
-                        ├── test.py
-                        ├── video_search.py
-                    ├── __init__.py
-                    ├── test.py
-                └── 📁contacts
-                ├── llm_service.py
-        └── 📁query_services
-            └── 📁app
-                └── 📁contracts
-                    ├── __init__.py
-                    ├── query_schemas.py
-                └── 📁domain
-                └── 📁handlers
-                    ├── query_service.py
-                └── 📁retrievers
-        └── 📁session_service
-            └── 📁app
-                └── 📁adapters
-                └── 📁domain
-                └── 📁handlers
-        └── 📁video_ingestion
-            └── 📁app
-                └── 📁contracts
-                    ├── schemas.py
-                └── 📁domain
-                └── 📁handlers
-                    ├── video_service.py
-                └── 📁repositories
-        └── 📁video_processing
-            └── 📁app
-                └── 📁contracts
-                    ├── schemas.py
-                └── 📁processors
-                    └── 📁audio
-                        ├── transcriber.py
-                    └── 📁text
-                        ├── summarizer.py
-                    └── 📁vision
-                        ├── frame_analyzer.py
-                        ├── interfaces.py
-                    ├── video_pipeline.py
-                └── 📁workers
-    └── 📁shared
-        └── 📁config
-            ├── logging_config.py
-            ├── mcp_config.json
-            ├── settings.py
-        └── 📁contracts
-            ├── video_metadata.py
-        └── 📁logging
-            ├── logger.py
-        └── 📁messaging
-        └── 📁storage
-            └── 📁base
-                ├── __init__.py
-                ├── base_cache.py
-                ├── base_queue.py
-                ├── base_storage.py
-                ├── base_vector_store.py
-            └── 📁factories
-                ├── __init__.py
-                ├── blob_storage_service.py
-                ├── cache_storage_service.py
-                ├── queue_service.py
-                ├── vector_storage_service.py
-            └── 📁providers
-                └── 📁blobs
-                    ├── __init__.py
-                    ├── local_storage.py
-                    ├── s3_provider.py
-                └── 📁cache
-                    ├── __init__.py
-                    ├── local_cache.py
-                    ├── redis_cache.py
-                └── 📁queue
-                    ├── __init__.py
-                    ├── local_queue.py
-                    ├── redis_queue.py
-                └── 📁vector
-                    ├── __init__.py
-                    ├── chroma_provider.py
-                    ├── faiss_provider.py
-                    ├── pinecone_provider.py
-                ├── __init__.py
-            └── 📁repository
-                ├── __init__.py
-                ├── chat_repository.py
-                ├── video_repository.py
-    ├── __init__.py
-    └── main.py
-```
+
 ---
+
+## 🔬 Design Principles
+
+### Multimodal Understanding
+
+Video meaning is distributed across speech and visual information. Visi-Agent therefore treats these modalities as complementary rather than relying exclusively on transcripts.
+
+### Temporal Grounding
+
+Video queries are inherently time-dependent. Transcript segments and visual observations are associated with timestamps to preserve their relationship with the original video timeline.
+
+### Agentic Retrieval
+
+The system uses an LLM agent with specialized tools instead of treating retrieval as a single fixed search operation.
+
+### Provider Abstraction
+
+Storage, caching, queues, and vector databases are abstracted behind interfaces/providers, allowing infrastructure to be replaced without redesigning the higher-level services.
+
+### Service Separation
+
+Video ingestion, processing, querying, LLM interaction, and API routing are separated into independent service boundaries.
+
+---
+
+## 🧪 Testing
+
+Run the test suite with:
+
+```bash
+pytest
+```
+
+The project also provides optional testing dependencies through:
+
+```bash
+pip install ".[test]"
+```
+
+---
+
+## 🐳 Docker
+
+A Dockerfile is included for containerized deployment.
+
+Build:
+
+```bash
+docker build -t visi-agent .
+```
+
+Run:
+
+```bash
+docker run --env-file .env.development -p 8000:8000 visi-agent
+```
+
+---
+
+## 🔮 Future Improvements
+
+Potential directions for extending Visi-Agent include:
+
+* [ ] More advanced multimodal embeddings
+* [ ] Better cross-modal retrieval
+* [ ] Timestamp-grounded citations in responses
+* [ ] Multi-video querying
+* [ ] Temporal range queries
+* [ ] Video-to-video comparison
+* [ ] Query suggestions
+* [ ] Improved asynchronous/background processing
+* [ ] Distributed task queues
+* [ ] Streaming video ingestion
+* [ ] Authentication and authorization
+* [ ] Production observability
+* [ ] Evaluation benchmarks for video retrieval and QA
+* [ ] More vision-language model providers
+
+---
+
+## 📌 Current Status
+
+Visi-Agent is an actively developed project exploring **agentic multimodal video understanding, temporal retrieval, and video question answering**.
+
+The repository currently contains the core architecture for:
+
+* Video ingestion
+* Audio transcription
+* Visual frame processing
+* LLM-based analysis
+* Vector retrieval
+* Agentic querying
+* Conversational interaction
+* Pluggable storage infrastructure
+
+Some advanced query and analytics capabilities remain under development.
+
+---
+
+## 🤝 Contributing
+
+Contributions, ideas, and improvements are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/my-feature
+```
+
+3. Make your changes
+4. Run the tests
+
+```bash
+pytest
+```
+
+5. Commit your changes
+
+```bash
+git commit -m "Add my feature"
+```
+
+6. Push the branch
+
+```bash
+git push origin feature/my-feature
+```
+
+7. Open a pull request
+
+---
+
+## 📄 License
+
+See the repository license for licensing information.
+
